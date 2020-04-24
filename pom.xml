@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ffl</groupId>
+    <artifactId>study</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>study-scala</module>
+        <module>study-flink</module>
+        <module>study-java</module>
+        <module>study-spark</module>
+    </modules>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <scala.version>2.11.8</scala.version>
+        <spark.version>2.2.0</spark.version>
+        <hadoop.version>2.6.5</hadoop.version>
+        <encoding>UTF-8</encoding>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+
+            <!--Hadoop class-->
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-client</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.hadoop</groupId>
+                <artifactId>hadoop-common</artifactId>
+                <version>${hadoop.version}</version>
+            </dependency>
+
+            <!--flink kafka connect-->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-connector-kafka_2.11</artifactId>
+                <version>1.10.0</version>
+            </dependency>
+
+            <!-- flink redis connect-->
+            <dependency>
+                <groupId>org.apache.bahir</groupId>
+                <artifactId>flink-connector-redis_2.11</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <!--mysql 驱动包-->
+            <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.15</version>
+            </dependency>
+
+            <!--scala-->
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-library</artifactId>
+                <version>${scala.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.scala-lang</groupId>
+                <artifactId>scala-compiler</artifactId>
+                <version>${scala.version}</version>
+                <scope>runtime</scope>
+            </dependency>
+
+            <!--spark-->
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-core_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
+
+            <!--flink-->
+            <!--java-->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-java</artifactId>
+                <version>1.10.0</version>
+                <!--<scope>provided</scope>-->
+            </dependency>
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-streaming-java_2.11</artifactId>
+                <version>1.10.0</version>
+                <!--<scope>provided</scope>-->
+            </dependency>
+
+            <!--scala-->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-scala_2.11</artifactId>
+                <version>1.10.0</version>
+                <!--<scope>provided</scope>-->
+            </dependency>
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-streaming-scala_2.11</artifactId>
+                <version>1.10.0</version>
+                <!--<scope>provided</scope>-->
+            </dependency>
+
+            <!--utils-->
+            <!--lombok-->
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.8</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!--guava-->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>14.0.1</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+
+        <pluginManagement>
+            <plugins>
+                <!--java打包插件-->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <encoding>UTF8</encoding>
+                    </configuration>
+                </plugin>
+
+                <!-- scala 打包插件-->
+
+                <plugin>
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>scala-maven-plugin</artifactId>
+                    <version>3.2.2</version>
+                    <executions>
+                        <execution>
+                            <id>scala-compile-first</id>
+                            <phase>process-resources</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>scala-test-compile</id>
+                            <phase>process-test-resources</phase>
+                            <goals>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>
