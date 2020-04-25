@@ -1,0 +1,9 @@
+factoryname,address
+Red Star,1
+Thunder,3
+Honda,2
+Rising,1
+Development Bank,2
+Tencent,3
+Bank of Beijing,1
+YY,5
