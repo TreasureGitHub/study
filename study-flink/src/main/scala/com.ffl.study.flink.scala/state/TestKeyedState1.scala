@@ -50,10 +50,10 @@ object TestKeyedState1 {
             // 从状态中取得前一次的呼叫时间
             val preCallTime = preCallTimeState.value()
 
-            if(preCallTime == null|| preCallTime == 0){
+            if(preCallTime == 0){
                 preCallTimeState.update(value.callTime)
             } else { // 状态中有数据，则要计算时间间隔
-                var interval = value.callTime - preCallTime
+                val interval = value.callTime - preCallTime
 
                 out.collect((value.callOut,interval))
             }

@@ -27,6 +27,7 @@
     <dependencyManagement>
         <dependencies>
 
+            <!--hadoop 相关-->
             <!--Hadoop class-->
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
@@ -53,20 +54,7 @@
                 <version>${hadoop.version}</version>
             </dependency>
 
-            <!--flink kafka connect-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-kafka_2.11</artifactId>
-                <version>1.10.0</version>
-            </dependency>
-
-            <!-- flink redis connect-->
-            <dependency>
-                <groupId>org.apache.bahir</groupId>
-                <artifactId>flink-connector-redis_2.11</artifactId>
-                <version>1.0</version>
-            </dependency>
-
+            <!--mysql-->
             <!--mysql 驱动包-->
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
             <dependency>
@@ -75,6 +63,7 @@
                 <version>8.0.15</version>
             </dependency>
 
+            <!--scala-->
             <!--scala-->
             <dependency>
                 <groupId>org.scala-lang</groupId>
@@ -107,6 +96,35 @@
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-streaming-java_2.11</artifactId>
+                <version>1.10.0</version>
+                <!--<scope>provided</scope>-->
+            </dependency>
+
+            <!--flink kafka connect-->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-connector-kafka_2.11</artifactId>
+                <version>1.10.0</version>
+            </dependency>
+
+            <!-- flink redis connect-->
+            <dependency>
+                <groupId>org.apache.bahir</groupId>
+                <artifactId>flink-connector-redis_2.11</artifactId>
+                <version>1.0</version>
+            </dependency>
+
+            <!--table api-->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-table-planner_2.11</artifactId>
+                <version>1.10.0</version>
+                <!--<scope>provided</scope>-->
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-table-api-scala-bridge_2.11</artifactId>
                 <version>1.10.0</version>
                 <!--<scope>provided</scope>-->
             </dependency>
