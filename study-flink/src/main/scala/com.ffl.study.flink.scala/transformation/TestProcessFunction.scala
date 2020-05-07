@@ -1,4 +1,4 @@
-package com.ffl.study.flink.scala.state
+package com.ffl.study.flink.scala.transformation
 
 import com.ffl.study.flink.scala.source.StationLog
 import org.apache.flink.api.common.state.{ValueState, ValueStateDescriptor}
@@ -26,15 +26,19 @@ object TestProcessFunction {
 
         import org.apache.flink.streaming.api.scala._
 
-        val stream: DataStream[StationLog] = env.socketTextStream("localhost", 9000)
+        val stream: DataStream[StationLog] = env.socketTextStream("localhost", 8888)
           .map(line => {
               val arr = line.split(",")
-              new StationLog(arr(0).trim, arr(1).trim, arr(2).trim, arr(3).trim, arr(4).toLong, arr(5).toLong)
+              new StationLog(arr(0).trim, arr(1).trim, arr(2).trim, arr(3).trim, arr(4).trim.toLong, arr(5).trim.toLong)
           })
 
-        stream
+        val result: DataStream[String] = stream
           .keyBy(_.callIn)
           .process(new MonitorCallFail)
+
+        result.print()
+
+        env.execute("TestProcessFunction")
 
     }
 
@@ -42,7 +46,7 @@ object TestProcessFunction {
     class MonitorCallFail extends KeyedProcessFunction[String, StationLog, String] {
 
         // 使用状态对象来记录时间
-        lazy val timeState: ValueState[Long] = getRuntimeContext.getState(new ValueStateDescriptor[Long]("time", classOf[Long]) {})
+        lazy val timeState: ValueState[Long] = getRuntimeContext.getState(new ValueStateDescriptor[Long]("time", classOf[Long]))
 
         override def processElement(value: StationLog, ctx: KeyedProcessFunction[String, StationLog, String]#Context, out: Collector[String]): Unit = {
            // 从状态中取得时间
@@ -50,20 +54,31 @@ object TestProcessFunction {
 
             // 第一次发现呼叫失败，记录当前时间
             if(time == 0 && value.callType.equals("fail")){
-                // 获取当前时间并注册定时器
+                // 获取当前时间
                 val nowTime: Long = ctx.timerService().currentProcessingTime()
 
                 // 定时器在5秒后触发
                 val onTime = nowTime + 5 * 1000L
                 ctx.timerService().registerProcessingTimeTimer(onTime)
 
-                timeState.update(nowTime)
+                // 将触发时间保存在状态中
+                timeState.update(onTime)
             }
 
             // 表示有一次成功的，必须要删除定时器
-            if(time !=0 && !value.callType.equals("fail")){
-
+            if(time != 0 && ! value.callType.equals("fail")){
+                print(value)
+                ctx.timerService().deleteProcessingTimeTimer(time)
+                timeState.clear() // 清空状态中的时间
             }
+        }
+
+        // 时间到了，定时器执行
+        override def onTimer(timestamp: Long, ctx: KeyedProcessFunction[String, StationLog, String]#OnTimerContext, out: Collector[String]): Unit = {
+            val warnStr = "触发时间:" + timestamp + " 手机号 ：" + ctx.getCurrentKey
+
+            out.collect(warnStr)
+            timeState.clear()
         }
     }
 

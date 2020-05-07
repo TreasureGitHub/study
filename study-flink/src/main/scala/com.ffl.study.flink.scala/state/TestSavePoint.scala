@@ -1,4 +1,4 @@
-package com.ffl.study.flink.scala.stream
+package com.ffl.study.flink.scala.state
 
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 
@@ -6,9 +6,9 @@ import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
   * @author lff
   * @datetime 2020/04/04 22:38
   *
-  * flink中流计算word count
+  *           flink中流计算word count
   */
-object StreamWordCount {
+object TestSavePoint {
 
     def main(args: Array[String]): Unit = {
 
@@ -22,15 +22,20 @@ object StreamWordCount {
         import org.apache.flink.streaming.api.scala._
 
         // 3.读取数据，读取socket中的数据
-        val stream: DataStream[String] = env.socketTextStream("localhost",8888)
-
-
+        val stream: DataStream[String] = env.socketTextStream("localhost", 8888)
+          .uid("socket001")
 
         // 4.转换和处理数据
-        val result: DataStream[(String, Int)] = stream.flatMap(_.split(" "))
-          .map((_, 1)).setParallelism(2)
-          .keyBy(0)   // 分组算子
-          .sum(1).setParallelism(2)   // 聚合算子
+        val result: DataStream[(String, Int)] =
+            stream.flatMap(_.split(" "))
+              .uid("flatmap001")
+              .map((_, 1))
+              .uid("map001")
+              .setParallelism(2)
+              .keyBy(0)   // 分组算子
+              .sum(1)
+              .uid("sum001")
+              .setParallelism(2)   // 聚合算子
 
         // 打印结果
         result.print("result")

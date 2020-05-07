@@ -21,7 +21,7 @@ object KafkaSinkByKV {
 
         import org.apache.flink.api.scala._
 
-        val stream: DataStream[String] = env.socketTextStream("localhost",9000)
+        val stream: DataStream[String] = env.socketTextStream("localhost",8888)
 
         val result: DataStream[(String, Int)] = stream
           .flatMap(_.split(" "))

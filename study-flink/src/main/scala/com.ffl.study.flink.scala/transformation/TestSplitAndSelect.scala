@@ -31,10 +31,10 @@ object TestSplitAndSelect {
 
         val stream2: DataStream[StationLog] = splitStream.select("No Success")
 
-        //stream1.print("成功")
-        //stream2.print("失败")
+        stream1.print("成功")
+        stream2.print("失败")
 
-        stream1.print()
+        //stream1.print()
 
         env.execute("TestSplitAndSelect")
     }

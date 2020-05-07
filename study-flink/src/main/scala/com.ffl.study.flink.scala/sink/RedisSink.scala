@@ -27,7 +27,7 @@ object RedisSink {
         import org.apache.flink.streaming.api.scala._
 
         // 3.读取数据，读取socket中的数据
-        val stream: DataStream[String] = env.socketTextStream("localhost", 9000)
+        val stream: DataStream[String] = env.socketTextStream("localhost", 8888)
 
         // 4.转换和处理数据
         val result: DataStream[(String, Int)] = stream.flatMap(_.split(" "))

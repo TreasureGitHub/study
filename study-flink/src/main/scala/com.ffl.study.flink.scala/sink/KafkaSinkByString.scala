@@ -20,7 +20,7 @@ object KafkaSinkByString {
 
         import org.apache.flink.streaming.api.scala._
 
-        val stream: DataStream[String] = env.socketTextStream("localhost",9000)
+        val stream: DataStream[String] = env.socketTextStream("localhost",8888)
 
         val words: DataStream[String] = stream.flatMap(_.split(" "))
 
