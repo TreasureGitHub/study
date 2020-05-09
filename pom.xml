@@ -16,7 +16,6 @@
         <module>study-hadoop</module>
         <module>study-hive</module>
         <module>study-zookeeper</module>
-        <module>study-kafka</module>
     </modules>
 
     <properties>
@@ -24,6 +23,7 @@
         <scala.version>2.11.8</scala.version>
         <spark.version>2.2.0</spark.version>
         <hadoop.version>2.6.5</hadoop.version>
+        <flink.version>1.10.0</flink.version>
         <encoding>UTF-8</encoding>
     </properties>
 
@@ -96,13 +96,13 @@
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-java</artifactId>
-                <version>1.10.0</version>
+                <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-streaming-java_2.11</artifactId>
-                <version>1.10.0</version>
+                <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
 
@@ -110,43 +110,49 @@
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-connector-kafka_2.11</artifactId>
-                <version>1.10.0</version>
+                <version>${flink.version}</version>
             </dependency>
 
             <!-- flink redis connect-->
             <dependency>
                 <groupId>org.apache.bahir</groupId>
                 <artifactId>flink-connector-redis_2.11</artifactId>
-                <version>1.0</version>
+                <version>${flink.version}</version>
             </dependency>
 
             <!--table api-->
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-table-planner_2.11</artifactId>
-                <version>1.10.0</version>
+                <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
 
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-table-api-scala-bridge_2.11</artifactId>
-                <version>1.10.0</version>
+                <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
 
+            <!--cep-->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-cep_2.11</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
 
             <!--scala-->
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-scala_2.11</artifactId>
-                <version>1.10.0</version>
+                <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-streaming-scala_2.11</artifactId>
-                <version>1.10.0</version>
+                <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
 

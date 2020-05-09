@@ -47,6 +47,17 @@
             <artifactId>flink-table-api-scala-bridge_2.11</artifactId>
         </dependency>
 
+        <!--scala-->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-scala_2.11</artifactId>
+
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-scala_2.11</artifactId>
+        </dependency>
+
         <!--mysql相关-->
         <!--mysql connect-->
         <dependency>
@@ -65,16 +76,12 @@
             <artifactId>hadoop-common</artifactId>
         </dependency>
 
-        <!--scala-->
+        <!--cep-->
         <dependency>
             <groupId>org.apache.flink</groupId>
-            <artifactId>flink-scala_2.11</artifactId>
+            <artifactId>flink-cep_2.11</artifactId>
+        </dependency>
 
-        </dependency>
-        <dependency>
-            <groupId>org.apache.flink</groupId>
-            <artifactId>flink-streaming-scala_2.11</artifactId>
-        </dependency>
     </dependencies>
 
 
