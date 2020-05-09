@@ -14,6 +14,9 @@
         <module>study-java</module>
         <module>study-spark</module>
         <module>study-hadoop</module>
+        <module>study-hive</module>
+        <module>study-zookeeper</module>
+        <module>study-kafka</module>
     </modules>
 
     <properties>
@@ -54,6 +57,7 @@
                 <version>${hadoop.version}</version>
             </dependency>
 
+
             <!--mysql-->
             <!--mysql 驱动包-->
             <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
@@ -78,12 +82,14 @@
                 <scope>runtime</scope>
             </dependency>
 
+
             <!--spark-->
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-core_2.11</artifactId>
                 <version>${spark.version}</version>
             </dependency>
+
 
             <!--flink-->
             <!--java-->
@@ -129,6 +135,7 @@
                 <!--<scope>provided</scope>-->
             </dependency>
 
+
             <!--scala-->
             <dependency>
                 <groupId>org.apache.flink</groupId>
@@ -142,6 +149,35 @@
                 <version>1.10.0</version>
                 <!--<scope>provided</scope>-->
             </dependency>
+
+
+
+            <!--单元测试-->
+            <!--junit-->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>RELEASE</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!--log-->
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-core</artifactId>
+                <version>2.8.2</version>
+            </dependency>
+
+
+            <!--zookeeper-->
+            <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zook eeper -->
+            <dependency>
+                <groupId>org.apache.zookeeper</groupId>
+                <artifactId>zookeeper</artifactId>
+                <version>3.4.10</version>
+            </dependency>
+
 
             <!--utils-->
             <!--lombok-->
@@ -184,9 +220,9 @@
                     <version>2.5.5</version>
                     <configuration>
                         <!--<archive>-->
-                            <!--<manifest>-->
-                                <!--<mainClass>com.gd.net.NetMain</mainClass>-->
-                            <!--</manifest>-->
+                        <!--<manifest>-->
+                        <!--<mainClass>com.gd.net.NetMain</mainClass>-->
+                        <!--</manifest>-->
                         <!--</archive>-->
                         <descriptorRefs>
                             <descriptorRef>jar-with-dependencies</descriptorRef>
