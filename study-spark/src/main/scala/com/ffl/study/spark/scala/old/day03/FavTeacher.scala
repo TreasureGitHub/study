@@ -1,8 +1,8 @@
-package com.ffl.study.spark.scala.day03
+package com.ffl.study.spark.scala.old.day03
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
-import com.ffl.study.spark.scala.constant.PathConstants.RESOURCE_PATH
+import com.ffl.study.spark.scala.old.constant.PathConstants.RESOURCE_PATH
 
 /**
   * @author lff

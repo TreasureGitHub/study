@@ -117,7 +117,7 @@
             <dependency>
                 <groupId>org.apache.bahir</groupId>
                 <artifactId>flink-connector-redis_2.11</artifactId>
-                <version>${flink.version}</version>
+                <version>1.0</version>
             </dependency>
 
             <!--table api-->
@@ -136,9 +136,16 @@
             </dependency>
 
             <!--cep-->
+            <!--scala-->
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-cep_2.11</artifactId>
+                <version>${flink.version}</version>
+            </dependency>
+            <!--scala-->
+            <dependency>
+                <groupId>org.apache.flink</groupId>
+                <artifactId>flink-cep-scala_2.11</artifactId>
                 <version>${flink.version}</version>
             </dependency>
 

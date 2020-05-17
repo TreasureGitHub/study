@@ -7,6 +7,7 @@ import org.apache.flink.streaming.connectors.redis.common.config.FlinkJedisPoolC
 import org.apache.flink.streaming.connectors.redis.common.mapper.{RedisCommand, RedisCommandDescription, RedisMapper}
 
 
+
 /**
   * @author lff
   * @datetime 2020/04/18 23:28

@@ -1,4 +1,4 @@
-package com.ffl.study.spark.scala.day03
+package com.ffl.study.spark.scala.old.day03
 
 /**
   * @author lff

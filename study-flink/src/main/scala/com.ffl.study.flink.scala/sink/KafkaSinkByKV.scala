@@ -3,7 +3,7 @@ package com.ffl.study.flink.scala.sink
 import java.lang
 import java.util.Properties
 
-import org.apache.flink.streaming.api.scala.{DataStream, StreamExecutionEnvironment}
+import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.apache.flink.streaming.connectors.kafka.{FlinkKafkaProducer, KafkaSerializationSchema}
 import org.apache.kafka.clients.producer.ProducerRecord
 
@@ -19,7 +19,7 @@ object KafkaSinkByKV {
 
         env.setParallelism(1)
 
-        import org.apache.flink.api.scala._
+        import org.apache.flink.streaming.api.scala._
 
         val stream: DataStream[String] = env.socketTextStream("localhost",8888)
 
