@@ -3,6 +3,7 @@ package com.ffl.study.zookeeper;
 import org.apache.zookeeper.*;
 import org.apache.zookeeper.data.Stat;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -11,6 +12,7 @@ import java.io.IOException;
  * @author lff
  * @datetime 2020/05/08 22:08
  */
+@Ignore
 public class TestZookeeper {
 
     private static final String CONNECT_STRING = "localhost:2181";

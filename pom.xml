@@ -8,6 +8,17 @@
     <artifactId>study</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <scala.version>2.11.8</scala.version>
+        <spark.version>2.2.0</spark.version>
+        <hadoop.version>2.6.5</hadoop.version>
+        <flink.version>1.10.0</flink.version>
+        <study.version>1.0-SNAPSHOT</study.version>
+        <encoding>UTF-8</encoding>
+    </properties>
+
     <modules>
         <module>study-scala</module>
         <module>study-flink</module>
@@ -16,19 +27,18 @@
         <module>study-hadoop</module>
         <module>study-hive</module>
         <module>study-zookeeper</module>
+        <module>study-common</module>
     </modules>
-
-    <properties>
-        <java.version>1.8</java.version>
-        <scala.version>2.11.8</scala.version>
-        <spark.version>2.2.0</spark.version>
-        <hadoop.version>2.6.5</hadoop.version>
-        <flink.version>1.10.0</flink.version>
-        <encoding>UTF-8</encoding>
-    </properties>
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- 本项目模块-->
+            <dependency>
+                <groupId>com.ffl</groupId>
+                <artifactId>study-common</artifactId>
+                <version>${study.version}</version>
+            </dependency>
 
             <!--hadoop 相关-->
             <!--Hadoop class-->
@@ -44,16 +54,10 @@
                 <version>${hadoop.version}</version>
             </dependency>
 
-            <!-- mapreducer-->
+            <!--hdfs-->
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-mapreduce-client-core</artifactId>
-                <version>${hadoop.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>org.apache.hadoop</groupId>
-                <artifactId>hadoop-mapreduce-client-jobclient</artifactId>
+                <artifactId>hadoop-hdfs</artifactId>
                 <version>${hadoop.version}</version>
             </dependency>
 
