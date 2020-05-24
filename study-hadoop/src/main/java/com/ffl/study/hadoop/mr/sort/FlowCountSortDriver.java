@@ -2,8 +2,7 @@ package com.ffl.study.hadoop.mr.sort;
 
 import com.ffl.study.common.constants.PathConstants;
 import com.ffl.study.common.utils.FileUtils;
-import com.ffl.study.hadoop.mr.flowcount.ProvincePartitioner;
-import com.ffl.study.hadoop.pojo.FlowBean;
+import com.ffl.study.hadoop.pojo.FlowBeanSort;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -17,28 +16,32 @@ import java.io.IOException;
 /**
  * @author lff
  * @datetime 2020/05/22 22:05
+ *
+ * 需求，对输入的内容，按照sumFlow进行降序排序输出到文件中
+ *
+ * 分5个分区，分区内数据也要降序排序
  */
-public class FlowCountDriver {
+public class FlowCountSortDriver {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
 
-        job.setJarByClass(FlowCountDriver.class);
+        job.setJarByClass(FlowCountSortDriver.class);
 
         job.setMapperClass(FlowCountSortMapper.class);
         job.setReducerClass(FlowCountSortReducer.class);
 
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(FlowBean.class);
+        job.setMapOutputKeyClass(FlowBeanSort.class);
+        job.setMapOutputValueClass(Text.class);
 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(FlowBean.class);
+        job.setOutputValueClass(FlowBeanSort.class);
 
-        // 设置分区
-        job.setPartitionerClass(ProvincePartitioner.class);
+        job.setPartitionerClass(ProvinceSortPartitioner.class);
         job.setNumReduceTasks(5);
 
+        // 设置分区
         String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/flow_input";
         String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/flow_output";
 

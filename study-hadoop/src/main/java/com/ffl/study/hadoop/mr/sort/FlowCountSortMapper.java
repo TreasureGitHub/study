@@ -1,6 +1,6 @@
-package com.ffl.study.hadoop.mr.flowcount;
+package com.ffl.study.hadoop.mr.sort;
 
-import com.ffl.study.hadoop.pojo.FlowBean;
+import com.ffl.study.hadoop.pojo.FlowBeanSort;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -11,11 +11,11 @@ import java.io.IOException;
  * @author lff
  * @datetime 2020/05/22 21:47
  */
-public class FlowCountMapper extends Mapper<LongWritable, Text, Text, FlowBean> {
+public class FlowCountSortMapper extends Mapper<LongWritable, Text, FlowBeanSort,Text> {
 
     private Text number = new Text();
 
-    private FlowBean bean = new FlowBean();
+    private FlowBeanSort bean = new FlowBeanSort();
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
@@ -26,10 +26,9 @@ public class FlowCountMapper extends Mapper<LongWritable, Text, Text, FlowBean> 
         long upFlow = Long.parseLong(fields[fields.length - 3]);
         long downFlow = Long.parseLong(fields[fields.length - 2]);
 
-        bean.setUpFlow(upFlow);
-        bean.setDownFlow(downFlow);
+
         bean.set(upFlow,downFlow);
 
-        context.write(number,bean);
+        context.write(bean,number);
     }
 }

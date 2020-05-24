@@ -1,6 +1,6 @@
 package com.ffl.study.hadoop.mr.sort;
 
-import com.ffl.study.hadoop.pojo.FlowBean;
+import com.ffl.study.hadoop.pojo.FlowBeanSort;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Reducer;
 
@@ -10,21 +10,14 @@ import java.io.IOException;
  * @author lff
  * @datetime 2020/05/22 21:57
  */
-public class FlowCountReducer extends Reducer<Text, FlowBean, Text, FlowBean> {
+public class FlowCountSortReducer extends Reducer<FlowBeanSort, Text, Text, FlowBeanSort> {
 
-    private FlowBean bean = new FlowBean();
+    private FlowBeanSort bean = new FlowBeanSort();
 
     @Override
-    protected void reduce(Text key, Iterable<FlowBean> values, Context context) throws IOException, InterruptedException {
-        long sumUpFlow = 0;
-        long sumDownFlow = 0;
-
-        for (FlowBean flowBean : values) {
-            sumUpFlow += flowBean.getUpFlow();
-            sumDownFlow += flowBean.getDownFlow();
+    protected void reduce(FlowBeanSort key, Iterable<Text> values, Context context) throws IOException, InterruptedException {
+        for (Text value : values) {
+            context.write(value,key);
         }
-
-        bean.set(sumUpFlow, sumDownFlow);
-        context.write(key, bean);
     }
 }

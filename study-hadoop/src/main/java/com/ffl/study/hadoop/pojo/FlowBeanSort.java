@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.mr.sort;
+package com.ffl.study.hadoop.pojo;
 
 import lombok.Data;
 import org.apache.hadoop.io.WritableComparable;
@@ -12,7 +12,7 @@ import java.io.IOException;
  * @datetime 2020/05/23 22:30
  */
 @Data
-public class FlowBean implements WritableComparable<FlowBean> {
+public class FlowBeanSort implements WritableComparable<FlowBeanSort> {
 
     /**
      * 上行流量
@@ -50,7 +50,18 @@ public class FlowBean implements WritableComparable<FlowBean> {
      * @return
      */
     @Override
-    public int compareTo(FlowBean other) {
+    public int compareTo(FlowBeanSort other) {
         return - Long.compare(this.sumFlow,other.sumFlow);
+    }
+
+    public void set(long upFlow, long downFlow) {
+        this.upFlow = upFlow;
+        this.downFlow = downFlow;
+        this.sumFlow = upFlow + downFlow;
+    }
+
+    @Override
+    public String toString() {
+        return upFlow + "\t" + downFlow + "\t" + sumFlow;
     }
 }

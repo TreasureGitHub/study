@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.mr.wordcount;
+package com.ffl.study.hadoop.mr.nlinecount;
 
 import com.ffl.study.common.constants.PathConstants;
 import com.ffl.study.common.utils.FileUtils;
@@ -8,8 +8,8 @@ import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
-import org.apache.hadoop.mapreduce.lib.input.CombineTextInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.input.NLineInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ import java.io.IOException;
  * <p>
  * Driver
  */
-public class WordCountDriver {
+public class NlineCountDriver {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 
@@ -29,11 +29,11 @@ public class WordCountDriver {
         Job job = Job.getInstance(conf);
 
         // 2.设置jar存储位置
-        job.setJarByClass(WordCountDriver.class);
+        job.setJarByClass(NlineCountDriver.class);
 
         // 3.关联Map和Reduce类
-        job.setMapperClass(WordCountMapper.class);
-        job.setReducerClass(WordCountReducer.class);
+        job.setMapperClass(NlineCountMapper.class);
+        job.setReducerClass(NlineCountReducer.class);
 
         // 4.设置Mapper阶段输出数据的key和value类型
         job.setMapOutputKeyClass(Text.class);
@@ -43,12 +43,12 @@ public class WordCountDriver {
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(LongWritable.class);
 
-        // 默认使用 TextInputFormat，此处调整切片大小
-        job.setInputFormatClass(CombineTextInputFormat.class);
-        CombineTextInputFormat.setMaxInputSplitSize(job,4194304); // 4M
+        // 每3行进行分片
+        job.setInputFormatClass(NLineInputFormat.class);
+        NLineInputFormat.setNumLinesPerSplit(job,3);
 
-        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/wc_input";
-        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/wc_output";
+        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/input_kv";
+        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/output_kv";
 
         // 如果用集群跑，此处注释掉
         FileUtils.deleteDir(output);

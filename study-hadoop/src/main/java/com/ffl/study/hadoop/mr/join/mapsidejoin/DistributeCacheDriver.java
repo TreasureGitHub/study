@@ -2,18 +2,18 @@ package com.ffl.study.hadoop.mr.join.mapsidejoin;
 
 import com.ffl.study.common.constants.PathConstants;
 import com.ffl.study.common.utils.FileUtils;
-import com.ffl.study.hadoop.mr.join.reducesideJoin.TableMapper;
-import com.ffl.study.hadoop.mr.join.reducesideJoin.TableReducer;
-import com.ffl.study.hadoop.pojo.TableBean;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 /**
  * @author lff
@@ -21,26 +21,33 @@ import java.io.IOException;
  *
  * 产品表和订单表，需要将订单表中的产品名称补齐
  * 此处采用reduce端join
+ *
+ * 执行此操作之前，请在终端执行以下命令，否则为报没有权限 (本人在mac部署的伪分布式环境，执行从local模式)
+ * 详细请看 https://stackoverflow.com/questions/23903113/mapreduce-error-usergroupinformation-priviledgedactionexception
+ * cp -r ./study-hadoop/src/main/resources/mjoin_cache /tmp
+ *
+ *
  */
-public class MapTableDriver {
+public class DistributeCacheDriver {
 
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException, URISyntaxException {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
 
-        job.setJarByClass(MapTableDriver.class);
+        job.setJarByClass(DistributeCacheDriver.class);
 
-        job.setMapperClass(TableMapper.class);
-        job.setReducerClass(TableReducer.class);
+        job.setMapperClass(DistributeCacheMapper.class);
 
-        job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(TableBean.class);
-
+        // 最终输出格式设置
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(TableBean.class);
+        job.setOutputValueClass(NullWritable.class);
 
-        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/rjoin_input";
-        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/rjoin_output";
+        // 设置缓存，且设置reduce数量为0
+        job.addCacheFile(new URI("/tmp/mjoin_cache/pd.txt"));
+        job.setNumReduceTasks(0);
+
+        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/mjoin_input";
+        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/mjoin_output";
 
         // 如果用集群跑，此处注释掉
         FileUtils.deleteDir(output);

@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.flowcount;
+package com.ffl.study.hadoop.mr.flowcount;
 
 import com.ffl.study.hadoop.pojo.FlowBean;
 import org.apache.hadoop.io.LongWritable;
@@ -28,6 +28,7 @@ public class FlowCountMapper extends Mapper<LongWritable, Text, Text, FlowBean> 
 
         bean.setUpFlow(upFlow);
         bean.setDownFlow(downFlow);
+        bean.set(upFlow,downFlow);
 
         context.write(number,bean);
     }

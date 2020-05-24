@@ -30,18 +30,6 @@ public class FlowBean implements Writable {
     private long sumFlow;
 
     /**
-     * 无参构造函数，必须有
-     */
-    public FlowBean() {
-    }
-
-    public void set(long upFlow, long downFlow) {
-        this.upFlow = upFlow;
-        this.downFlow = downFlow;
-        sumFlow = upFlow + downFlow;
-    }
-
-    /**
      * 序列化方法
      *
      * @param out
@@ -71,5 +59,11 @@ public class FlowBean implements Writable {
     @Override
     public String toString() {
         return upFlow + "\t" + downFlow + "\t" + sumFlow;
+    }
+
+    public void set(long upFlow, long downFlow) {
+        this.upFlow = upFlow;
+        this.downFlow = downFlow;
+        this.sumFlow = upFlow + downFlow;
     }
 }

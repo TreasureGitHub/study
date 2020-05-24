@@ -82,7 +82,7 @@ public class MapSideJoin {
 
         Job job = Job.getInstance(conf,"MapSideJoin");
 
-        String cache = "/tmp/address.txt";
+        String cache = "/mjoin_cache/address.txt";
         String input = "./src/main/resources/msj_input";
         String output = "./src/main/resources/msj_output";
         FileOperate.deleteDir(output);

@@ -1,7 +1,9 @@
 package com.ffl.study.hadoop.old.mapreduce;
 
+import com.ffl.study.common.constants.PathConstants;
+import com.ffl.study.common.utils.FileUtils;
 import com.ffl.study.hadoop.old.pojo.User;
-import com.ffl.study.hadoop.old.utils.FileOperate;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.IntWritable;
@@ -25,10 +27,12 @@ public class UserScore {
 
     public static class UserScoreMap extends Mapper<LongWritable,Text, User,IntWritable> {
 
+        private User user = new User();
+
         @Override
         protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
             String[] arr = value.toString().split(",");
-            User user = new User();
+
             user.setName(arr[0]);
             user.setAge(Integer.parseInt(arr[1]));
             context.write(user,new IntWritable(Integer.parseInt(arr[3])));
@@ -62,9 +66,11 @@ public class UserScore {
         job.setOutputKeyClass(User.class);
         job.setOutputValueClass(IntWritable.class);
 
-        String input = "./src/main/resources/userscore_input";
-        String output = "./src/main/resources/userscore_output";
-        FileOperate.deleteDir(output);
+        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/userscore_input";
+        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/userscore_output";
+
+        // 如果用集群跑，此处注释掉
+        FileUtils.deleteDir(output);
 
         FileInputFormat.addInputPath(job,new Path(input));
         FileOutputFormat.setOutputPath(job, new Path(output));

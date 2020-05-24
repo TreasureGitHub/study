@@ -20,7 +20,6 @@ object UnitNullNothingDemo {
         //println("char " + char)
 
         //print(math.sqrt(2))
-        math.sqrt()
     }
 
 

@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.flowcount;
+package com.ffl.study.hadoop.mr.flowcount;
 
 import com.ffl.study.hadoop.pojo.FlowBean;
 import org.apache.hadoop.io.Text;

@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.flowcount;
+package com.ffl.study.hadoop.mr.flowcount;
 
 import com.ffl.study.common.constants.PathConstants;
 import com.ffl.study.common.utils.FileUtils;
@@ -29,13 +29,17 @@ public class FlowCountDriver {
         job.setReducerClass(FlowCountReducer.class);
 
         job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputKeyClass(FlowBean.class);
+        job.setMapOutputValueClass(FlowBean.class);
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(FlowBean.class);
 
-        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/wc_input";
-        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/wc_output";
+        // 设置分区
+        job.setPartitionerClass(ProvincePartitioner.class);
+        job.setNumReduceTasks(5);
+
+        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/flow_input";
+        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/flow_output";
 
         // 如果用集群跑，此处注释掉
         FileUtils.deleteDir(output);

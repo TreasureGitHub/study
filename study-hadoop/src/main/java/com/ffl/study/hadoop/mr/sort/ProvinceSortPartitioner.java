@@ -1,6 +1,6 @@
 package com.ffl.study.hadoop.mr.sort;
 
-import com.ffl.study.hadoop.pojo.FlowBean;
+import com.ffl.study.hadoop.pojo.FlowBeanSort;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
 
@@ -10,10 +10,10 @@ import org.apache.hadoop.mapreduce.Partitioner;
  * <p>
  * 将数据中136、137、137、139开头的分别放一个分区，其它的放一个分区
  */
-public class ProvincePartitioner extends Partitioner<Text, FlowBean> {
+public class ProvinceSortPartitioner extends Partitioner<FlowBeanSort, Text> {
 
     @Override
-    public int getPartition(Text text, FlowBean flowBean, int numPartitions) {
+    public int getPartition(FlowBeanSort flowBean, Text text, int numPartitions) {
         int partition;
 
         String preNum = text.toString().substring(0, 3);

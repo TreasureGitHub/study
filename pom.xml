@@ -47,7 +47,6 @@
                 <artifactId>hadoop-client</artifactId>
                 <version>${hadoop.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.apache.hadoop</groupId>
                 <artifactId>hadoop-common</artifactId>
@@ -60,7 +59,6 @@
                 <artifactId>hadoop-hdfs</artifactId>
                 <version>${hadoop.version}</version>
             </dependency>
-
 
             <!--mysql-->
             <!--mysql 驱动包-->
@@ -78,7 +76,6 @@
                 <artifactId>scala-library</artifactId>
                 <version>${scala.version}</version>
             </dependency>
-
             <dependency>
                 <groupId>org.scala-lang</groupId>
                 <artifactId>scala-compiler</artifactId>
@@ -86,14 +83,12 @@
                 <scope>runtime</scope>
             </dependency>
 
-
             <!--spark-->
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-core_2.11</artifactId>
                 <version>${spark.version}</version>
             </dependency>
-
 
             <!--flink-->
             <!--java-->
@@ -109,21 +104,18 @@
                 <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
-
             <!--flink kafka connect-->
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-connector-kafka_2.11</artifactId>
                 <version>${flink.version}</version>
             </dependency>
-
             <!-- flink redis connect-->
             <dependency>
                 <groupId>org.apache.bahir</groupId>
                 <artifactId>flink-connector-redis_2.11</artifactId>
                 <version>1.0</version>
             </dependency>
-
             <!--table api-->
             <dependency>
                 <groupId>org.apache.flink</groupId>
@@ -131,14 +123,12 @@
                 <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
-
             <dependency>
                 <groupId>org.apache.flink</groupId>
                 <artifactId>flink-table-api-scala-bridge_2.11</artifactId>
                 <version>${flink.version}</version>
                 <!--<scope>provided</scope>-->
             </dependency>
-
             <!--cep-->
             <!--scala-->
             <dependency>
@@ -152,7 +142,6 @@
                 <artifactId>flink-cep-scala_2.11</artifactId>
                 <version>${flink.version}</version>
             </dependency>
-
             <!--scala-->
             <dependency>
                 <groupId>org.apache.flink</groupId>
@@ -167,8 +156,6 @@
                 <!--<scope>provided</scope>-->
             </dependency>
 
-
-
             <!--单元测试-->
             <!--junit-->
             <dependency>
@@ -178,14 +165,12 @@
                 <scope>test</scope>
             </dependency>
 
-
             <!--log-->
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-core</artifactId>
                 <version>2.8.2</version>
             </dependency>
-
 
             <!--zookeeper-->
             <!-- https://mvnrepository.com/artifact/org.apache.zookeeper/zook eeper -->
@@ -195,6 +180,13 @@
                 <version>3.4.10</version>
             </dependency>
 
+            <!--hive-->
+            <dependency>
+                <groupId>org.apache.hive</groupId>
+                <artifactId>hive-exec</artifactId>
+                <version>2.3.7</version>
+                <scope>provided</scope>
+            </dependency>
 
             <!--utils-->
             <!--lombok-->

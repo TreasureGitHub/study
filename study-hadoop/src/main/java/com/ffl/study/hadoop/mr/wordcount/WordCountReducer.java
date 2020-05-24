@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.wordcount;
+package com.ffl.study.hadoop.mr.wordcount;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;

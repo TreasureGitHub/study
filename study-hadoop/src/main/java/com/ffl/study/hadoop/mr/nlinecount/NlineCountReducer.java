@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.mr.wordcount;
+package com.ffl.study.hadoop.mr.nlinecount;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -12,23 +12,21 @@ import java.io.IOException;
  *
  * reducer
  */
-public class WordCountReducer extends Reducer<Text, LongWritable, Text,LongWritable> {
+public class NlineCountReducer extends Reducer<Text, LongWritable, Text,LongWritable> {
 
-    private static LongWritable OUT_VALUE = new LongWritable();
+    private static LongWritable outValue = new LongWritable();
 
 
     @Override
     protected void reduce(Text key, Iterable<LongWritable> values, Context context) throws IOException, InterruptedException {
-
-
         long sum = 0;
 
         for(LongWritable value:values){
             sum += value.get();
         }
 
-        OUT_VALUE.set(sum);
-        context.write(key,OUT_VALUE);
+        outValue.set(sum);
+        context.write(key,outValue);
 
     }
 }

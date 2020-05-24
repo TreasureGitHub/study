@@ -1,8 +1,8 @@
-package com.ffl.study.hadoop.mr.flowcount;
+package com.ffl.study.hadoop.mr.join.reducesideJoin;
 
 import com.ffl.study.common.constants.PathConstants;
 import com.ffl.study.common.utils.FileUtils;
-import com.ffl.study.hadoop.pojo.FlowBean;
+import com.ffl.study.hadoop.pojo.TableBean;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -16,30 +16,29 @@ import java.io.IOException;
 /**
  * @author lff
  * @datetime 2020/05/22 22:05
+ *
+ * 产品表和订单表，需要将订单表中的产品名称补齐
+ * 此处采用reduce端join
  */
-public class FlowCountDriver {
+public class TableDriver {
 
     public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
         Configuration conf = new Configuration();
         Job job = Job.getInstance(conf);
 
-        job.setJarByClass(FlowCountDriver.class);
+        job.setJarByClass(TableDriver.class);
 
-        job.setMapperClass(FlowCountMapper.class);
-        job.setReducerClass(FlowCountReducer.class);
+        job.setMapperClass(TableMapper.class);
+        job.setReducerClass(TableReducer.class);
 
         job.setMapOutputKeyClass(Text.class);
-        job.setMapOutputValueClass(FlowBean.class);
+        job.setMapOutputValueClass(TableBean.class);
 
         job.setOutputKeyClass(Text.class);
-        job.setOutputValueClass(FlowBean.class);
+        job.setOutputValueClass(TableBean.class);
 
-        // 设置分区
-        job.setPartitionerClass(ProvincePartitioner.class);
-        job.setNumReduceTasks(5);
-
-        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/flow_input";
-        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/flow_output";
+        String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/rjoin_input";
+        String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/rjoin_output";
 
         // 如果用集群跑，此处注释掉
         FileUtils.deleteDir(output);

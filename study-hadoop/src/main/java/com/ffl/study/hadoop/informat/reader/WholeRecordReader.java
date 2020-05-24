@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.reader;
+package com.ffl.study.hadoop.informat.reader;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FSDataInputStream;

@@ -1,55 +1,65 @@
-package com.ffl.study.hadoop.mr.join.reducesideJoin;
+package com.ffl.study.hadoop.mr.join.mapsidejoin;
 
-import com.ffl.study.hadoop.pojo.TableBean;
+import com.google.common.collect.Maps;
+import org.apache.commons.lang.StringUtils;
+import org.apache.hadoop.io.IOUtils;
 import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
-import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.URI;
+import java.util.Map;
 
 /**
  * @author lff
  * @datetime 2020/05/24 03:23
  */
-public class TableMapper extends Mapper<LongWritable, Text, Text, TableBean> {
+public class DistributeCacheMapper extends Mapper<LongWritable, Text, Text, NullWritable> {
 
-    private String fileName;
+    private Map<String,String> pdMap = Maps.newHashMap();
 
-    private TableBean tableBean = new TableBean();
-
-    private Text keyData = new Text();
+    private Text data = new Text();
 
     @Override
-    protected void setup(Context context) throws IOException, InterruptedException {
-        // 获取文件名称
-        FileSplit inputSplit = (FileSplit) context.getInputSplit();
-        fileName = inputSplit.getPath().getName();
+    protected void setup(Context context) throws IOException {
+        //获取路径
+        URI[] cacheFiles = context.getCacheFiles();
+        String path = cacheFiles[0].getPath();
+
+        // 获取bufferReader
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(new FileInputStream(path), "UTF-8"));
+
+        // 读取数据
+        String line;
+        while (StringUtils.isNotEmpty(line = bufferedReader.readLine())){
+
+            String[] fields = line.split("\t");
+            pdMap.put(fields[0],fields[1]);
+        }
+
+        // 关闭资源
+        IOUtils.closeStream(bufferedReader);
     }
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String line = value.toString();
-        String[] fields = line.split("\t");
 
-        if (fileName.startsWith("order")) {
-            // 订单表
-            tableBean.setId(fields[0]);
-            tableBean.setPId(fields[1]);
-            tableBean.setAmount(Integer.parseInt(fields[2]));
-            tableBean.setPName("");
-            tableBean.setFlag("order");
-            keyData.set(fields[1]);
-        } else {
-            // 产品表
-            tableBean.setId("");
-            tableBean.setPId(fields[0]);
-            tableBean.setAmount(0);
-            tableBean.setPName(fields[1]);
-            tableBean.setFlag("pd");
-            keyData.set(fields[0]);
-        }
+        String pId = line.split("\t")[1];
 
-        context.write(keyData, tableBean);
+        String pName = pdMap.get(pId);
+
+        line = line + "\t" + pName;
+        data.set(line);
+
+        // 计数器,每次加1 ，测试用，会在控制台中显示
+        context.getCounter("map", "cnt").increment(1);
+
+        context.write(data,NullWritable.get());
     }
 }

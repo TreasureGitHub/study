@@ -1,4 +1,4 @@
-package com.ffl.study.hadoop.mr.wordcount;
+package com.ffl.study.hadoop.mr.nlinecount;
 
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -12,9 +12,9 @@ import java.io.IOException;
  * <p>
  * map 阶段
  */
-public class WordCountMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
+public class NlineCountMapper extends Mapper<LongWritable, Text, Text, LongWritable> {
 
-    private static Text KEY = new Text();
+    private Text outKey = new Text();
 
     private static LongWritable ONE = new LongWritable(1);
 
@@ -23,8 +23,8 @@ public class WordCountMapper extends Mapper<LongWritable, Text, Text, LongWritab
         String[] words = value.toString().split(" ");
 
         for (String word : words) {
-            KEY.set(word);
-            context.write(KEY, ONE);
+            outKey.set(word);
+            context.write(outKey, ONE);
         }
     }
 }
