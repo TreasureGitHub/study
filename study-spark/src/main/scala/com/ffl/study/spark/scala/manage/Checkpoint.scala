@@ -1,4 +1,4 @@
-package com.ffl.study.spark.scala
+package com.ffl.study.spark.scala.manage
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.{SparkConf, SparkContext}
