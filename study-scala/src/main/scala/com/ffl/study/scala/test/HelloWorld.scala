@@ -1,4 +1,4 @@
-package com.ffl.study.scala
+package com.ffl.study.scala.test
 
 /**
   * @author lff

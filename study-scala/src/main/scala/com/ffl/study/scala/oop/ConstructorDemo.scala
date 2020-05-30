@@ -8,11 +8,9 @@ import scala.beans.BeanProperty
   */
 object ConstructorDemo extends App {
 
-    def main(args: Array[String]): Unit = {
-        val person = new Person1("张三", 12)
+    val person = new Person1("张三", 12)
 
-        println(person)
-    }
+    println(person)
 
 }
 

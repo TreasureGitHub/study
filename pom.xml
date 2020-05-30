@@ -30,6 +30,7 @@
         <module>study-common</module>
         <module>study-kafka</module>
         <module>study-flume</module>
+        <module>study-redis</module>
     </modules>
 
     <dependencyManagement>

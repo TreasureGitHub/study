@@ -25,11 +25,12 @@ public class FileUtils {
      * @param file
      */
     public static void deleteDir(File file) {
-        if(!file.exists()) {
+        if (!file.exists()) {
             System.out.println("目录不存在");
-        } else if(file.isDirectory()) {
+            return;
+        } else if (file.isDirectory()) {
             File[] fileList = file.listFiles();
-            for(File childfile:fileList) {
+            for (File childfile : fileList) {
                 deleteDir(childfile);
             }
         }
