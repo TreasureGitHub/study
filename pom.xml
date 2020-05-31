@@ -31,6 +31,7 @@
         <module>study-kafka</module>
         <module>study-flume</module>
         <module>study-redis</module>
+        <module>study-hbase</module>
     </modules>
 
     <dependencyManagement>

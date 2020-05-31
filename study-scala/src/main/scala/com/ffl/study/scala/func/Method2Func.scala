@@ -3,6 +3,8 @@ package com.ffl.study.scala.func
 /**
   * @author lff
   * @datetime 2020/05/26 23:57
+  *
+  * 方法转函数
   */
 object Method2Func {
 
