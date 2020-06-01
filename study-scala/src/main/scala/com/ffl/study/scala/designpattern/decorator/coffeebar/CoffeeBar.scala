@@ -1,10 +1,7 @@
-package com.atguigu.chapter17.decorator.coffeebar
-
 package com.ffl.study.scala.designpattern.decorator.coffeebar
 
-import com.atguigu.chapter17.decorator.coffeebar.mycoffee.LongBlack
-import com.atguigu.chapter17.decorator.coffeebar.mydecorator.NewMilk
-import com.ffl.study.scala.designpattern.decorator.coffeebar.Drink
+import com.ffl.study.scala.designpattern.decorator.coffeebar.mycoffee.{DeCaf, LongBlack}
+import com.ffl.study.scala.designpattern.decorator.coffeebar.mydecorator.{Chocolate, Milk, NewMilk}
 
 
 object CoffeeBar {
