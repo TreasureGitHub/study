@@ -44,6 +44,14 @@
                 <version>${study.version}</version>
             </dependency>
 
+            <!-- kafka-->
+            <!-- https://mvnrepository.com/artifact/org.apache.kafka/kafka-clients -->
+            <dependency>
+                <groupId>org.apache.kafka</groupId>
+                <artifactId>kafka-clients</artifactId>
+                <version>2.1.0</version>
+            </dependency>
+
             <!--hadoop 相关-->
             <!--Hadoop class-->
             <dependency>

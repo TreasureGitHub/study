@@ -12,17 +12,22 @@
     <artifactId>study-java</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.ffl</groupId>
+            <artifactId>study-common</artifactId>
+        </dependency>
+
+        <!--guava-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
         </dependency>
-        <!--guava-->
-        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
-        <!--<dependency>-->
-            <!--<groupId>com.google.guava</groupId>-->
-            <!--<artifactId>guava</artifactId>-->
-        <!--</dependency>-->
 
     </dependencies>
 
