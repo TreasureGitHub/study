@@ -1,16 +1,16 @@
 package com.ffl.study.java.structure.list;
 
-import com.ffl.study.common.constants.CharConstants;
+import com.ffl.study.common.constants.StringConstants;
 
 import java.util.Iterator;
 
-import static com.ffl.study.common.constants.CharConstants.LEFT_SQUARE;
-import static com.ffl.study.common.constants.CharConstants.RIGHT_SQUARE;
+import static com.ffl.study.common.constants.StringConstants.LEFT_SQUARE;
+import static com.ffl.study.common.constants.StringConstants.RIGHT_SQUARE;
 
 /**
  * @author lff
  * @datetime 2020/06/12 20:17
- *
+ * <p>
  * 双向链表
  */
 public class DoubleLinkedList<T> implements Iterable<T> {
@@ -21,9 +21,20 @@ public class DoubleLinkedList<T> implements Iterable<T> {
     private Node head = new Node(null);
 
     /**
+     * 尾部节点，不存放任何数据
+     */
+    private Node end = new Node(null);
+
+    /**
      * 长度
      */
     private int size = 0;
+
+    public DoubleLinkedList() {
+        // 调整指向
+        head.next = end;
+        end.pre = head;
+    }
 
     /**
      * 添加数据，默认在末尾
@@ -45,7 +56,7 @@ public class DoubleLinkedList<T> implements Iterable<T> {
         checkAddRange(index);
 
         Node preNode;
-        Node currNode = new Node(data);
+        Node newNode = new Node(data);
 
         // 如果是空 或者 index = 0，preNode 为head ,否则为 getNode(index - 1)
         if (isEmpty() || index == 0) {
@@ -55,47 +66,23 @@ public class DoubleLinkedList<T> implements Iterable<T> {
         }
 
         // 如果index 不是末尾，则查询 index 位置的node，并将 node 的next指向 nextNode
-        if (index < size) {
-            Node nextNode = getNode(index);
-            currNode.next = nextNode;
-        }
+        Node nextNode = preNode.next;
 
-        // 前一个node 的next指向当前节点
-        preNode.next = currNode;
+        // 调整指向
+        newNode.pre = preNode;
+        newNode.next = nextNode;
+        preNode.next = newNode;
+        nextNode.pre = newNode;
 
         size++;
     }
 
     /**
      * 反转节点
+     * 类似 SingleLinkedList
      */
     public void reverse() {
-        if (size == 0 || size == 1) {
-            return;
-        }
 
-        // 新建一个起始节点
-        Node newHead = new Node(null);
-
-        // 定义辅助的指针(变量)，帮助我们遍历原来的表
-        Node currNode = head.next;
-        // 指向当前节点的下一个节点
-        Node nextNode;
-
-        while (currNode != null) {
-            // 将当前节点的下一个赋值给nextNode，后续要使用
-            nextNode = currNode.next;
-            // currNode 插入到  newHead 后面，当成第一个元素
-            currNode.next = newHead.next;
-            newHead.next = currNode;
-
-            // 让currNode 后移
-            currNode = nextNode;
-        }
-
-        // 沿用原来老的head，释放newHead
-        head.next = newHead.next;
-        newHead.next = null;
     }
 
     /**
@@ -114,7 +101,6 @@ public class DoubleLinkedList<T> implements Iterable<T> {
         checkRange(index);
 
         Node preNode;
-        Node nextNode;
 
         // 上一个节点
         if (index == 0) {
@@ -123,14 +109,10 @@ public class DoubleLinkedList<T> implements Iterable<T> {
             preNode = getNode(index - 1);
         }
 
-        // 下一个节点
-        if (index == size - 1) {
-            nextNode = null;
-        } else {
-            nextNode = getNode(index + 1);
-        }
+        Node nextNode = preNode.next.next;
 
         preNode.next = nextNode;
+        nextNode.pre = preNode;
         size--;
     }
 
@@ -140,7 +122,8 @@ public class DoubleLinkedList<T> implements Iterable<T> {
      */
     public void clear() {
         size = 0;
-        head.next = null;
+        head.next = end;
+        end.pre = head;
     }
 
     /**
@@ -174,7 +157,7 @@ public class DoubleLinkedList<T> implements Iterable<T> {
 
             @Override
             public boolean hasNext() {
-                return tmp.next != null;
+                return tmp.next != end;
             }
 
             @Override
@@ -214,7 +197,7 @@ public class DoubleLinkedList<T> implements Iterable<T> {
         Node tmp = head;
 
         while (index >= 0) {
-            if (tmp.next == null) {
+            if (tmp.next == end) {
                 return tmp;
             }
 
@@ -233,7 +216,7 @@ public class DoubleLinkedList<T> implements Iterable<T> {
         while (it.hasNext()) {
             sb.append(it.next().toString());
             if (it.hasNext()) {
-                sb.append(CharConstants.COMMA);
+                sb.append(StringConstants.COMMA);
             }
         }
 

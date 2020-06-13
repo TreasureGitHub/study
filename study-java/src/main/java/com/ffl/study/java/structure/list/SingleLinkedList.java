@@ -2,7 +2,7 @@ package com.ffl.study.java.structure.list;
 
 import java.util.Iterator;
 
-import static com.ffl.study.common.constants.CharConstants.*;
+import static com.ffl.study.common.constants.StringConstants.*;
 
 /**
  * @author lff
@@ -38,11 +38,13 @@ public class SingleLinkedList<T> implements Iterable<T> {
      * @param data
      */
     public void add(int index, T data) {
-        // 保存数据
         checkAddRange(index);
 
+        // 前一个节点
         Node preNode;
-        Node currNode = new Node(data);
+
+        // 保存数据
+        Node newNode = new Node(data);
 
         // 如果是空 或者 index = 0，preNode 为head ,否则为 getNode(index - 1)
         if (isEmpty() || index == 0) {
@@ -53,12 +55,12 @@ public class SingleLinkedList<T> implements Iterable<T> {
 
         // 如果index 不是末尾，则查询 index 位置的node，并将 node 的next指向 nextNode
         if (index < size) {
-            Node nextNode = getNode(index);
-            currNode.next = nextNode;
+            Node nextNode = preNode.next;
+            newNode.next = nextNode;
         }
 
-        // 前一个node 的next指向当前节点
-        preNode.next = currNode;
+        // 前一个node 的next指向新节点
+        preNode.next = newNode;
 
         size++;
     }
@@ -105,11 +107,14 @@ public class SingleLinkedList<T> implements Iterable<T> {
     /**
      * 删除index 位置的节点
      *
+     * 原理为将index 位置的 上一个节点的next 指向 index下一个节点
+     *
      * @param index
      */
     public void remove(int index) {
         checkRange(index);
 
+        // 上一个节点和下一个节点
         Node preNode;
         Node nextNode;
 
@@ -120,11 +125,12 @@ public class SingleLinkedList<T> implements Iterable<T> {
             preNode = getNode(index - 1);
         }
 
-        // 下一个节点
+        // 如果index为最末尾节点，则下一个节点为空
         if (index == size - 1) {
             nextNode = null;
         } else {
-            nextNode = getNode(index + 1);
+            nextNode = preNode.next.next;
+            preNode.next.next = null;
         }
 
         preNode.next = nextNode;
@@ -167,17 +173,17 @@ public class SingleLinkedList<T> implements Iterable<T> {
     public Iterator<T> iterator() {
         Iterator<T> resIterator = new Iterator<T>() {
 
-            Node tmp = head;
+            Node curr = head;
 
             @Override
             public boolean hasNext() {
-                return tmp.next != null;
+                return curr.next != null;
             }
 
             @Override
             public T next() {
-                T resData = tmp.next.data;
-                tmp = tmp.next;
+                T resData = curr.next.data;
+                curr = curr.next;
                 return resData;
             }
         };
@@ -208,18 +214,14 @@ public class SingleLinkedList<T> implements Iterable<T> {
             throw new IndexOutOfBoundsException();
         }
 
-        Node tmp = head;
+        Node curr = head;
 
-        while (index >= 0) {
-            if (tmp.next == null) {
-                return tmp;
-            }
-
+        while (index >= 0 && curr.next != null) {
             index--;
-            tmp = tmp.next;
+            curr = curr.next;
         }
 
-        return tmp;
+        return curr;
     }
 
     @Override
@@ -270,7 +272,7 @@ public class SingleLinkedList<T> implements Iterable<T> {
         private T data;
 
         /**
-         * 下一个节点
+         * next 指向 下一个节点
          */
         private Node next;
 

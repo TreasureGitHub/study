@@ -1,6 +1,6 @@
 package com.ffl.study.common.utils;
 
-import com.ffl.study.common.constants.CharConstants;
+import com.ffl.study.common.constants.StringConstants;
 
 /**
  * @author lff
@@ -9,13 +9,13 @@ import com.ffl.study.common.constants.CharConstants;
 public class ArrayUtils {
 
     public static void printTwoDim(int[][] arr){
-        printTwoDim(arr, CharConstants.TAB);
+        printTwoDim(arr, StringConstants.TAB);
     }
 
-    public static void printTwoDim(int[][] arr,String split){
+    public static void printTwoDim(int[][] arr,String join){
         for (int[] row : arr) {
             for (int data : row) {
-                System.out.printf("%d%s", data,split);
+                System.out.printf("%d%s", data,join);
             }
             System.out.println();
         }

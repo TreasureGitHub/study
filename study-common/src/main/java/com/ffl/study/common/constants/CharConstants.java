@@ -6,20 +6,28 @@ package com.ffl.study.common.constants;
  */
 public interface CharConstants {
 
-    String TAB = "\t";
+    char TAB = '\t';
 
-    String COMMA = ",";
+    char COMMA = ',';
 
-    String LEFT_SQUARE = "[";
+    char LEFT_SQUARE = '[';
 
-    String RIGHT_SQUARE = "]";
+    char RIGHT_SQUARE = ']';
 
-    String LEFT_PARENTHESE = "(";
+    char LEFT_PARENTHESE = '(';
 
-    String RIGHT_PARENTHESE = ")";
+    char RIGHT_PARENTHESE = ')';
 
-    String LEFT_CURLY = "{";
+    char LEFT_CURLY = '{';
 
-    String RIGHT_CURLY = "}";
+    char RIGHT_CURLY = '}';
+
+    char PLUS = '+';
+
+    char MINUS = '-';
+
+    char MULTIPLY = '*';
+
+    char DIVIDE = '/';
 
 }

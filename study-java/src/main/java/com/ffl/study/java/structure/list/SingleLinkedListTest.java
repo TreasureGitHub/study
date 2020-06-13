@@ -8,35 +8,55 @@ public class SingleLinkedListTest {
 
     public static void main(String[] args) {
         // ArrayList<String> list = Lists.newArrayList();
-        SingleLinkedList<String> list = new SingleLinkedList<>();
+        SingleLinkedList<Person> list = new SingleLinkedList<>();
 
-        long l1 = System.currentTimeMillis();
+        // 添加
+        list.add(new Person("2","张三"));
+        list.add(new Person("4","李四"));
+        list.add(new Person("5","王五"));
+        list.add(new Person("6","赵六"));
+        list.add(0,new Person("1","田七"));
+        list.add(2,new Person("3","猪八"));
 
-        list.add("hello");
-        list.add("world");
-        list.add("spark");
-        list.add("scala");
-        list.add("hive");
 
-        printList(list,0);
+        System.out.println(list);
 
-        // list.reverse();
-        //
-        // long l2 = System.currentTimeMillis();
-        // System.out.println(list);
-        // System.out.println(l2 - l1);
-        //
-        // list.clear();
+        // 删除
+        list.remove(1);
+        list.remove();
 
+        SingleLinkedList list1 = list;
+
+
+        System.out.println(list);
+        System.out.println(list.get(3));
+
+        list.reverse();
+
+        System.out.println(list);
+
+        list.clear();
+
+        System.out.println(list);
+    }
+}
+
+class Person {
+
+    private String no;
+
+    private String name;
+
+    public Person(String no, String name) {
+        this.no = no;
+        this.name = name;
     }
 
-
-    public static void printList(SingleLinkedList list,int n){
-        if(n >= list.size() - 1){
-            return;
-        }
-
-        printList(list,++n);
-        System.out.println(list.get(n));
+    @Override
+    public String toString() {
+        return "Person{" +
+                "no='" + no + '\'' +
+                ", name='" + name + '\'' +
+                '}';
     }
 }
