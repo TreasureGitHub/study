@@ -5,7 +5,6 @@ import com.ffl.study.common.utils.ArrayUtils;
 /**
  * @author lff
  * @datetime 2020/06/13 22:17
- * <p>
  * 迷宫问题：
  *
  * 使用递归回溯
@@ -32,11 +31,13 @@ public class Maze {
         // map[1][2] = 1;
         // map[2][2] = 1;
 
-        ArrayUtils.printTwoDim(map);
+        System.out.println("---初始地图---");
+        ArrayUtils.println(map);
 
         System.out.println("------------------------------------");
+        System.out.println("---迷宫走法---");
         setWay(map,1,1);
-        ArrayUtils.printTwoDim(map);
+        ArrayUtils.println(map);
     }
 
 

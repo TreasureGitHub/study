@@ -30,4 +30,6 @@ public interface StringConstants {
 
     String DIVIDE = "/";
 
+    String DOT = ".";
+
 }

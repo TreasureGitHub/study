@@ -18,7 +18,7 @@ object JsonParse {
 
         // 创建上下文
         val sc = new SparkContext(config)
-        val json: RDD[String] = sc.textFile(PathConstants.SPARTH_RES + "/user/user.json")
+        val json: RDD[String] = sc.textFile(PathConstants.SPARK_RES + "/user/user.json")
 
 
     }

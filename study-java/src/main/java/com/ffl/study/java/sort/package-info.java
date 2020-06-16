@@ -4,6 +4,6 @@
  *
  * https://www.cnblogs.com/flyingdreams/p/11161157.html
  *
- * 10 大排序
+ * 8 大排序
  */
 package com.ffl.study.java.sort;
