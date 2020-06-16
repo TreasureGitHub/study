@@ -23,6 +23,7 @@ public class SparseArray {
         arr[5][3] = 2;
         arr[7][8] = 10;
 
+        System.out.println();
         ArrayUtils.println(arr);
 
         String path = PathUtils.getResFilePath(PathConstants.JAVA_RES_ABS, "sparseArray.txt");
@@ -30,10 +31,12 @@ public class SparseArray {
         // 保存
         save(arr, path);
 
+        System.out.println();
+
         // 恢复并打印
         // ArrayUtils.println(recover(path));
 
-        ArrayUtils.println(getSparseArray(arr));
+        // ArrayUtils.println(getSparseArray(arr));
 
         // ArrayUtils.println(getOrigArray(sparseArray));
     }
