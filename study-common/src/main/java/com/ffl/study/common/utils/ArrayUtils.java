@@ -14,6 +14,7 @@ public class ArrayUtils {
 
     /**
      * 打印二维数组
+     * 默认值连接符为 \t
      *
      * @param arr 待打印数组
      */
@@ -21,6 +22,11 @@ public class ArrayUtils {
         println(arr, StringConstants.TAB);
     }
 
+    /**
+     *
+     * @param arr   数组
+     * @param join  连接符
+     */
     public static void println(int[][] arr, String join) {
         for (int[] row : arr) {
             for (int data : row) {
@@ -38,10 +44,6 @@ public class ArrayUtils {
      * @param i     数组下标
      */
     public static void swap(int[] arr, int i, int j) {
-        Assert.notNull(arr);
-        checkIndexRange(arr.length, i);
-        checkIndexRange(arr.length, j);
-
         if (i == j) {
             return;
         }
@@ -60,17 +62,13 @@ public class ArrayUtils {
      * @param <T>   泛型
      */
     public static <T> void swap(T[] arr, int i, int j) {
-        Assert.notNull(arr);
-        checkIndexRange(arr.length, i);
-        checkIndexRange(arr.length, j);
         T tmp = arr[i];
         arr[i] = arr[j];
         arr[j] = tmp;
     }
 
     /**
-     * 将传入的int 型数组按照
-     * @see com.ffl.study.common.constants.StringConstants.TAB 进行连接
+     * 将传入的int 型数组按照 \t 进行连接
      *
      * @param arr         数组
      * @return            连接后的字符串
@@ -119,6 +117,7 @@ public class ArrayUtils {
      * @param len    数组长度
      * @param index  下标
      */
+    @Deprecated
     private static void checkIndexRange(int len, int index) {
         if (index > len - 1) {
             throw new IndexOutOfBoundsException(String.format("array size:%d ,index: %d", len, index));

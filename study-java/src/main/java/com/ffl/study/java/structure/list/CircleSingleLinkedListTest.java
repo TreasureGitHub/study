@@ -7,20 +7,19 @@ package com.ffl.study.java.structure.list;
 public class CircleSingleLinkedListTest {
 
     public static void main(String[] args) {
-        // ArrayList<String> list = Lists.newArrayList();
         CircleSingleLinkedList<String> list = new CircleSingleLinkedList<>();
 
-        for (int i = 1; i <= 100; i++) {
+        for (int i = 1; i <= 6; i++) {
             list.add(String.valueOf(i));
         }
 
-        System.out.println(list);
+        // System.out.println(list);
 
-        CircleSingleLinkedList josepfuList = list.getJosepfuList(2, 5);
+        CircleSingleLinkedList josepfuList = list.getJosepfuList(1, 5);
 
 
         System.out.println(josepfuList);
 
-        System.out.println();
+        // System.out.println();
     }
 }

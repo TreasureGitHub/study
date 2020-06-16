@@ -12,56 +12,52 @@ import java.io.IOException;
 /**
  * @author lff
  * @datetime 2020/06/12 01:53
- *
+ * <p>
  * 稀疏数组
  */
 public class SparseArray {
 
-    public static void main(String[] args) throws IOException {
-
-        int[][] arr = new int[11][11];
-
+    public static void main(String[] args) {
+        // 初始化数组
+        int[][] arr = new int[12][12];
         arr[5][3] = 2;
         arr[7][8] = 10;
 
         ArrayUtils.println(arr);
 
-        String path = PathUtils.getResourceFilePath(PathConstants.JAVA_RES_ABS,"sparseArray.txt");
+        String path = PathUtils.getResFilePath(PathConstants.JAVA_RES_ABS, "sparseArray.txt");
 
+        // 保存
         save(arr, path);
 
-        ArrayUtils.println(recover(path));
+        // 恢复并打印
+        // ArrayUtils.println(recover(path));
 
-        int[][] sparseArray = getSparseArray(arr);
-        ArrayUtils.println(sparseArray);
+        ArrayUtils.println(getSparseArray(arr));
 
-        ArrayUtils.println(getOrigArray(sparseArray));
+        // ArrayUtils.println(getOrigArray(sparseArray));
     }
 
     /**
      * 保存数组至指定文件
      *
-     * @param arr       原始数据
-     * @param path      保存至指定位置
+     * @param arr  原始数据
+     * @param path 保存至指定位置
      * @throws IOException
      */
-    public static void save(int[][] arr, String path) throws IOException {
+    public static void save(int[][] arr, String path) {
         int[][] sparseArray = getSparseArray(arr);
-        FileWriter fileWriter = new FileWriter(path);
 
-        try {
+        try (FileWriter fileWriter = new FileWriter(path)) {
             for (int i = 0; i < sparseArray.length; i++) {
                 fileWriter.append(ArrayUtils.join(sparseArray[i]));
 
-                System.out.println(ArrayUtils.join(sparseArray[i]));
                 if (i != sparseArray.length - 1) {
                     fileWriter.append("\n");
                 }
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            fileWriter.close();
         }
 
     }
@@ -70,16 +66,16 @@ public class SparseArray {
      * 从指定位置 恢复稀疏数组
      * 传入的数组需要符合稀疏数组
      *
-     * @param path      从指定位置恢复数组
-     * @return          稀疏数组
+     * @param path 从指定位置恢复数组
+     * @return 稀疏数组
      * @throws IOException
      */
-    public static int[][] recover(String path) throws IOException {
-        BufferedReader bufferReader = new BufferedReader(new FileReader(path));
-        // 第一行内容
-        String line;
+    public static int[][] recover(String path) {
         int[][] sparseArr = null;
-        try {
+
+        try (BufferedReader bufferReader = new BufferedReader(new FileReader(path))) {
+            String line;
+            // 第一行内容
             line = bufferReader.readLine();
             int[] info = ArrayUtils.toIntArray(line.split("\t"));
             sparseArr = new int[info[0]][info[1]];
@@ -90,8 +86,6 @@ public class SparseArray {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            bufferReader.close();
         }
 
         return sparseArr;
@@ -100,15 +94,15 @@ public class SparseArray {
     /**
      * 得到稀疏数组
      *
-     * @param arr   原始数组
-     * @return      稀疏数组
+     * @param arr 原始数组
+     * @return 稀疏数组
      */
     public static int[][] getSparseArray(int[][] arr) {
         int sum = 0;
 
-        for (int i = 0; i < arr.length; i++) {
+        for (int[] ints : arr) {
             for (int j = 0; j < arr[0].length; j++) {
-                if (arr[i][j] != 0) {
+                if (ints[j] != 0) {
                     sum++;
                 }
             }
@@ -137,7 +131,7 @@ public class SparseArray {
     /**
      * 传入稀疏数组，得到原始数组
      *
-     * @param arr   稀疏数组
+     * @param arr 稀疏数组
      * @return
      */
     public static int[][] getOrigArray(int[][] arr) {
