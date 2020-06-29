@@ -123,4 +123,12 @@ public class ArrayUtils {
             throw new IndexOutOfBoundsException(String.format("array size:%d ,index: %d", len, index));
         }
     }
+
+    public static <T> boolean isNullOrEmpty(T[] arr){
+        if(arr == null || arr.length == 0){
+            return true;
+        }
+
+        return false;
+    }
 }

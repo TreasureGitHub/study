@@ -1,37 +1,36 @@
-package com.ffl.study.java.sort;
+package com.ffl.study.java.sort1;
 
 import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/06/21 12:29
+ * @datetime 2020/06/14 10:53
  * <p>
- * 冒泡排序
+ * 选择排序
  */
 public class SelectSort {
 
     public static void main(String[] args) {
-        int[] arr = {2, 5, 1, 3, 8, 5, 7, 4, 3};
+        int[] arr = {34, 119, 101, 1};
+
+        System.out.println(Arrays.toString(arr));
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
     public static void sort(int[] arr) {
-
-        int minIndex;
-        int minValue;
         for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+            int minValue = arr[i];
 
-            minIndex = i;
-            minValue = arr[i];
             for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < minValue) {
+                if (minValue > arr[j]) {
                     minValue = arr[j];
                     minIndex = j;
                 }
             }
 
-            if (minIndex != i) {
+            if (i != minIndex) {
                 arr[minIndex] = arr[i];
                 arr[i] = minValue;
             }

@@ -7,6 +7,6 @@ package com.ffl.study.java.generics;
 public class Test {
 
     public static void main(String[] args) {
-
+        // ArrayList
     }
 }

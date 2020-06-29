@@ -6,4 +6,4 @@
  *
  * 8 大排序
  */
-package com.ffl.study.java.sort;
+package com.ffl.study.java.sort1;

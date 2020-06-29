@@ -4,43 +4,64 @@ import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/06/14 11:28
+ * @datetime 2020/06/21 12:29
+ * <p>
+ * 冒泡排序
  */
 public class InsertSort {
 
     public static void main(String[] args) {
-        int[] arr = {101, 34, 119, 1};
+        int[] arr = {2, 5, 1, 3, 8, 5, 7, 4, 3};
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
     public static void sort(int[] arr) {
-        // 定义待插入的数据
+        // 待插入位置和值
+        int insertIndex;
+        int insertValue;
         for (int i = 1; i < arr.length; i++) {
+            // 待插入位置
+            insertIndex = i;
+            // 待插入值
+            insertValue = arr[i];
 
-            int value = arr[i];
-            int insertIndex = i - 1;
-
-            for (int j = i - 1; j >= 0; j--) {
-                // 如果指定位置的数值大于value，则将指定位置数据后移一位
-                if (arr[j] > value) {
-                    arr[j + 1] = arr[j];
-                    insertIndex = j;
+            for (int j = i; j > 0; j--) {
+                if (arr[j - 1] > insertValue) {
+                    arr[j] = arr[j - 1];
+                    insertIndex = j - 1;
                 } else {
-                    insertIndex = j + 1;
                     break;
                 }
             }
-            arr[insertIndex] = value;
 
-            // int value = arr[i];
-            // int insertIndex = i - 1;
-            //
-            // while(insertIndex >= 0 && arr[insertIndex] > value){
-            //     arr[insertIndex + 1] = arr[insertIndex];
-            //     insertIndex -- ;
-            // }
-            // arr[insertIndex + 1] = value;
+            if (insertIndex != i) {
+                arr[insertIndex] = insertValue;
+            }
+        }
+
+    }
+
+    /**
+     * @param arr 待排序数组
+     */
+    public static void sort1(int[] arr) {
+
+        for (int i = 1; i < arr.length; i++) {
+            // insertIndex 为 待插入位置的前一位
+            int insertIndex = i - 1;
+            // inserValue 为 待插入数据
+            int insertValue = arr[i];
+
+            while (insertIndex >= 0 && insertValue < arr[insertIndex]) {
+                // 后移一位  insertIndex
+                arr[insertIndex + 1] = arr[insertIndex];
+                insertIndex--;
+            }
+
+            if (insertIndex + 1 != i) {
+                arr[insertIndex + 1] = insertValue;
+            }
         }
     }
 }

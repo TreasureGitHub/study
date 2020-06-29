@@ -1,22 +1,22 @@
 package com.ffl.study.java.sort;
 
-import com.ffl.study.common.utils.ArrayUtils;
-
 import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/05/27 10:05
+ * @datetime 2020/06/21 19:30
  * <p>
  * https://www.runoob.com/w3cnote/quick-sort.html
- * https://blog.csdn.net/nrsc272420199/article/details/82587933
- * <p>
- * 快速排序
  */
 public class QuickSort {
 
     public static void main(String[] args) {
-        int arr[] = {-9, 78, 0, 23, -567, 70};
+        // int[] arr = {1, 5, 7, 4, 9, 2, 6, 8};
+
+        // int[] arr = {1, 5, 7, 4, 4, 9, 2, 6, 4, 8};
+
+        int[] arr = {6, 1, 2, 6, 6, 6, 3, 8, 6, 6};
+
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }
@@ -25,54 +25,46 @@ public class QuickSort {
         quickSort(arr, 0, arr.length - 1);
     }
 
-    private static void quickSort(int[] arr, int left, int right) {
-        int low = left;
-        int high = right;
-        int pivot = arr[(left + right) / 2];
+    public static void quickSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int low = left;
+            int high = right;
 
-        // 目的是让 比 pivot 值小的放左边
-        while (low < high) {
+            // 要排序的基准值
+            int value = arr[left];
 
-            while (arr[low] < pivot) {
-                low += 1;
+            // 当左边小于右边，循环
+            while (low < high) {
+                // 从右向左找第一个小于value的数
+                while (low < high && arr[high] >= value) {
+                    high--;
+                }
+
+                // 将high的值赋值给low ，low + 1
+                if (low < high) {
+                    arr[low] = arr[high];
+                    low++;
+                }
+
+                // 从左往右找到第一个大于value的值
+                while (low < high && arr[low] < value) { // 从左向右找第一个大于等于x的数
+                    low++;
+                }
+
+                // 将low的值赋值给 high， high --
+                if (low < high) {
+                    arr[high] = arr[low];
+                    high--;
+                }
             }
 
-            while (arr[high] > pivot) {
-                high -= 1;
-            }
+            // 最后将value的值赋值给low
+            arr[low] = value;
 
-            // 如果low >= high r说明 pivot左边的值全部小于等于piovt，右边的值全部大于pivot
-            if (low >= high) {
-                break;
-            }
-
-            // 交换
-            ArrayUtils.swap(arr, low, high);
-
-            // 如果交换完后，发现arr[low] == pivot 相当于 high-- 前移
-            if (arr[low] == pivot) {
-                high -= 1;
-            }
-
-            // 如果交换完后，发现arr[low] == pivot 相当于 low++ 前移
-            if (arr[low] == pivot) {
-                low += 1;
-            }
+            // 递归调用
+            quickSort(arr, left, low - 1); // 递归调用
+            quickSort(arr, low + 1, right);
         }
 
-        if (low == high) {
-            low += 1;
-            high -= 1;
-        }
-
-        // 向左递归
-        if (left < high) {
-            quickSort(arr, left, high);
-        }
-
-        // 向右递归
-        if (right > low) {
-            quickSort(arr, low, right);
-        }
     }
 }

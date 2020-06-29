@@ -71,7 +71,6 @@ public class SparseArray {
      *
      * @param path 从指定位置恢复数组
      * @return 稀疏数组
-     * @throws IOException
      */
     public static int[][] recover(String path) {
         int[][] sparseArr = null;
