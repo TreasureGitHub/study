@@ -1,19 +1,17 @@
 package com.ffl.study.java.tree.binarytree;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * @author lff
  * @datetime 2020/06/24 00:55
  */
+@Data
 public class BinaryTree<T extends Comparable<T>> {
 
     /**
      * 根节点
      */
-    @Setter
-    @Getter
     private TreeNode<T> root;
 
     /**

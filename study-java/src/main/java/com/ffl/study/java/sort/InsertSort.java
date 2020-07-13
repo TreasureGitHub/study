@@ -4,30 +4,29 @@ import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/06/21 12:29
+ * @datetime 2020/07/05 23:28
  * <p>
- * 冒泡排序
+ * 插入排序
  */
 public class InsertSort {
-
     public static void main(String[] args) {
-        int[] arr = {2, 5, 1, 3, 8, 5, 7, 4, 3};
+        int[] arr = {6, 3, 4, 8, 9, -1, 5};
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
     public static void sort(int[] arr) {
-        // 待插入位置和值
+
         int insertIndex;
         int insertValue;
+
         for (int i = 1; i < arr.length; i++) {
-            // 待插入位置
-            insertIndex = i;
-            // 待插入值
+
             insertValue = arr[i];
+            insertIndex = i;
 
             for (int j = i; j > 0; j--) {
-                if (arr[j - 1] > insertValue) {
+                if (insertValue < arr[j - 1]) {
                     arr[j] = arr[j - 1];
                     insertIndex = j - 1;
                 } else {
@@ -39,7 +38,6 @@ public class InsertSort {
                 arr[insertIndex] = insertValue;
             }
         }
-
     }
 
     /**

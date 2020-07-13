@@ -4,7 +4,9 @@ import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/06/22 00:27
+ * @datetime 2020/07/07 23:38
+ *
+ * 基数排序
  */
 public class RadixSort {
 
@@ -14,55 +16,42 @@ public class RadixSort {
         System.out.println(Arrays.toString(arr));
     }
 
-    /**
-     * @param arr 待排序数组
-     */
     public static void sort(int[] arr) {
-
-        // 得到数组中最大数
-        int max = arr[0];
+        // 计算最大值
+        int maxValue = arr[0];
         for (int i = 1; i < arr.length; i++) {
-            if (arr[i] > max) {
-                max = arr[i];
+            if (arr[i] > maxValue) {
+                maxValue = arr[i];
             }
         }
 
-        // 得到是几位数
-        int maxLength = String.valueOf(max).length();
+        // 最大长度
+        int maxLength = String.valueOf(maxValue).length();
 
-
-        // 1.定义2位数组表示10个桶
-        // 2.为防止数据溢出，每隔一维数组的长度为 arr.length
-        // 3.基数排序为空间换时间的经典案例
-        int[][] bucket = new int[10][arr.length];
-
-        // 为了记录每个桶中实际存放了多少数据，我们定义一个一维数组记录各个桶每次放入个数
-        int[] bucketEleCnt = new int[10];
+        // 排序使用的桶 即 记录桶水位的数组
+        int[][] buckets = new int[10][arr.length];
+        int[] bucketCnt = new int[10];
 
         for (int i = 0, n = 1; i < maxLength; i++, n *= 10) {
             for (int j = 0; j < arr.length; j++) {
-                // 取出每个元素个位数
                 int digitOfEle = arr[j] / n % 10;
+
                 // 将数据放入桶中
-                bucket[digitOfEle][bucketEleCnt[digitOfEle]] = arr[j];
-                // 记录数加1
-                bucketEleCnt[digitOfEle]++;
+                buckets[digitOfEle][bucketCnt[digitOfEle]] = arr[j];
+                bucketCnt[digitOfEle]++;
             }
 
-            // 按照桶的顺序，将桶中数据放入原来的数组
+            // 从桶中 拿出数据一次放入 原数组中
             int index = 0;
-            for (int j = 0; j < bucket.length; j++) {
-                // 如果桶中有数据，才遍历
-                if (bucketEleCnt[j] > 0) {
-                    for (int k = 0; k < bucketEleCnt[j]; k++) {
-                        // 取出元素放入 桶中
-                        arr[index] = bucket[j][k];
-                        index++;
-                    }
-                    // 记录桶的数据清零
-                    bucketEleCnt[j] = 0;
+            for (int j = 0; j < 10; j++) {
+                for (int k = 0; k < bucketCnt[j]; k++) {
+                    arr[index] = buckets[j][k];
+                    index++;
                 }
+                // 清除桶计数
+                bucketCnt[j] = 0;
             }
         }
     }
+
 }

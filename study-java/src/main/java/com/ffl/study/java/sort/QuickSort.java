@@ -1,70 +1,90 @@
 package com.ffl.study.java.sort;
 
+import com.ffl.study.common.utils.ArrayUtils;
+
 import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/06/21 19:30
- * <p>
- * https://www.runoob.com/w3cnote/quick-sort.html
+ * @datetime 2020/07/10 00:32
  */
 public class QuickSort {
 
     public static void main(String[] args) {
-        // int[] arr = {1, 5, 7, 4, 9, 2, 6, 8};
-
-        // int[] arr = {1, 5, 7, 4, 4, 9, 2, 6, 4, 8};
-
         int[] arr = {6, 1, 2, 6, 6, 6, 3, 8, 6, 6};
-
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }
 
     public static void sort(int[] arr) {
-        quickSort(arr, 0, arr.length - 1);
+        twoWaySort(arr, 0, arr.length - 1);
     }
 
-    public static void quickSort(int[] arr, int left, int right) {
-        if (left < right) {
-            int low = left;
-            int high = right;
-
-            // 要排序的基准值
-            int value = arr[left];
-
-            // 当左边小于右边，循环
-            while (low < high) {
-                // 从右向左找第一个小于value的数
-                while (low < high && arr[high] >= value) {
-                    high--;
-                }
-
-                // 将high的值赋值给low ，low + 1
-                if (low < high) {
-                    arr[low] = arr[high];
-                    low++;
-                }
-
-                // 从左往右找到第一个大于value的值
-                while (low < high && arr[low] < value) { // 从左向右找第一个大于等于x的数
-                    low++;
-                }
-
-                // 将low的值赋值给 high， high --
-                if (low < high) {
-                    arr[high] = arr[low];
-                    high--;
-                }
-            }
-
-            // 最后将value的值赋值给low
-            arr[low] = value;
-
-            // 递归调用
-            quickSort(arr, left, low - 1); // 递归调用
-            quickSort(arr, low + 1, right);
+    /**
+     * 双路排序
+     *
+     * @param arr       数组
+     * @param start     开始位置
+     * @param end       结束位置
+     */
+    private static void twoWaySort(int[] arr, int start, int end) {
+        if (start >= end) {
+            return;
         }
 
+        // 选中间值为基准值
+        // 将基准值保存在start位置。    将start 和 mid的数值进行交换
+        int mid = (start + end) / 2;
+        ArrayUtils.swap(arr, start, mid);
+        int value = arr[start];
+
+        // 定义低位和高位，start 为保存的值，所以低位从start + 1 开始
+        int low = start + 1;
+        int high = end;
+
+        while (low < high) {
+
+            // 如果low 位置的值 比 value小，则 low + 1
+            while (low <= end && arr[low] < value) {
+                low++;
+            }
+
+            // 如果high 位置的值 比 value 大，则high -1
+            while (high > start && arr[high] > value) {
+                high--;
+            }
+
+            // 可能存在 low >= high,此时退出循环
+            if (low >= high) {
+                break;
+            }
+
+            // 将 low 和 high 的数据交换
+            ArrayUtils.swap(arr, low, high);
+
+            // low + 1,high - 1
+            low++;
+            high--;
+
+        }
+
+        // high位置的值一定小于等于 value，因此用high进行交换
+        ArrayUtils.swap(arr, start, high);
+
+        twoWaySort(arr, start, high - 1);
+        twoWaySort(arr, high + 1, end);
     }
+
+    /**
+     * 单路排序
+     *
+     * @param arr
+     * @param start
+     * @param end
+     */
+    public static void oneWaySort(int[] arr, int start, int end) {
+
+    }
+
+
 }

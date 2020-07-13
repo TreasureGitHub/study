@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/06/21 12:29
+ * @datetime 2020/07/05 23:28
  * <p>
- * 冒泡排序
+ * 选择排序
  */
 public class SelectSort {
 
     public static void main(String[] args) {
-        int[] arr = {2, 5, 1, 3, 8, 5, 7, 4, 3};
+        int[] arr = {6, 3, 4, 8, 9, -1, 5};
         sort(arr);
         System.out.println(Arrays.toString(arr));
     }
@@ -36,5 +36,7 @@ public class SelectSort {
                 arr[i] = minValue;
             }
         }
+
     }
+
 }

@@ -1,8 +1,7 @@
 package com.ffl.study.java.tree.binarytree;
 
 import com.ffl.study.common.constants.StringConstants;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 /**
  * @author lff
@@ -10,27 +9,22 @@ import lombok.Setter;
  * <p>
  * 节点信息
  */
+@Data
 public class TreeNode<T extends Comparable<T>> {
 
     /**
      * 数据
      */
-    @Getter
-    @Setter
     private T data;
 
     /**
      * 左节点
      */
-    @Getter
-    @Setter
     private TreeNode<T> left;
 
     /**
      * 右节点
      */
-    @Getter
-    @Setter
     private TreeNode<T> right;
 
     public TreeNode(T data) {
