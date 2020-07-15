@@ -23,8 +23,10 @@ public class BubbleSort {
      *
      * @param arr 待排序数组
      */
-    public static void sortBase(int[] arr) {
+    public static void sort(int[] arr) {
         // 数组最后值 不需要参与排序，因此结束位置为 arr.length - 1
+
+        // int temp;
         for (int i = 0; i < arr.length - 1; i++) {
 
             for (int j = 0; j < arr.length - 1 - i; j++) {
@@ -32,6 +34,15 @@ public class BubbleSort {
                 // 当前大于后一个，则交换
                 if (arr[j] > arr[j + 1]) {
                     ArrayUtils.swap(arr, j, j + 1);
+
+
+                    // arr[j] = arr[j] ^ arr[j + 1];
+                    // arr[j + 1] = arr[j] ^ arr[j + 1];
+                    // arr[j] = arr[j] ^ arr[j + 1];
+
+                    // temp = arr[j];
+                    // arr[j] = arr[j + 1];
+                    // arr[j + 1] = temp;
                 }
             }
         }
@@ -43,7 +54,7 @@ public class BubbleSort {
      *
      * @param arr 待排序数组
      */
-    public static void sort(int[] arr) {
+    public static void improveSort(int[] arr) {
 
         // 是否有进行过交换，默认为false，如果没有进行过交换，则表示已经有序了
         boolean hasSwap;
@@ -61,7 +72,7 @@ public class BubbleSort {
                 }
             }
 
-            if(!hasSwap){
+            if (!hasSwap) {
                 break;
             }
         }

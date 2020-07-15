@@ -12,23 +12,24 @@ public class TimeTest {
         // SelectSort.sort(arr);
         // System.out.println(Arrays.toString(arr));
 
-        int dataCnt = 8000000;
+        int dataCnt = 180000;
 
-        int[] arr1 = new int[dataCnt];
+        int[] arr = new int[dataCnt];
 
         // 性能测试
         for (int i = 0; i < dataCnt; i++) {
-            arr1[i] = (int)(Math.random() * dataCnt);
+            arr[i] = (int)(Math.random() * dataCnt);
         }
 
         long l1 = System.currentTimeMillis();
-        // BubbleSort.sort(arr1);
-        // SelectSort.sort(arr1);
-        // SelectSort.sort(arr1);
-        // ShellSort.shiftSort(arr1);
-        // QuickSort.sort(arr1);
-        MergeSort.sort(arr1);
-        // RadixSort.sort(arr1);
+        BubbleSort.sort(arr);
+        // SelectSort.sort(arr);
+        // InsertSort.sort(arr);
+        // ShellSort.sort(arr);
+        // MergeSort.sort(arr);
+        // QuickSort.sort(arr);
+        // HeapSort.sort(arr);
+        // RadixSort.sort(arr);
         long l2 = System.currentTimeMillis();
         System.out.println((l2 - l1));
     }
