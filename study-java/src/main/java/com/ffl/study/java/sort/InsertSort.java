@@ -15,6 +15,11 @@ public class InsertSort {
         System.out.println(Arrays.toString(arr));
     }
 
+    /**
+     * 插入排序
+     *
+     * @param arr
+     */
     public static void sort(int[] arr) {
 
         int insertIndex;
@@ -41,6 +46,8 @@ public class InsertSort {
     }
 
     /**
+     * 另外一种写法
+     *
      * @param arr 待排序数组
      */
     public static void sort1(int[] arr) {

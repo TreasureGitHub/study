@@ -9,10 +9,10 @@ import java.util.Arrays;
 public class HeapSort {
 
     public static void main(String[] args) {
-        // int[] arr = {6, 4, 8, 2, 5, 7, 9};
-        int[] arr = {6, 4, 8, 2, 5, 7, 9, -1, -2, 0, 10, 20};
+        int[] arr = {6, 4, 8, 2, 5, 7, 9};
+        // int[] arr = {6, 4, 8, 2, 5, 7, 9, -1, -2, 0, 10, 20};
         sort(arr);
-        System.out.println(Arrays.toString(arr));
+        // System.out.println(Arrays.toString(arr));
     }
 
     public static void sort(int[] arr) {
@@ -21,12 +21,18 @@ public class HeapSort {
             adjust(arr, i, arr.length);
         }
 
+        System.out.println(Arrays.toString(arr));
+
         int temp;
         for (int j = arr.length - 1; j > 0; j--) {
-            // ArrayUtils.swap(arr, 0, j);
+
+            System.out.println(Arrays.toString(arr));
+
+            // 交换
             temp = arr[j];
             arr[j] = arr[0];
             arr[0] = temp;
+
             adjust(arr, 0, j);
         }
     }

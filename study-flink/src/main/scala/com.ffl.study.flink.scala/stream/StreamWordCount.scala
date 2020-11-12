@@ -1,42 +1,33 @@
 package com.ffl.study.flink.scala.stream
 
-import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
+import org.apache.flink.api.java.utils.ParameterTool
+import org.apache.flink.streaming.api.scala._
 
 /**
   * @author lff
-  * @datetime 2020/04/04 22:38
-  *
-  * flink中流计算word count
+  * @datetime 2020/10/28 22:31
   */
 object StreamWordCount {
 
     def main(args: Array[String]): Unit = {
-
-        //1. 初始化流计算环境
         val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
 
-        // 修改并行度
-        //env.setParallelism(1)
+        val tool: ParameterTool = ParameterTool.fromArgs(args)
 
-        // 2.导入隐式转换
-        import org.apache.flink.streaming.api.scala._
+        val inputDataStream: DataStream[String] = env.socketTextStream(tool.get("host"), tool.get("port").toInt)
 
-        // 3.读取数据，读取socket中的数据
-        val stream: DataStream[String] = env.socketTextStream("localhost",8888)
+        val resultDataStream: DataStream[(String, Int)] = inputDataStream
+          //.flatMap(_.split(" ")).slotSharingGroup("a")  // 在同一个共享组之类的组共享slot   默认的共享组为 default
+          .flatMap(_.split(" "))
+          //.filter(_.nonEmpty).disableChaining()  // 前面和后面都断开，禁止进行任务链合并
+          .filter(_.nonEmpty)
+          //.map((_, 1)).startNewChain()        // 开启新的任务链，将filter和map断开
+          .map((_,1))
+          .keyBy(0)
+          .sum(1)
 
+        resultDataStream.print().setParallelism(1)
 
-
-        // 4.转换和处理数据
-        val result: DataStream[(String, Int)] = stream.flatMap(_.split(" "))
-          .map((_, 1)).setParallelism(2)
-          .keyBy(0)   // 分组算子
-          .sum(1).setParallelism(2)   // 聚合算子
-
-        // 打印结果
-        result.print("result")
-
-        // 启动流计算程序
-        env.execute("WordCount")
+        env.execute("StreamWordCount")
     }
-
 }

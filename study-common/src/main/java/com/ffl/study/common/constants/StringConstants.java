@@ -32,4 +32,6 @@ public interface StringConstants {
 
     String DOT = ".";
 
+    String SPACE = " ";
+
 }

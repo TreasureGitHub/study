@@ -12,7 +12,7 @@ public class TimeTest {
         // SelectSort.sort(arr);
         // System.out.println(Arrays.toString(arr));
 
-        int dataCnt = 180000;
+        int dataCnt = 80000;
 
         int[] arr = new int[dataCnt];
 
