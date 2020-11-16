@@ -1,5 +1,6 @@
 package com.ffl.study.hadoop.mapreduce.mr.sort;
 
+import com.ffl.study.common.constants.StringConstants;
 import com.ffl.study.hadoop.mapreduce.pojo.FlowBeanSort;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -19,7 +20,7 @@ public class FlowCountSortMapper extends Mapper<LongWritable, Text, FlowBeanSort
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] fields = value.toString().split("\t");
+        String[] fields = value.toString().split(StringConstants.TAB);
 
         number.set(fields[1]);
 

@@ -1,6 +1,7 @@
 package com.ffl.study.java.structure.array;
 
 import com.ffl.study.common.constants.PathConstants;
+import com.ffl.study.common.constants.StringConstants;
 import com.ffl.study.common.utils.ArrayUtils;
 import com.ffl.study.common.utils.PathUtils;
 
@@ -79,11 +80,11 @@ public class SparseArray {
             String line;
             // 第一行内容
             line = bufferReader.readLine();
-            int[] info = ArrayUtils.toIntArray(line.split("\t"));
+            int[] info = ArrayUtils.toIntArray(line.split(StringConstants.TAB));
             sparseArr = new int[info[0]][info[1]];
 
             while ((line = bufferReader.readLine()) != null) {
-                info = ArrayUtils.toIntArray(line.split("\t"));
+                info = ArrayUtils.toIntArray(line.split(StringConstants.TAB));
                 sparseArr[info[0]][info[1]] = info[2];
             }
         } catch (IOException e) {

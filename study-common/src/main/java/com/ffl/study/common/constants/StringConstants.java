@@ -34,4 +34,6 @@ public interface StringConstants {
 
     String SPACE = " ";
 
+    String EMPTY = "";
+
 }

@@ -51,6 +51,7 @@ public class KvTextDriver {
 
         // 如果用集群跑，此处注释掉
         FileUtils.deleteDir(output);
+        job.setNumReduceTasks(2);
 
         // 6.设置输入路径和输出路径
         FileInputFormat.setInputPaths(job, input);

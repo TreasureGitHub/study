@@ -1,5 +1,6 @@
 package com.ffl.study.hadoop.mapreduce.mr.orderprice;
 
+import com.ffl.study.common.constants.StringConstants;
 import com.ffl.study.hadoop.mapreduce.pojo.OrderBean;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.NullWritable;
@@ -18,7 +19,7 @@ public class OrderMapper extends Mapper<LongWritable, Text, OrderBean, NullWrita
 
     @Override
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        String[] fields = value.toString().split("\t");
+        String[] fields = value.toString().split(StringConstants.TAB);
 
         orderBean.setOrder(fields[0]);
         orderBean.setPrice(Double.parseDouble(fields[2]));

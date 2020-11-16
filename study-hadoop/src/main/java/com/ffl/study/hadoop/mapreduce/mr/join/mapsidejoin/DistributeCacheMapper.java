@@ -1,5 +1,6 @@
 package com.ffl.study.hadoop.mapreduce.mr.join.mapsidejoin;
 
+import com.ffl.study.common.constants.StringConstants;
 import com.google.common.collect.Maps;
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.IOUtils;
@@ -38,7 +39,7 @@ public class DistributeCacheMapper extends Mapper<LongWritable, Text, Text, Null
         String line;
         while (StringUtils.isNotEmpty(line = bufferedReader.readLine())){
 
-            String[] fields = line.split("\t");
+            String[] fields = line.split(StringConstants.TAB);
             pdMap.put(fields[0],fields[1]);
         }
 
@@ -50,11 +51,11 @@ public class DistributeCacheMapper extends Mapper<LongWritable, Text, Text, Null
     protected void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
         String line = value.toString();
 
-        String pId = line.split("\t")[1];
+        String pId = line.split(StringConstants.TAB)[1];
 
         String pName = pdMap.get(pId);
 
-        line = line + "\t" + pName;
+        line = line + StringConstants.TAB + pName;
         data.set(line);
 
         // 计数器,每次加1 ，测试用，会在控制台中显示

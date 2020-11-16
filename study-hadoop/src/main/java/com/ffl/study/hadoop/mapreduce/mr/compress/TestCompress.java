@@ -23,13 +23,21 @@ public class TestCompress {
         compress(compressFile, GzipCodec.class);
         compress(compressFile, DefaultCodec.class);
 
-        String deCompressFile = PathConstants.HADOOP_RES + "/compress_input/text1.txt.bz2";
-        deCompress(deCompressFile);
+        // String deCompressFile = PathConstants.HADOOP_RES + "/compress_input/text1.txt.bz2";
+        // deCompress(deCompressFile);
     }
 
+    /**
+     * 压缩
+     *
+     * @param fileName
+     * @param clz
+     * @throws IOException
+     */
     private static void compress(String fileName, Class clz) throws IOException {
         // 1.获取输入流
         FileInputStream fis = new FileInputStream(new File(fileName));
+
         CompressionCodec codec = (CompressionCodec) ReflectionUtils.newInstance(clz, new Configuration());
 
         // 2.获取输出流
@@ -45,8 +53,14 @@ public class TestCompress {
         IOUtils.closeStream(fis);
     }
 
+    /**
+     * 解压缩
+     *
+     * @param fileName
+     * @throws IOException
+     */
     private static void deCompress(String fileName) throws IOException {
-        // 1.检查
+        // 1.检查 是否能压缩
         CompressionCodecFactory factory = new CompressionCodecFactory(new Configuration());
         CompressionCodec codec = factory.getCodec(new Path(fileName));
 

@@ -7,11 +7,12 @@ import org.apache.hadoop.io.WritableComparator;
 /**
  * @author lff
  * @datetime 2020/05/23 23:53
+ *
  */
 public class OrderGroupingComparator extends WritableComparator {
 
     protected OrderGroupingComparator() {
-        // 此处一定要穿true
+        // 此处一定要传true
         super(OrderBean.class, true);
     }
 

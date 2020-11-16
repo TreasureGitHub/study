@@ -20,8 +20,10 @@ public class TableReducer extends Reducer<Text, TableBean, TableBean, NullWritab
     @Override
     protected void reduce(Text key, Iterable<TableBean> values, Context context) throws IOException, InterruptedException {
 
+        // 订单信息，有多条
         List<TableBean> orderBeans = Lists.newArrayList();
 
+        // 产品信息，只有一条
         TableBean pdBean = new TableBean();
 
         for (TableBean tableBean : values) {
@@ -46,6 +48,7 @@ public class TableReducer extends Reducer<Text, TableBean, TableBean, NullWritab
             }
         }
 
+        // 表拼接
         for (TableBean tableBean : orderBeans) {
             tableBean.setPName(pdBean.getPName());
 

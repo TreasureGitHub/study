@@ -1,5 +1,6 @@
 package com.ffl.study.java.structure.stack;
 
+
 import static com.ffl.study.common.constants.CharConstants.*;
 
 /**
@@ -7,6 +8,11 @@ import static com.ffl.study.common.constants.CharConstants.*;
  * @datetime 2020/06/13 18:32
  */
 public class Calculator {
+
+    // private static final char DIVIDE = '/';
+    // private static final char MULTIPLY = '*';
+    // private static final char PLUS = '+';
+    // private static final char MINUS = '-';
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
@@ -52,7 +58,7 @@ public class Calculator {
                 // 不能直接入栈，可能是多维，应该向表达式的后面再看一位
                 keepNum += ch;
 
-                if(index == expression.length() - 1){
+                if (index == expression.length() - 1) {
                     numStack.push(Integer.parseInt(keepNum));
                 } else {
                     if (isOper(expression.charAt(index + 1))) {
