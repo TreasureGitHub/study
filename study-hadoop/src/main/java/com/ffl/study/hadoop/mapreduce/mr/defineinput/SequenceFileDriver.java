@@ -48,6 +48,7 @@ public class SequenceFileDriver {
         // 设置输入输出类型
         job.setInputFormatClass(WholeFileInputFormat.class);
         job.setOutputFormatClass(SequenceFileOutputFormat.class);
+        // job.setOutputFormatClass(TextOutputFormat.class);
 
         String input = ArrayUtils.getLength(args) == 2 ? args[0] : PathConstants.HADOOP_RES + "/wc_input";
         String output = ArrayUtils.getLength(args) == 2 ? args[1] : PathConstants.HADOOP_RES + "/wc_output";

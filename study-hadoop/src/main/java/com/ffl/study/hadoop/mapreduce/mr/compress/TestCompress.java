@@ -12,7 +12,9 @@ import java.io.*;
 /**
  * @author lff
  * @datetime 2020/05/24 11:06
- * <p>
+ *
+ * 对文件 compress_input/text1.txt 进行压缩
+ *
  * 测试压缩
  */
 public class TestCompress {
