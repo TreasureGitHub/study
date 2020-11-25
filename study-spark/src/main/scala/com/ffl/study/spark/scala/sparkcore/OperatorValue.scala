@@ -37,16 +37,15 @@ object OperatorValue {
         }
 
         tupleRDD.foreach(println)
-        val dataRDD: RDD[List[Int]] = sc.parallelize(Array(List(1, 2), List(3, 4)))
 
         // 4.flatMap
+        val dataRDD: RDD[List[Int]] = sc.parallelize(Array(List(1, 2), List(3, 4)))
         val resultRDD: RDD[Int] = dataRDD.flatMap(datas => datas)
         resultRDD.collect().foreach(println)
 
-        val dataRDD1: RDD[Int] = sc.makeRDD(Array(1, 2, 3, 4, 5, 6, 7, 8), 3)
-
 
         // 5.glom
+        val dataRDD1: RDD[Int] = sc.makeRDD(Array(1, 2, 3, 4, 5, 6, 7, 8), 3)
         val resultRDD1: RDD[Array[Int]] = dataRDD1.glom()
         resultRDD1.collect().foreach(arr => println(arr.mkString(",")))
 

@@ -12,4 +12,12 @@
     <artifactId>study-scala</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.ffl</groupId>
+            <artifactId>study-common</artifactId>
+        </dependency>
+    </dependencies>
+
+
 </project>

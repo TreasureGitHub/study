@@ -36,4 +36,6 @@ public interface StringConstants {
 
     String EMPTY = "";
 
+    String NEW_LINE = "\n";
+
 }
