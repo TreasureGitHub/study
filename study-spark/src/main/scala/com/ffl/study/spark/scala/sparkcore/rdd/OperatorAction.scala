@@ -1,4 +1,4 @@
-package com.ffl.study.spark.scala.sparkcore
+package com.ffl.study.spark.scala.sparkcore.rdd
 
 import com.ffl.study.common.constants.{PathConstants, StringConstants}
 import com.ffl.study.common.utils.FileUtils

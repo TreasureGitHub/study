@@ -1,4 +1,4 @@
-package com.ffl.study.spark.scala.sparkcore
+package com.ffl.study.spark.scala.sparkcore.rdd
 
 import com.ffl.study.common.constants.StringConstants
 import org.apache.spark.rdd.RDD
