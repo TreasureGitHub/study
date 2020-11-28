@@ -25,7 +25,7 @@ object WordCount {
 
         val wordToOne: RDD[(String, Int)] = words.map((_, 1))
 
-        val wordSum: RDD[(String, Int)] = wordToOne.reduceByKey(_ + _)
+        val wordSum: RDD[(String, Int)] = wordToOne.reduceByKey(_ + _).sortBy(x => - x._2 )
 
         val result: Array[(String, Int)] = wordSum.collect()
 
