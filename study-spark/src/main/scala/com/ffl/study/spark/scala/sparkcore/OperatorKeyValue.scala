@@ -90,7 +90,7 @@ object OperatorKeyValue {
 
 
         //7.sortByKey
-        val rdd14: RDD[(Int, String)] = sc.makeRDD(Array((3,"aa"),(6,"cc"),(2,"bb"),(1,"dd")),1)
+        val rdd14: RDD[(Int, String)] = sc.makeRDD(Array((3,"aa"),(6,"cc"),(2,"bb"),(1,"dd")),2)
         val rdd15: RDD[(Int, String)] = rdd14.sortByKey(true)
         rdd15.glom().collect().foreach(x => println(x.mkString(StringConstants.TAB)))
 
@@ -101,7 +101,8 @@ object OperatorKeyValue {
 
         //8.mapValues
         val rdd16: RDD[(Int, String)] = sc.makeRDD(Array((1,"a"),(1,"d"),(2,"b"),(3,"c")))
-        rdd16.mapValues(_+"|||").collect().foreach(println)
+        val values: RDD[(Int, String)] = rdd16.mapValues(_ + "|||")
+        values.collect().foreach(println)
 
         println("------------------------mapValues------------------------")
 
