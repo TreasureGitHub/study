@@ -1,6 +1,6 @@
 package com.ffl.study.java.structure.stack;
 
-import com.ffl.study.java.structure.list.SingleLinkedList;
+import com.ffl.study.java.structure.list.oldlist.SingleLinkedList;
 
 /**
  * @author lff

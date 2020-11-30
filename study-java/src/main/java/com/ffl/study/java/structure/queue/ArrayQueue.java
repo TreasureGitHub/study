@@ -3,70 +3,119 @@ package com.ffl.study.java.structure.queue;
 import java.util.Arrays;
 
 /**
+ * 数组模拟队列
+ *
  * @author lff
  * @datetime 2020/06/12 02:33
  */
 public class ArrayQueue {
 
-    // 队列最大容量
-    private int maxSize;
+    /**
+     * 表示队列最大容量
+     */
+    private int capacity;
 
-    // 队列头
+    /**
+     * 队列头
+     * 指向队列头部，分析出front是指向队列头的前一个位置
+     */
     private int front;
 
-    // 队列尾
+    /**
+     * 队列尾
+     * 指向队列尾部，即最后一个数据
+     */
     private int rear;
 
+    /**
+     * 数组
+     */
     private int[] arr;
 
-    public ArrayQueue(int maxSize) {
-        this.maxSize = maxSize;
-        // 队列头部，指向队列头的前一个位置
-        front = -1;
-        // 队列尾，指向队列尾部的数据（即是队列最后一个数据）
-        rear = -1;
+    /**
+     * @param capacity 最大容量
+     */
+    public ArrayQueue(int capacity) {
+        if (capacity < 0) {
+            throw new IllegalArgumentException("队列长度必须为空");
+        }
+
+        this.capacity = capacity;
+        front = -1; // 指向队列头部，分析出front是指向队列头的前一个位置
+        rear = -1;  // 指向队列尾部，即最后一个数据
+
+        if (capacity != 0) {
+            arr = new int[capacity];
+        }
     }
 
-    private boolean isFull() {
-        return rear == maxSize - 1;
+    /**
+     * 判断队列是否满
+     *
+     * @return
+     */
+    public boolean isFull() {
+        return rear == capacity - 1;
     }
 
+    /**
+     * 是否为空
+     *
+     * @return
+     */
     public boolean isEmpty() {
         return front == rear;
     }
 
-    public boolean addQueue(int n) {
+    /**
+     * 添加数据
+     *
+     * @param n
+     */
+    public void addQueue(int n) {
         if (isFull()) {
-            return false;
+            System.out.println("队列已满");
+            return;
         }
 
-        rear++;
-        arr[rear] = n;
-        return true;
+        // rear 后移，且赋值
+        arr[++rear] = n;
     }
 
+    /**
+     * 从队列取数据
+     *
+     * @return
+     */
     public int getQueue() {
         if (isEmpty()) {
-            throw new RuntimeException("队列空，不能取数据");
+            throw new RuntimeException("队列为空");
         }
-        front++;
-        return arr[front];
+
+        return arr[++front];
     }
 
+    /**
+     * 显示队列的头部，注意，此处不是取数
+     *
+     * @return
+     */
+    public int showHead() {
+        if (isEmpty()) {
+            throw new RuntimeException("队列为空");
+        }
+
+        return arr[front + 1];
+    }
+
+    /**
+     * 显示队列数据
+     */
     public void showQueue() {
         if (isEmpty()) {
-            System.out.println("队列为空");
+            System.out.println("队列尾空！");
+        } else {
+            System.out.println(Arrays.toString(arr));
         }
-
-        for (int i = 0; i < arr.length; i++) {
-            Arrays.toString(arr);
-        }
-    }
-
-    public int headQueue() {
-        if (isEmpty()) {
-            throw new RuntimeException("队列空，没有数据");
-        }
-        return arr[front + 1];
     }
 }

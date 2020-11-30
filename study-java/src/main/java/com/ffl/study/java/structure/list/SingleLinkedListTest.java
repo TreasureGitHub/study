@@ -1,62 +1,49 @@
 package com.ffl.study.java.structure.list;
 
+import java.util.LinkedList;
+
 /**
  * @author lff
- * @datetime 2020/06/12 21:09
+ * @datetime 2020/11/30 13:29
  */
 public class SingleLinkedListTest {
 
     public static void main(String[] args) {
-        // ArrayList<String> list = Lists.newArrayList();
-        SingleLinkedList<Person> list = new SingleLinkedList<>();
+        SingleLinkedList<String> list = new SingleLinkedList<>();
 
-        // 添加
-        list.add(new Person("2","张三"));
-        list.add(new Person("4","李四"));
-        list.add(new Person("5","王五"));
-        list.add(new Person("6","赵六"));
-        list.add(0,new Person("1","田七"));
-        list.add(2,new Person("3","猪八"));
+        new LinkedList();
 
+        System.out.println(list.size());
+        System.out.println(list.isEmpty());
+        list.add("hello");
+        list.add("world");
+        list.add("java");
+        list.add(0,"scala");
+        list.add(4,"hive");
+
+        System.out.println(list);
+
+        System.out.println(list.remove(4));
 
         System.out.println(list);
 
-        // 删除
-        list.remove(1);
-        list.remove();
+        System.out.println(list.size());
+        System.out.println(list.isEmpty());
 
-        SingleLinkedList list1 = list;
-
-
+        System.out.println("-------------反转前--------------");
         System.out.println(list);
-        System.out.println(list.get(3));
+        // 反转
+        System.out.println("-------------反转后--------------");
 
-        list.reverse();
 
-        System.out.println(list);
 
         list.clear();
 
+        for (int i = 0; i < 100; i++) {
+            list.add(String.valueOf(i));
+        }
+        
+        list.reverse1();
         System.out.println(list);
-    }
-}
-
-class Person {
-
-    private String no;
-
-    private String name;
-
-    public Person(String no, String name) {
-        this.no = no;
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Person{" +
-                "no='" + no + '\'' +
-                ", name='" + name + '\'' +
-                '}';
     }
 }

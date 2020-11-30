@@ -30,4 +30,6 @@ public interface CharConstants {
 
     char DIVIDE = '/';
 
+    char SPACE = ' ';
+
 }

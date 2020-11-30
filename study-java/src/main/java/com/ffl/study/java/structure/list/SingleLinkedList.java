@@ -1,150 +1,25 @@
 package com.ffl.study.java.structure.list;
 
-import java.util.Iterator;
-
-import static com.ffl.study.common.constants.StringConstants.*;
+import com.ffl.study.common.constants.StringConstants;
 
 /**
- * @author lff
- * @datetime 2020/06/12 20:17
+ * 头部节点存放数据
  *
- * 单向链表
+ * @author lff
+ * @datetime 2020/11/30 12:21
  */
-public class SingleLinkedList<T> implements Iterable<T> {
+public class SingleLinkedList<T> {
 
     /**
-     * 头部节点，不存放任何数据
-     */
-    private Node head = new Node(null);
-
-    /**
-     * 长度
+     * 容量大小
      */
     private int size = 0;
 
     /**
-     * 添加数据，默认在末尾
-     *
-     * @param data
+     * 头部节点
      */
-    public void add(T data) {
-        add(size, data);
-    }
+    private Node head;
 
-    /**
-     * 在 index 位置加入数据
-     *
-     * @param index
-     * @param data
-     */
-    public void add(int index, T data) {
-        checkAddRange(index);
-
-        // 前一个节点
-        Node preNode;
-
-        // 保存数据
-        Node newNode = new Node(data);
-
-        // 如果是空 或者 index = 0，preNode 为head ,否则为 getNode(index - 1)
-        if (isEmpty() || index == 0) {
-            preNode = head;
-        } else {
-            preNode = getNode(index - 1);
-        }
-
-        // 如果index 不是末尾，则查询 index 位置的node，并将 node 的next指向 nextNode
-        if (index < size) {
-            Node nextNode = preNode.next;
-            newNode.next = nextNode;
-        }
-
-        // 前一个node 的next指向新节点
-        preNode.next = newNode;
-
-        size++;
-    }
-
-    /**
-     * 反转节点
-     */
-    public void reverse() {
-        if (size == 0 || size == 1) {
-            return;
-        }
-
-        // 新建一个起始节点
-        Node newHead = new Node(null);
-
-        // 定义辅助的指针(变量)，帮助我们遍历原来的表
-        Node currNode = head.next;
-        // 指向当前节点的下一个节点
-        Node nextNode;
-
-        while (currNode != null) {
-            // 将当前节点的下一个赋值给nextNode，后续要使用
-            nextNode = currNode.next;
-            // currNode 插入到  newHead 后面，当成第一个元素
-            currNode.next = newHead.next;
-            newHead.next = currNode;
-
-            // 让currNode 后移
-            currNode = nextNode;
-        }
-
-        // 沿用原来老的head，释放newHead
-        head.next = newHead.next;
-        newHead.next = null;
-    }
-
-    /**
-     * 删除尾部 节点
-     */
-    public void remove() {
-        remove(size - 1);
-    }
-
-    /**
-     * 删除index 位置的节点
-     *
-     * 原理为将index 位置的 上一个节点的next 指向 index下一个节点
-     *
-     * @param index
-     */
-    public void remove(int index) {
-        checkRange(index);
-
-        // 上一个节点和下一个节点
-        Node preNode;
-        Node nextNode;
-
-        // 上一个节点
-        if (index == 0) {
-            preNode = head;
-        } else {
-            preNode = getNode(index - 1);
-        }
-
-        // 如果index为最末尾节点，则下一个节点为空
-        if (index == size - 1) {
-            nextNode = null;
-        } else {
-            nextNode = preNode.next.next;
-            preNode.next.next = null;
-        }
-
-        preNode.next = nextNode;
-        size--;
-    }
-
-
-    /**
-     * 清除数据
-     */
-    public void clear() {
-        size = 0;
-        head.next = null;
-    }
 
     /**
      * 是否为空
@@ -156,123 +31,218 @@ public class SingleLinkedList<T> implements Iterable<T> {
     }
 
     /**
-     * size
+     * 链表长度
      *
      * @return
      */
     public int size() {
-        return size;
+        return this.size;
     }
 
     /**
-     * 迭代器
+     * 在末尾添加数据
      *
-     * @return
+     * @param data
      */
-    @Override
-    public Iterator<T> iterator() {
-        Iterator<T> resIterator = new Iterator<T>() {
-
-            Node curr = head;
-
-            @Override
-            public boolean hasNext() {
-                return curr.next != null;
-            }
-
-            @Override
-            public T next() {
-                T resData = curr.next.data;
-                curr = curr.next;
-                return resData;
-            }
-        };
-
-        return resIterator;
+    public void add(T data) {
+        add(size, data);
     }
 
     /**
-     * 得到 第 index 位置的值
+     * 在指定位置添加数据
+     *
+     * @param index 指定下标
+     * @param data  数据
+     */
+    public void add(int index, T data) {
+        checkAddIndex(index);
+
+        Node newNode = new Node(data);
+
+        // 如果为空则初始化头部节点
+        if (isEmpty()) {
+            head = newNode;
+        } else if (index == 0) { //
+            Node follow = head;
+            head = newNode;
+            newNode.next = follow;
+        } else {
+            // 遍历到 指定下标的前一位
+            Node temp = getNode(index - 1);
+
+            Node follow = temp.next;
+            temp.next = newNode;
+            newNode.next = follow;
+        }
+
+        size++;
+    }
+
+    /**
+     * 删除指定位置的数据
      *
      * @param index
      * @return
      */
-    public T get(int index) {
-        checkRange(index);
-        return getNode(index).data;
+    public T remove(int index) {
+        checkIndex(index);
+
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node toRemove;
+
+        if (index == 0) {
+            toRemove = head;
+            head = head.next; // hed后移
+        } else {
+            Node pre = getNode(index - 1);
+            toRemove = pre.next;
+            pre.next = toRemove.next;
+            toRemove.next = null; // 释放
+        }
+
+        size--;
+
+        return toRemove == null ? null : toRemove.data;
     }
 
     /**
-     * 得到 第 index 位置的 Node
-     *
-     * @param index
-     * @return
+     * 反转  ， 常规手段
      */
-    private Node getNode(int index) {
-        // 检查下标
-        if (index < 0 || index > size - 1) {
-            throw new IndexOutOfBoundsException();
+    public void reverse() {
+        if (isEmpty() || size == 1) {
+            return;
         }
 
-        Node curr = head;
+        Node pre = head;
+        Node curr = head.next;
+        Node follow;
+        pre.next = null;
 
-        while (index >= 0 && curr.next != null) {
-            index--;
-            curr = curr.next;
+        while (curr.next != null) {
+            follow = curr.next;
+            curr.next = pre;
+
+            pre = curr;
+            curr = follow;
         }
 
-        return curr;
+        head = curr;
+        head.next = pre;
+    }
+
+
+    public void clear(){
+        this.size = 0;
+        this.head =  null;
+    }
+
+    /**
+     * 递归手段
+     */
+    public void reverse1() {
+        if (isEmpty() || size == 1) {
+            return;
+        }
+
+        reverse1(head,head.next);
+    }
+
+    private void reverse1(Node pre ,Node curr) {
+        // 退出递归条件
+        if(curr.next == null){
+            curr.next = pre;
+            head = curr;
+            return;
+        }
+
+        reverse1(curr,curr.next);
+
+        curr.next = pre;
+        pre.next = null;
     }
 
     @Override
     public String toString() {
-        Iterator<T> it = iterator();
+        if (size == 0) {
+            return StringConstants.LEFT_SQUARE + StringConstants.RIGHT_SQUARE;
+        }
+
         StringBuffer sb = new StringBuffer();
+        sb.append(StringConstants.LEFT_SQUARE);
 
-        while (it.hasNext()) {
-            sb.append(it.next().toString());
-            if (it.hasNext()) {
-                sb.append(COMMA);
+        Node curr = head;
+        while (true) {
+
+            sb.append(curr.data);
+            if (curr.next == null) {
+                break;
             }
+
+            sb.append(StringConstants.COMMA);
+            curr = curr.next;
         }
 
-        return LEFT_SQUARE + sb.toString() + RIGHT_SQUARE;
+        sb.append(StringConstants.RIGHT_SQUARE);
+        return sb.toString();
     }
 
     /**
-     * 检查 get 下标范围
+     * 得到指定位置的 Node节点
      *
-     * @param index
+     * @param index 指定下标
+     * @return
      */
-    private void checkRange(int index) {
-        if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, size));
+    private Node getNode(int index) {
+        checkIndex(index);
+
+        Node temp = head;
+
+        while (--index >= 0) {
+            temp = temp.next;
+        }
+
+        return temp;
+    }
+
+    /**
+     * 检查下标
+     * <p>
+     * index 下标范围为 [0,size-1]
+     *
+     * @param index 待检查下标
+     */
+    private void checkIndex(int index) {
+        if (index < 0 || index > size - 1) {
+            throw new IndexOutOfBoundsException();
         }
     }
 
     /**
-     * 检查 add 下标范围
+     * 检查add下标
+     * <p>
+     * index 下标范围为 [0,size]
      *
-     * @param index
+     * @param index 待检查下标
      */
-    private void checkAddRange(int index) {
+    private void checkAddIndex(int index) {
         if (index < 0 || index > size) {
-            throw new IndexOutOfBoundsException(String.format("Index: %d, Size: %d", index, size));
+            throw new IndexOutOfBoundsException();
         }
     }
 
-    /**
-     * 节点信息 ，用于存放数据
-     */
+
     private class Node {
 
         /**
-         * 当前数据
+         * 实际存放数据
          */
         private T data;
 
         /**
-         * next 指向 下一个节点
+         * 下一个元素
          */
         private Node next;
 
