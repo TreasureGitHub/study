@@ -16,7 +16,7 @@ object WordCount {
         val env: ExecutionEnvironment = ExecutionEnvironment.getExecutionEnvironment
 
         // 从文件读取数据
-        val dataPath: URL = getClass.getResource("/wc.txt")
+        val dataPath: URL = getClass.getResource("/wc_input/wc.txt")
         val inputDataSet: DataSet[String] = env.readTextFile(dataPath.getPath)
 
 

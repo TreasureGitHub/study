@@ -15,7 +15,7 @@ object BatchWordCount {
         val env: ExecutionEnvironment = ExecutionEnvironment.getExecutionEnvironment
 
         // 使用相对路径来得到完整的文件路径
-        val dataPath: URL = getClass.getResource("/wc.txt")
+        val dataPath: URL = getClass.getResource("/wc_input/wc.txt")
 
         val data: DataSet[String] = env.readTextFile(dataPath.getPath)
 

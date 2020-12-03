@@ -1,69 +1,67 @@
 package com.ffl.study.java.structure.stack;
 
-import com.ffl.study.common.constants.StringConstants;
+import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/06/13 17:33
+ * @datetime 2020/12/02 23:16
  */
 public class ArrayStack {
 
-    // 栈的大小
-    private int maxSize;
+    // 表示当前数据位置
+    private int position = -1;
 
     // 数组，模拟栈
     private int[] stack;
 
-    // 栈顶
-    private int top = -1;
+    // 容量
+    private int capacity;
 
-
-    public ArrayStack(int maxSize) {
-        this.maxSize = maxSize;
-        stack = new int[maxSize];
+    public ArrayStack(int capacity) {
+        this.capacity = capacity;
+        stack = new int[capacity];
     }
 
-    public int peek(){
-        return stack[top];
-    }
-
+    /**
+     * 是否已满
+     *
+     * @return
+     */
     public boolean isFull() {
-        return top == maxSize - 1;
+        return position == capacity -1;
     }
 
     public boolean isEmpty() {
-        return top == -1;
+        return position == -1;
     }
 
-    public void push(int value) {
+    /**
+     * 推入数据
+     *
+     * @param data
+     */
+    public void push(int data) {
         if (isFull()) {
-            throw new RuntimeException("栈满");
+            throw new RuntimeException("栈已满！");
         }
 
-        top++;
-        stack[top] = value;
+        stack[++position] = data;
     }
 
     public int pop() {
         if (isEmpty()) {
-            throw new RuntimeException("空栈");
+            throw new RuntimeException("栈为空！");
         }
+        return stack[position--];
+    }
 
-        int value = stack[top];
-        top--;
-        return value;
+    public int peek() {
+        return stack[position];
     }
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
-        for (int i = top; i >= 0; i--) {
-            sb.append(stack[i]);
-            if (i != 0) {
-                sb.append(StringConstants.COMMA);
-            }
-        }
-
-        return StringConstants.LEFT_SQUARE + sb.toString() + StringConstants.RIGHT_SQUARE;
+        return "ArrayStack{" + Arrays.toString(Arrays.copyOfRange(stack,0,position + 1)) +
+                '}';
     }
 }
