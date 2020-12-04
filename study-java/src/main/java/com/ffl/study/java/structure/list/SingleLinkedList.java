@@ -2,6 +2,8 @@ package com.ffl.study.java.structure.list;
 
 import com.ffl.study.common.constants.StringConstants;
 
+import java.util.Stack;
+
 /**
  * 头部节点存放数据
  *
@@ -109,7 +111,7 @@ public class SingleLinkedList<T> {
     }
 
     /**
-     * 反转  ， 常规手段
+     * 1.反转  ， 常规手段
      */
     public void reverse() {
         if (isEmpty() || size == 1) {
@@ -133,35 +135,94 @@ public class SingleLinkedList<T> {
         head.next = pre;
     }
 
-
-    public void clear(){
-        this.size = 0;
-        this.head =  null;
-    }
-
     /**
-     * 递归手段
+     * 2.递归手段
      */
     public void reverse1() {
         if (isEmpty() || size == 1) {
             return;
         }
 
-        reverse1(head,head.next);
+        reverse1(head, head.next);
     }
 
-    private void reverse1(Node pre ,Node curr) {
+    private void reverse1(Node pre, Node curr) {
         // 退出递归条件
-        if(curr.next == null){
+        if (curr.next == null) {
             curr.next = pre;
             head = curr;
             return;
         }
 
-        reverse1(curr,curr.next);
+        reverse1(curr, curr.next);
 
         curr.next = pre;
         pre.next = null;
+    }
+
+    /**
+     * 3.头插法，新建一个链表，在头部插入
+     */
+    public void reverse2() {
+        if (isEmpty() || size == 1) {
+            return;
+        }
+
+        Node newHead = new Node(null); // 新链表头部
+        Node curr = head;   // 老链表当前值
+        Node tmp = curr.next;  // 存放老链的下一个值
+        curr.next = null;
+
+        while (curr != null) {
+            curr.next = newHead.next;
+            newHead.next = curr;
+
+            curr = tmp;
+            if (tmp != null) {
+                tmp = tmp.next;
+            }
+        }
+
+        head = newHead.next; // 换一下头
+        newHead.next = null; // 去掉原来的头引用
+
+    }
+
+    /**
+     * 4.栈手段，相较递归更好理解
+     */
+    public void reverse3() {
+        if (isEmpty() || size == 1) {
+            return;
+        }
+
+        Stack<Node> stack = new Stack<>();
+        Node curr = head;
+        while (curr != null) {  // 全部压入栈
+            stack.push(curr);
+            curr = curr.next;
+        }
+
+        head = stack.pop(); // 从栈顶取数，然后改变指向即可
+        Node tmp = head;   // 临时变量，用于存储新链表链尾数据
+
+        while (true) {
+            Node node = stack.pop();
+            tmp.next = node;
+            tmp = node;   // 此时出现了互指的情况，栈里面的元素.next指向tmp，而tmp.next又指向栈里面的元素，debug的时候提示outofmemory，但是最终能执行，可以通过多设置一个变量的方式来解决，此处不做优化
+
+            if (stack.isEmpty()) {
+                // 如果当前是最后一个，改变其next为null
+                node.next = null;
+                break;
+            }
+        }
+    }
+
+
+    public void clear() {
+        this.size = 0;
+        this.head = null;
     }
 
     @Override

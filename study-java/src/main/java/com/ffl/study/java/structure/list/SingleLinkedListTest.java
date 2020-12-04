@@ -1,7 +1,5 @@
 package com.ffl.study.java.structure.list;
 
-import java.util.LinkedList;
-
 /**
  * @author lff
  * @datetime 2020/11/30 13:29
@@ -10,8 +8,6 @@ public class SingleLinkedListTest {
 
     public static void main(String[] args) {
         SingleLinkedList<String> list = new SingleLinkedList<>();
-
-        new LinkedList();
 
         System.out.println(list.size());
         System.out.println(list.isEmpty());
@@ -42,8 +38,10 @@ public class SingleLinkedListTest {
         for (int i = 0; i < 100; i++) {
             list.add(String.valueOf(i));
         }
+
+        System.out.println(list);
         
-        list.reverse1();
+        list.reverse3();
         System.out.println(list);
     }
 }

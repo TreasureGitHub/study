@@ -8,18 +8,34 @@ public class TestRecursion {
 
     public static void main(String[] args) {
         test(4);
+        System.out.println(f(6));
     }
 
     /**
-     * test n
+     * 1.打印问题
      *
      * @param n
      */
-    public static void test(int n) {
+    private static void test(int n) {
         if (n > 2) {
             test(n - 1);
         }
 
         System.out.println("n = " + n);
+    }
+
+
+    /**
+     * 2.阶乘问题
+     *
+     * @param n
+     * @return
+     */
+    private static int f(int n) {
+        if (n == 1) {
+            return 1;
+        }
+
+        return f(n - 1) * n;
     }
 }
