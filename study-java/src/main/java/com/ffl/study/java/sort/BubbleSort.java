@@ -51,6 +51,8 @@ public class BubbleSort {
         // 是否有进行过交换，默认为false，如果没有进行过交换，则表示已经有序了
         boolean hasSwap;
 
+
+        int temp;
         // 数组最后值 不需要参与排序，因此结束位置为 arr.length - 1
         for (int i = 0; i < arr.length - 1; i++) {
 
@@ -59,7 +61,11 @@ public class BubbleSort {
 
                 // // 当前大于后一个，则交换
                 if (arr[j] > arr[j + 1]) {
-                    ArrayUtils.swap(arr, j, j + 1);
+                    // ArrayUtils.swap(arr, j, j + 1);
+                    temp = arr[j];
+
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
 
                     hasSwap = true;
                 }
@@ -74,7 +80,7 @@ public class BubbleSort {
     /**
      * 改进版本二
      * <p>
-     *
+     * <p>
      * 如果 当前循环 最后 交换位置为 index ,则下次只需要 遍历至 index - 1
      *
      * @param arr
@@ -84,13 +90,18 @@ public class BubbleSort {
         // 分别定义最后交换的位置和当前交换的位置
         int lastSwapIndex, currSwapIndex = arr.length - 1;
 
+        int temp;
         while (currSwapIndex > 0) {
             lastSwapIndex = currSwapIndex;
 
             currSwapIndex = 0;
             for (int i = 0; i < lastSwapIndex; i++) {
                 if (arr[i] > arr[i + 1]) {
-                    ArrayUtils.swap(arr, i, i + 1);
+                    // ArrayUtils.swap(arr, i, i + 1);
+                    temp = arr[i];
+                    arr[i] = arr[i + 1];
+                    arr[i + 1] = temp;
+
                     currSwapIndex = i;
                 }
             }

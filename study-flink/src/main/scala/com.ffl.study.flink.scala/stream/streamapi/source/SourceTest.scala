@@ -1,8 +1,12 @@
-package com.ffl.study.flink.scala.stream.api
+package com.ffl.study.flink.scala.stream.streamapi.source
+
+import java.util.Properties
 
 import com.ffl.study.common.constants.{PathConstants, StringConstants}
+import org.apache.flink.api.common.serialization.SimpleStringSchema
 import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.apache.flink.streaming.api.scala._
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer
 
 /**
   * @author lff
@@ -59,6 +63,17 @@ object SourceTest {
 
         stream3.print()
 
+        // 3.基于kafka
+        //val stream4: DataStream[String] = env.socketTextStream("localhost",9000)
+        //stream4.print();
+
+        import org.apache.flink.streaming.api.scala._
+
+        val properties = new Properties()
+        properties.setProperty("bootstrap.servers","localhost:9092");
+        properties.setProperty("group.id","consumer-group");
+        val stream4: DataStream[String] = env.addSource(new FlinkKafkaConsumer[String]("sensor_input",new SimpleStringSchema(),properties))
+        stream4.print()
 
         env.execute("SourceTest")
     }

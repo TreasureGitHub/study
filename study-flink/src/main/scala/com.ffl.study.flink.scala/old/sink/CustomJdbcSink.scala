@@ -32,23 +32,23 @@ object CustomJdbcSink {
     // 自定义 sink类
     class MyCustomJdbcSink extends RichSinkFunction[StationLog] {
 
-        var conn:Connection = _
-        var pst:PreparedStatement = _
+        var conn: Connection = _
+        var pst: PreparedStatement = _
 
         // 将 station log 写入 mysql中， 每写入一条执行一次
         override def invoke(value: StationLog, context: SinkFunction.Context[_]): Unit = {
-            pst.setString(1,value.sid)
-            pst.setString(2,value.callOut)
-            pst.setString(3,value.callIn)
-            pst.setString(4,value.callType)
-            pst.setLong(5,value.callTime)
-            pst.setLong(6,value.duration)
+            pst.setString(1, value.sid)
+            pst.setString(2, value.callOut)
+            pst.setString(3, value.callIn)
+            pst.setString(4, value.callType)
+            pst.setLong(5, value.callTime)
+            pst.setLong(6, value.duration)
             pst.executeUpdate()
         }
 
         //
         override def open(parameters: Configuration): Unit = {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost/test","root","root")
+            conn = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "root")
             pst = conn.prepareStatement("insert into t_station_log(sid,call_out,call_in,call_type,call_time,duration) values(?,?,?,?,?,?)")
         }
 
