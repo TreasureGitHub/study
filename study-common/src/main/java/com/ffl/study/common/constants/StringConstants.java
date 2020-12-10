@@ -38,4 +38,6 @@ public interface StringConstants {
 
     String NEW_LINE = "\n";
 
+    String UNDER_LINE = "_";
+
 }

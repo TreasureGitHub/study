@@ -7,7 +7,7 @@ import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrderness
 import org.apache.flink.streaming.api.scala._
 import org.apache.flink.streaming.api.windowing.time.Time
 import org.apache.flink.table.api.scala.{StreamTableEnvironment, _}
-import org.apache.flink.table.api.{EnvironmentSettings, Table, Tumble}
+import org.apache.flink.table.api.{EnvironmentSettings, Over, Table, Tumble}
 import org.apache.flink.types.Row
 
 /**
@@ -35,11 +35,11 @@ object TimeAndWindowTest {
         val dataStream: DataStream[SensorReading] = stream.map(data => {
             val arr: Array[String] = data.split(StringConstants.COMMA)
             SensorReading(arr(0), arr(1).toLong, arr(2).toDouble)
-        }).assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor[SensorReading](Time.seconds(5)){
+        }).assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor[SensorReading](Time.seconds(5)) {
             override def extractTimestamp(element: SensorReading): Long = element.timestamp * 1000L
         })
 
-        val sensorTable: Table = tableEnv.fromDataStream(dataStream, 'id, 'timestamp.rowtime as 'ts,'temperature)
+        val sensorTable: Table = tableEnv.fromDataStream(dataStream, 'id, 'timestamp.rowtime as 'ts, 'temperature)
 
         // 1.group Window
         // 1.table api
@@ -50,8 +50,8 @@ object TimeAndWindowTest {
           .select('id, 'id.count, 'temperature.avg, 'tw.end)
 
 
-        // 2.table sql
-        tableEnv.createTemporaryView("sensor",sensorTable)
+        // 1.2.table sql
+        tableEnv.createTemporaryView("sensor", sensorTable)
         val resultSqlTable = tableEnv.sqlQuery(
             """
               |select
@@ -70,6 +70,29 @@ object TimeAndWindowTest {
         resultSqlTable.toAppendStream[Row].print("sql")
 
 
+        // 2.over window：统计每个sensor每条数据，于之前两行数据的平均温度
+        // 2.1 table api
+        val overResultTable: Table = sensorTable.window(Over partitionBy 'id orderBy 'ts preceding 2.rows as 'ow)
+          .select('id, 'ts, 'id.count over 'ow, 'temperature.avg over 'ow)
+
+        val overResultSqlTable: Table = tableEnv.sqlQuery(
+            """
+              |select
+              | id,
+              | ts,
+              | count(id) over ow,
+              | avg(temperature) over ow
+              |from sensor
+              |window ow as (
+              | partition by id
+              | order by ts
+              | rows between 2 preceding and current row
+              |)
+            """.stripMargin
+        )
+
+        overResultTable.toAppendStream[Row].print("overResultTable")
+        overResultSqlTable.toAppendStream[Row].print("overResultTable")
 
         //sensorTable.printSchema()
         //sensorTable.toAppendStream[Row].print("table")

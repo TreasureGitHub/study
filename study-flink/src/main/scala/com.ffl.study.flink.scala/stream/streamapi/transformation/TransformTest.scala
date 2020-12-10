@@ -19,10 +19,8 @@ object TransformTest {
         val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
         env.setParallelism(1)
 
-
         val filePath: String = PathConstants.FLINK_RES + "/sensor_input"
         val stream: DataStream[String] = env.readTextFile(filePath)
-
 
         // 1.max
         val stream1 = stream.map(data => {
