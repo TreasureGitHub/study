@@ -14,17 +14,22 @@ object StreamWordCount {
 
         val tool: ParameterTool = ParameterTool.fromArgs(args)
 
-        val inputDataStream: DataStream[String] = env.socketTextStream(tool.get("host"), tool.get("port").toInt)
+        //val inputDataStream: DataStream[String] = env.socketTextStream(tool.get("host"), tool.get("port").toInt)
+
+        val inputDataStream: DataStream[String] = env.socketTextStream("localhost", 7777)
 
         val resultDataStream: DataStream[(String, Int)] = inputDataStream
           //.flatMap(_.split(" ")).slotSharingGroup("a")  // 在同一个共享组之类的组共享slot   默认的共享组为 default
           .flatMap(_.split(" "))
           //.filter(_.nonEmpty).disableChaining()  // 前面和后面都断开，禁止进行任务链合并
           .filter(_.nonEmpty)
+          .setParallelism(3)
           //.map((_, 1)).startNewChain()        // 开启新的任务链，将filter和map断开
-          .map((_,1))
+          .map((_, 1))
+          .setParallelism(3)
           .keyBy(0)
           .sum(1)
+          .setParallelism(2)
 
         resultDataStream.print().setParallelism(1)
 

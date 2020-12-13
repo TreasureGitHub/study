@@ -21,7 +21,7 @@ import org.apache.flink.streaming.api.windowing.time.Time
   *           sensor_1,1547718213,30.9
   *           sensor_1,1547718212,10.9
   */
-object WindowTest {
+object WindowTest2 {
 
     def main(args: Array[String]): Unit = {
         val env: StreamExecutionEnvironment = StreamExecutionEnvironment.getExecutionEnvironment
@@ -29,8 +29,8 @@ object WindowTest {
 
 
         val stream: DataStream[String] = env.socketTextStream("localhost",7777)
-        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)   // 如果是处理时间的话默认是0，如果是事件事件的话默认为200ms
-        env.getConfig.setAutoWatermarkInterval(50);
+        env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
+        env.getConfig.setAutoWatermarkInterval(50);   // 如果是处理时间的话默认是0，如果是事件事件的话默认为200ms
 
         val lateTag = new OutputTag[(String, Double, Long)]("late")
 
@@ -64,9 +64,6 @@ object WindowTest {
 
         result.print()
         result.getSideOutput(lateTag).print("late")
-
-
-
 
         env.execute("WindowTest")
     }

@@ -36,7 +36,7 @@ object MaxLongCallTime {
 
         import org.apache.flink.streaming.api.scala._
 
-        val stream: DataStream[StationLog] = env.socketTextStream("localhost", 8888)
+        val stream: DataStream[StationLog] = env.socketTextStream("localhost", 7777)
           .map(line => {
               val arr = line.split(",")
               new StationLog(arr(0).trim, arr(1).trim, arr(2).trim, arr(3).trim, arr(4).toLong, arr(5).toLong)
@@ -59,6 +59,7 @@ object MaxLongCallTime {
 
         // 增量聚合
         override def reduce(t: StationLog, t1: StationLog): StationLog = {
+            println("------------------------reduce")
             if(t.duration > t1.duration) t else t1
         }
     }
@@ -76,6 +77,8 @@ object MaxLongCallTime {
               .append(" 主叫号码：").append(value.callOut)
               .append(" 被叫号码：").append(value.callIn)
               .append(" 通话时长：").append(value.duration)
+
+            println("ReturnMaxTimeWindowFunction----------")
 
             out.collect(sb.toString())
 
