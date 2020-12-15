@@ -1,18 +1,14 @@
 package com.ffl.study.flink.scala.stream.window
 
-import java.lang
-
 import com.ffl.study.common.constants.StringConstants
 import com.ffl.study.flink.scala.stream.streamapi.source.SensorReading
 import org.apache.flink.api.common.functions.ReduceFunction
 import org.apache.flink.streaming.api.TimeCharacteristic
 import org.apache.flink.streaming.api.functions.timestamps.AscendingTimestampExtractor
 import org.apache.flink.streaming.api.scala._
-import org.apache.flink.streaming.api.windowing.evictors.{Evictor, TimeEvictor}
 import org.apache.flink.streaming.api.windowing.time.Time
 import org.apache.flink.streaming.api.windowing.triggers.{Trigger, TriggerResult}
-import org.apache.flink.streaming.api.windowing.windows.{TimeWindow, Window}
-import org.apache.flink.streaming.runtime.operators.windowing.TimestampedValue
+import org.apache.flink.streaming.api.windowing.windows.TimeWindow
 
 /**
   *
@@ -72,17 +68,17 @@ object EvictorsTest {
                   println("---------------clear------------------------")
               }
           })
-          .evictor(new MyEvictor(){
-              //override def evictBefore(elements: java.lang.Iterable[TimestampedValue[Any]], size: Int, window: TimeWindow, evictorContext: Evictor.EvictorContext): Unit = {
-              //    println("------------------evictBefore-----------------")
-              //    println(elements)
-              //}
-              //
-              //override def evictAfter(elements: java.lang.Iterable[TimestampedValue[Any]], size: Int, window: TimeWindow, evictorContext: Evictor.EvictorContext): Unit = {
-              //    println("------------------evictAfter-----------------")
-              //    println(elements)
-              //}
-          })
+          //.evictor(new MyEvictor(){
+          //    //override def evictBefore(elements: java.lang.Iterable[TimestampedValue[Any]], size: Int, window: TimeWindow, evictorContext: Evictor.EvictorContext): Unit = {
+          //    //    println("------------------evictBefore-----------------")
+          //    //    println(elements)
+          //    //}
+          //    //
+          //    //override def evictAfter(elements: java.lang.Iterable[TimestampedValue[Any]], size: Int, window: TimeWindow, evictorContext: Evictor.EvictorContext): Unit = {
+          //    //    println("------------------evictAfter-----------------")
+          //    //    println(elements)
+          //    //}
+          //})
           .reduce(new MyReduceFunction1)
           .print("result")
 

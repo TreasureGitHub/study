@@ -8,7 +8,7 @@ import com.ffl.study.common.constants.StringConstants
 import com.ffl.study.flink.scala.stream.streamapi.source.SensorReading
 import org.apache.flink.api.common.functions.{ReduceFunction, RichFlatMapFunction, RichMapFunction}
 import org.apache.flink.api.common.restartstrategy.RestartStrategies
-import org.apache.flink.api.common.state._
+import org.apache.flink.api.common.state.{ListStateDescriptor, _}
 import org.apache.flink.api.common.time.Time
 import org.apache.flink.configuration.Configuration
 import org.apache.flink.streaming.api.CheckpointingMode
@@ -50,6 +50,9 @@ object StateTest {
         env.setRestartStrategy(RestartStrategies.fixedDelayRestart(3,1000L)) // 重启三次，每次间隔1000毫秒
         env.setRestartStrategy(RestartStrategies.failureRateRestart(5,Time.of(5,TimeUnit.MINUTES),Time.of(10,TimeUnit.MINUTES)))
 
+
+        //println(StateTtlConfig.TtlTimeCharacteristic.values())
+
         //需求： 对于温度传感器，如果温度差超过10度，则报警
         val stream1: DataStream[SensorReading] = stream.map(data => {
             val arr: Array[String] = data.split(StringConstants.COMMA)
@@ -58,21 +61,28 @@ object StateTest {
 
         val alertStream: DataStream[(String, Double, Double)] = stream1
           .keyBy(_.id)
-          //.flatMap(new TempChangeAlert(10.0))
-          .flatMapWithState[(String,Double,Double),Double]({
-            case (data: SensorReading, None) => (List.empty, Some(data.temperature))
-            case (data: SensorReading, lastTemp: Some[Double]) => {
+          //.map(new MyRichMapper())
+          .flatMap(new TempChangeAlert(10.0))
+        //  .flatMapWithState[(String,Double,Double),Double]({
+        //    case (data: SensorReading, None) => (List.empty, Some(data.temperature))
+        //    case (data: SensorReading, lastTemp: Some[Double]) => {
+        //
+        //
+        //        val diff: Double = (data.temperature - lastTemp.get).abs
+        //
+        //        if (diff > 10.0) { // 需要加入初次状态判断
+        //            (List((data.id, lastTemp.get, data.temperature)), Some(data.temperature))
+        //        } else {
+        //            (List.empty, Some(data.temperature))
+        //        }
+        //    }
+        //})
 
-
-                val diff: Double = (data.temperature - lastTemp.get).abs
-
-                if (diff > 10.0) { // 需要加入初次状态判断
-                    (List((data.id, lastTemp.get, data.temperature)), Some(data.temperature))
-                } else {
-                    (List.empty, Some(data.temperature))
-                }
-            }
-        })
+        // 测试RichMapFunction
+        stream1
+          .keyBy(_.id)
+          .map(new MyRichMapper())
+            .print()
 
         alertStream.print()
 
@@ -99,10 +109,11 @@ class TempChangeAlert(threshold: Double) extends RichFlatMapFunction[SensorReadi
 // 必须定义在RichFunction中，因为需要运行时上下文   测试
 class MyRichMapper extends RichMapFunction[SensorReading, String] {
 
+    private val listStateDescriptor = new ListStateDescriptor[Int]("listState", classOf[Int])
 
-    lazy val listState: ListState[Int] = getRuntimeContext.getListState(new ListStateDescriptor[Int]("listState", classOf[Int]))
+    lazy val listState: ListState[Int] = getRuntimeContext.getListState(listStateDescriptor)
 
-    private val mapState: MapState[String, Double] = getRuntimeContext.getMapState(new MapStateDescriptor[String, Double]("mapState", classOf[String], classOf[Double]))
+    private lazy val mapState: MapState[String, Double] = getRuntimeContext.getMapState(new MapStateDescriptor[String, Double]("mapState", classOf[String], classOf[Double]))
 
     lazy val reduceState = getRuntimeContext.getReducingState[SensorReading](new ReducingStateDescriptor[SensorReading]("reduceState", new ReduceFunction[SensorReading]() {
         override def reduce(value1: SensorReading, value2: SensorReading): SensorReading = SensorReading(value1.id, value1.timestamp, value1.temperature + value2.temperature)
@@ -119,6 +130,8 @@ class MyRichMapper extends RichMapFunction[SensorReading, String] {
     override def map(value: SensorReading): String = {
         // 1.value state
         valueState.update(value.temperature)
+
+        println(listStateDescriptor.getTtlConfig.getTtl)
 
         // 2.list state
 

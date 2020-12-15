@@ -36,7 +36,7 @@ object WindowTest1 {
         stream1.map(x => (x.id,x.temperature))
           .keyBy(0) // keyedStream
           .timeWindow(Time.minutes(5))
-          .evictor()
+          //.evictor()
           .max(1)
           .print()
 

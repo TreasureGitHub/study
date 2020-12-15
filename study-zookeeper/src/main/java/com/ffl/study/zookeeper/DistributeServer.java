@@ -30,7 +30,7 @@ public class DistributeServer {
     }
 
     // 注册
-    private void regist(String hostname) throws KeeperException, InterruptedException {
+    private void register(String hostname) throws KeeperException, InterruptedException {
         zkClient.create("/servers/server",hostname.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.EPHEMERAL_SEQUENTIAL);
 
         System.out.println(hostname + " is online");
@@ -48,7 +48,7 @@ public class DistributeServer {
         server.getConnect();
 
         // 2.注册节点
-        server.regist(args[0]);
+        server.register(args[0]);
 
         // 3.业务逻辑处理
         server.business();

@@ -8,7 +8,6 @@ import org.apache.zookeeper.ZooKeeper;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,6 +31,7 @@ public class DistributeClient {
             @Override
             public void process(WatchedEvent event) {
                 try {
+                    // 循环注册
                     getChildren();
                 } catch (KeeperException e) {
                     e.printStackTrace();
@@ -64,10 +64,13 @@ public class DistributeClient {
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
         DistributeClient client = new DistributeClient();
 
+        // 建立连接
         client.getConnect();
 
+        // 注册
         client.getChildren();
 
+        // 业务逻辑
         client.business();
 
     }
