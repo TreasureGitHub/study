@@ -1,4 +1,4 @@
-package com.ffl.study.kafka.consumer;
+package com.ffl.study.kafka.old.consumer;
 
 import org.apache.kafka.clients.consumer.*;
 import org.apache.kafka.common.TopicPartition;

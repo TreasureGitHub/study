@@ -1,4 +1,4 @@
-package com.ffl.study.kafka.producer;
+package com.ffl.study.kafka.old.producer;
 
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;

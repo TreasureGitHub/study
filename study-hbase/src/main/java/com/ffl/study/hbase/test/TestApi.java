@@ -17,6 +17,8 @@ public class TestApi {
 
     private static Admin admin = null;
 
+    private static final String TABLE_NAME = "testns:stu1";
+
 
     static {
         try {
@@ -24,7 +26,6 @@ public class TestApi {
             Configuration configuration = HBaseConfiguration.create();
             configuration.set("hbase.zookeeper.quorum", "localhost");
             // configuration.set("zookeeper.znode.parent", "/hbase");
-
 
             // 2.获取管理员对象
             connection = ConnectionFactory.createConnection(configuration);
@@ -41,43 +42,31 @@ public class TestApi {
     public static void main(String[] args) throws IOException {
         System.out.println(isTableExists("stu"));
 
-        createTable("testns:stu1", "info1", "info2");
+        // 1.创建表空间
+        createNameSpace("testns");
 
-        System.out.println(isTableExists("stu1"));
+        // 2.创建表
+        createTable(TABLE_NAME, "info1", "info2");
 
-        dropTable("stu1");
+        // 3.创建表是否存在
+        System.out.println(isTableExists(TABLE_NAME));
 
-        // createNameSpace("testns");
+        // 4.写入数据
+        putData(TABLE_NAME, "1001", "info", "name", "张三");
 
-        putData("stu", "1001", "info", "name", "张三");
+        // 5.查询数据
+        get(TABLE_NAME, "1001", "info", "name");
 
-        get("stu", "1001", "info", "name");
+        // 6.扫描数据
+        scanTable(TABLE_NAME);
 
-        scanTable("stu");
+        // 7.删除数据
+        deleteData(TABLE_NAME, "1001", "info", "sex");
 
-
-        deleteData("stu","1001","info","sex");
+        // 8.删除表
+        dropTable(TABLE_NAME);
 
         close();
-    }
-
-    private static void close() {
-        if (admin != null) {
-            try {
-                admin.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        if (connection != null) {
-            try {
-                connection.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
 
@@ -215,7 +204,7 @@ public class TestApi {
         // 构建scan对象
         // Scan scan = new Scan();
 
-        Scan scan = new Scan(Bytes.toBytes("1001"),Bytes.toBytes("1003")); // 左闭右开
+        Scan scan = new Scan(Bytes.toBytes("1001"), Bytes.toBytes("1003")); // 左闭右开
 
         // 扫描表
         ResultScanner resultScanner = table.getScanner(scan);
@@ -239,29 +228,48 @@ public class TestApi {
     }
 
 
-    public static void deleteData(String tableName,String rowKey,String cf,String cn) throws IOException {
+    public static void deleteData(String tableName, String rowKey, String cf, String cn) throws IOException {
         // 得到table
         Table table = connection.getTable(TableName.valueOf(tableName));
 
-        // 构建delete对象
+        // 构建delete对象  如果只有此设置 删除所有的列族
         Delete delete = new Delete(Bytes.toBytes(rowKey));
 
         // 设置删除的列
         // 删除所有版本
-        delete.addColumns(Bytes.toBytes(cf),Bytes.toBytes(cn));
+        delete.addColumns(Bytes.toBytes(cf), Bytes.toBytes(cn));
 
         // 删除一个版本，慎用，否则会出现诈尸
-        // 删除标记分为 Delete、DeleteColumn、DeleteFamily
-        delete.addColumn(Bytes.toBytes(cf),Bytes.toBytes(cn));
+        // 删除标记分为 Delete/按rowkey删 、DeleteColumn/按列删、 DeleteFamily/按列族删除   Delete标记表示只删除指定时间戳数据
+        delete.addColumn(Bytes.toBytes(cf), Bytes.toBytes(cn));
 
         // 删除列族
-        // delete.addFamily(Bytes.toBytes(cf));
+        delete.addFamily(Bytes.toBytes(cf));
 
         // 删除
         table.delete(delete);
 
         // 关闭连接
         table.close();
+    }
+
+    private static void close() {
+        if (admin != null) {
+            try {
+                admin.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+
+        if (connection != null) {
+            try {
+                connection.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

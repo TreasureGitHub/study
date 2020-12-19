@@ -28,6 +28,12 @@ public interface PathConstants {
      */
     String FLINK_RES_ABS = "/study-flink/src/main/resources";
 
+
+    /**
+     * flink 资源 相对路径
+     */
+    String HBASE_RES_ABS = "/study-hbase/src/main/resources";
+
     /**
      * hadoop resource 路径 ，以 . 开头
      */
@@ -43,4 +49,9 @@ public interface PathConstants {
      * spark resource 路径 ，以 . 开头
      */
     String FLINK_RES = StringConstants.DOT + FLINK_RES_ABS;
+
+    /**
+     * spark resource 路径 ，以 . 开头
+     */
+    String HBASE_RES = StringConstants.DOT + HBASE_RES_ABS;
 }

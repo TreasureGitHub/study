@@ -1,5 +1,6 @@
-package com.ffl.study.kafka.interceptor;
+package com.ffl.study.kafka.old.interceptor;
 
+import com.ffl.study.common.constants.StringConstants;
 import org.apache.kafka.clients.producer.ProducerInterceptor;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.clients.producer.RecordMetadata;
@@ -15,7 +16,7 @@ public class TimeInterceptor implements ProducerInterceptor<String, String> {
     @Override
     public ProducerRecord<String, String> onSend(ProducerRecord<String, String> record) {
         return new ProducerRecord<String, String>(record.topic(), record.partition(), record.timestamp(), record.key(),
-                System.currentTimeMillis() + record.value(), record.headers());
+                System.currentTimeMillis() + StringConstants.MINUS + record.value(), record.headers());
     }
 
     @Override

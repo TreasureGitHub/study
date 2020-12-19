@@ -6,6 +6,7 @@ package com.ffl.study.common.constants;
  */
 public interface StringConstants {
 
+
     String TAB = "\t";
 
     String COMMA = ",";

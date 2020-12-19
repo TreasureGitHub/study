@@ -1,4 +1,4 @@
-package com.ffl.study.kafka.producer;
+package com.ffl.study.kafka.old.producer;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
