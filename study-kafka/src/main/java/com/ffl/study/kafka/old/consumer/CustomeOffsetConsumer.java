@@ -66,7 +66,8 @@ public class CustomeOffsetConsumer {
         }
     }
 
-    private static void commitOffset(TopicPartition topicPartition, long l) {
+    private static void commitOffset(TopicPartition topicPartition, long offset) {
+        // 自定义逻辑
     }
 
     private static Long getPartitionOffset(TopicPartition partition){

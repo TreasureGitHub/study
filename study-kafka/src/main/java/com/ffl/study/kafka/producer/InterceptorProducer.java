@@ -1,7 +1,7 @@
 package com.ffl.study.kafka.producer;
 
 import com.ffl.study.kafka.interceptor.CountInterceptor;
-import com.ffl.study.kafka.old.interceptor.TimeInterceptor;
+import com.ffl.study.kafka.interceptor.TimeInterceptor;
 import com.ffl.study.kafka.utils.KafkaUtils;
 import com.google.common.collect.Lists;
 import org.apache.kafka.clients.producer.KafkaProducer;

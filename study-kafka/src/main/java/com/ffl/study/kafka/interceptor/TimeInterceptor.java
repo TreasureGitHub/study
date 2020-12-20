@@ -11,7 +11,7 @@ import java.util.Map;
  * @author lff
  * @datetime 2020/12/17 23:27
  */
-public class TimerInterceptor implements ProducerInterceptor<String, String> {
+public class TimeInterceptor implements ProducerInterceptor<String, String> {
 
     @Override
     public void configure(Map<String, ?> configs) {

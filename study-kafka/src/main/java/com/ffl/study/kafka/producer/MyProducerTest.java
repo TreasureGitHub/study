@@ -5,14 +5,17 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutionException;
 
 /**
  * @author lff
  * @datetime 2020/12/17 20:48
+ *
+ * 异步发送消息
  */
 public class MyProducerTest {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
         // 1.创建Kafka生产者配置信息
         Properties properties = new Properties();
 
@@ -43,6 +46,8 @@ public class MyProducerTest {
         // 10.发送数据
         for (int i = 0; i < 10; i++) {
             producer.send(new ProducerRecord<>("first", "study-kafka" + i));
+            // 此处调用get即为同步发送
+            // RecordMetadata first = producer.send(new ProducerRecord<>("first", "study-kafka" + i)).get();
         }
 
         // 11.关闭资源
