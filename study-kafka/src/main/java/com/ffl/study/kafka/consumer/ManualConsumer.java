@@ -55,6 +55,9 @@ public class ManualConsumer {
                     }
                 }
             });
+
+            // 同步提交
+            // consumer.commitSync();
         }
     }
 }
