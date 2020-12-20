@@ -1,6 +1,7 @@
 package com.ffl.study.common.utils;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * 对文件进行操作
@@ -17,6 +18,22 @@ public class FileUtils {
      */
     public static void deleteDir(String dir) {
         deleteDir(new File(dir));
+    }
+
+    /**
+     * 创建目录
+     * 如果存在则删除再创建
+     *
+     * @param dir
+     * @throws IOException
+     */
+    public static void createDir(String dir) throws IOException {
+        createDir(new File(dir));
+    }
+
+    public static void createDir(File dir) throws IOException {
+        deleteDir(dir);
+        dir.mkdirs();
     }
 
     /**
