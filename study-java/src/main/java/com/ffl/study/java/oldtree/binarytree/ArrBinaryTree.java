@@ -1,4 +1,4 @@
-package com.ffl.study.java.tree.binarytree;
+package com.ffl.study.java.oldtree.binarytree;
 
 import com.ffl.study.common.constants.StringConstants;
 import com.ffl.study.common.utils.ArrayUtils;

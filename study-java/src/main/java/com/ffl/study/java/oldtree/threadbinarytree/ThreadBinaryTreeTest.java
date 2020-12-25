@@ -1,4 +1,4 @@
-package com.ffl.study.java.tree.threadbinarytree;
+package com.ffl.study.java.oldtree.threadbinarytree;
 
 /**
  * @author lff

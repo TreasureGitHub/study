@@ -1,10 +1,11 @@
-package com.ffl.study.java.tree.binarytree;
+package com.ffl.study.java.tree;
+
 
 /**
  * @author lff
  * @datetime 2020/06/24 00:55
  */
-public class BinaryTreeTest<T> {
+public class BinaryTreeTest {
 
     public static void main(String[] args) {
 
@@ -16,8 +17,7 @@ public class BinaryTreeTest<T> {
         TreeNode<Integer> treeNode8 = new TreeNode<>(8);
         TreeNode<Integer> treeNode9 = new TreeNode<>(9);
 
-        TreeNode<Integer> treeNode1 = new TreeNode<>(1);
-
+        // TreeNode<Integer> treeNode1 = new TreeNode<>(1);
 
         BinaryTree<Integer> tree = new BinaryTree<>();
         tree.setRoot(treeNode6);
@@ -44,25 +44,29 @@ public class BinaryTreeTest<T> {
         System.out.println();
 
 
-        // TreeNode<Integer> integerTreeNode = tree.preOrderSearch(treeNode5);
+        System.out.println("---------前序查找--------");
+        TreeNode<Integer> preOrderSearch = tree.preOrderSearch(treeNode5);
+        System.out.println(preOrderSearch);
 
-        TreeNode<Integer> integerTreeNode = tree.midOrderSearch(treeNode2);
+        System.out.println("---------中序查找--------");
+        TreeNode<Integer> midOrderSearch = tree.midOrderSearch(treeNode2);
+        System.out.println(midOrderSearch);
 
-        // TreeNode<Integer> integerTreeNode = tree.preOrderSearch(treeNode5);
-
-        System.out.println(integerTreeNode);
+        System.out.println("---------后序查找--------");
+        TreeNode<Integer> postOrderSearch = tree.postOrderSearch(treeNode5);
+        System.out.println(postOrderSearch);
 
         System.out.println("---------删除前--------");
         tree.preOrder();
-        tree.delete(treeNode4);
+        // tree.delete(treeNode4);
         System.out.println();
         System.out.println("---------删除后--------");
         tree.preOrder();
 
         System.out.println();
         Integer[] arr = {6,4,8,2,5,7,9};
-        ArrBinaryTree<Integer> arrBinaryTree= new ArrBinaryTree<>(arr);
-        arrBinaryTree.preOrder();
+        // ArrBinaryTree<Integer> arrBinaryTree= new ArrBinaryTree<>(arr);
+        // arrBinaryTree.preOrder();
     }
 
 
