@@ -1,4 +1,4 @@
-package com.ffl.study.java.tree;
+package com.ffl.study.java.tree.binarytree;
 
 import lombok.Data;
 
@@ -48,6 +48,12 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * 前序查找
+     *
+     * @param node
+     * @return
+     */
     public TreeNode<T> preOrderSearch(TreeNode<T> node){
         if (this.root != null) {
             return this.root.preOrderSearch(node);
@@ -57,6 +63,12 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * 中序查找
+     *
+     * @param node
+     * @return
+     */
     public TreeNode<T> midOrderSearch(TreeNode<T> node){
         if (this.root != null) {
             return this.root.midOrderSearch(node);
@@ -66,12 +78,36 @@ public class BinaryTree<T extends Comparable<T>> {
         }
     }
 
+    /**
+     * 后续茶轴
+     *
+     * @param node
+     * @return
+     */
     public TreeNode<T> postOrderSearch(TreeNode<T> node){
         if (this.root != null) {
             return this.root.postOrderSearch(node);
         } else {
             System.out.println("二叉树为空，无法遍历");
             return  null;
+        }
+    }
+
+    /**
+     * 删除节点
+     *
+     * @param node
+     */
+    public void delete(TreeNode<T> node){
+        if(this.root != null){
+            if(root.getData().compareTo(node.getData()) == 0){
+                this.root = null;
+            } else {
+                this.root.delete(node);
+            }
+
+        } else {
+            System.out.println("空节点，无法删除");
         }
     }
 

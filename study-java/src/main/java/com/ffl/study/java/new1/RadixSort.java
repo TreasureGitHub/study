@@ -1,12 +1,10 @@
-package com.ffl.study.java.sort;
+package com.ffl.study.java.new1;
 
 import java.util.Arrays;
 
 /**
  * @author lff
- * @datetime 2020/07/07 23:38
- *
- * 基数排序
+ * @datetime 2020/12/26 17:35
  */
 public class RadixSort {
 
@@ -16,11 +14,7 @@ public class RadixSort {
         System.out.println(Arrays.toString(arr));
     }
 
-    /**
-     * 基数排序
-     *
-     * @param arr
-     */
+
     public static void sort(int[] arr) {
         // 计算最大值
         int maxValue = arr[0];
@@ -63,5 +57,4 @@ public class RadixSort {
 
         }
     }
-
 }

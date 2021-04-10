@@ -1,4 +1,4 @@
-package com.ffl.study.java.tree;
+package com.ffl.study.java.tree.binarytree;
 
 import lombok.Data;
 
@@ -160,6 +160,35 @@ public class TreeNode<T extends Comparable<T>> {
             return this;
         }
         return resNode;
+    }
+
+    /**
+     * 递归删除节点
+     * * 1.因为二叉树是单向的，所有应该判断当前节点的子节点是否需要删除，而不能判断当前节点是否需要删除
+     * 2.如果当前节点的左子节点不为空，且左子节点就是要删除的节点，就将left置空，并且返回
+     * 3.如果当前节点的右子节点不为空，且右子节点就是要删除的节点，就将right置空
+     * 4.如果第2、3步没有删除，分别向左、右递归
+     *
+     * @param node
+     */
+    public void delete(TreeNode<T> node) {
+        if (this.getLeft() != null || this.getLeft().getData().compareTo(node.getData()) == 0) {
+            this.setLeft(null);
+            return;
+        }
+
+        if (this.getRight() != null || this.getRight().getData().compareTo(node.getData()) == 0) {
+            this.setRight(null);
+            return;
+        }
+
+        if (this.getLeft() != null) {
+            this.getLeft().delete(node);
+        }
+
+        if (this.getRight() != null) {
+            this.getRight().delete(node);
+        }
     }
 
 

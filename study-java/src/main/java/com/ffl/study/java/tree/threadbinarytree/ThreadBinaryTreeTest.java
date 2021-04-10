@@ -1,8 +1,8 @@
-package com.ffl.study.java.oldtree.threadbinarytree;
+package com.ffl.study.java.tree.threadbinarytree;
 
 /**
  * @author lff
- * @datetime 2020/06/30 22:39
+ * @datetime 2020/12/25 23:54
  */
 public class ThreadBinaryTreeTest {
 
@@ -26,14 +26,15 @@ public class ThreadBinaryTreeTest {
 
         ThreadBinaryTree threadBinaryTree = new ThreadBinaryTree();
         threadBinaryTree.setRoot(node6);
-        threadBinaryTree.threadedNode();
+        threadBinaryTree.midThreadedNode();
 
         // node5号节点测试
-        System.out.println(node5.getLeft());  // 3
-        System.out.println(node5.getRight()); // 1
+        System.out.println(node5.getLeft());  // 4
+        System.out.println(node5.getRight()); // 6
 
 
-        System.out.println("---------------遍历----------------");
+        System.out.println("---------------------线索化方式遍历二叉树");
         threadBinaryTree.midOrder();
+
     }
 }

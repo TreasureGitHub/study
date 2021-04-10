@@ -1,4 +1,4 @@
-package com.ffl.study.java.tree;
+package com.ffl.study.java.tree.binarytree;
 
 
 /**
@@ -58,7 +58,7 @@ public class BinaryTreeTest {
 
         System.out.println("---------删除前--------");
         tree.preOrder();
-        // tree.delete(treeNode4);
+        tree.delete(treeNode4);
         System.out.println();
         System.out.println("---------删除后--------");
         tree.preOrder();

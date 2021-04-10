@@ -35,13 +35,13 @@ object TimeAndWMTest {
 
             // 每隔  env.getConfig.getAutoWatermarkInterval 调用此方法生成 waterMark
             override def getCurrentWatermark: Watermark = {
-                println("---------------getCurrentWatermark--------------  : " + (maxEventTime - DELAY))
+                //println("---------------getCurrentWatermark--------------  : " + (maxEventTime - DELAY))
                 new Watermark(maxEventTime - DELAY)
             }
 
             // 没进入一个元素调用此方法
             override def extractTimestamp(element: SensorReading, previousElementTimestamp: Long): Long = {
-                println("---------------extractTimestamp--------------  :" + element)
+                //println("---------------extractTimestamp--------------  :" + element)
                 maxEventTime = maxEventTime.max(element.timestamp * 1000)
                 element.timestamp * 1000
             }

@@ -132,4 +132,12 @@ public class ArrayUtils {
 
         return false;
     }
+
+    public static <T> boolean isNullOrEmpty(int [] arr){
+        if(arr == null || arr.length == 0){
+            return true;
+        }
+
+        return false;
+    }
 }

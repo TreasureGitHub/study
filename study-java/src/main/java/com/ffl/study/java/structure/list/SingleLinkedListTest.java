@@ -9,13 +9,13 @@ public class SingleLinkedListTest {
     public static void main(String[] args) {
         SingleLinkedList<String> list = new SingleLinkedList<>();
 
-        System.out.println(list.size());
-        System.out.println(list.isEmpty());
+        // System.out.println(list.size());
+        // System.out.println(list.isEmpty());
         list.add("hello");
         list.add("world");
         list.add("java");
-        list.add(0,"scala");
-        list.add(4,"hive");
+        list.add("scala");
+        list.add("hive");
 
         System.out.println(list);
 
@@ -28,8 +28,12 @@ public class SingleLinkedListTest {
 
         System.out.println("-------------反转前--------------");
         System.out.println(list);
+
+
+        list.reverse1();
         // 反转
         System.out.println("-------------反转后--------------");
+        System.out.println(list);
 
 
 
@@ -40,7 +44,7 @@ public class SingleLinkedListTest {
         }
 
         System.out.println(list);
-        
+
         list.reverse3();
         System.out.println(list);
     }

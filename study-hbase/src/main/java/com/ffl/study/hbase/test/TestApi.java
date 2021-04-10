@@ -1,11 +1,13 @@
 package com.ffl.study.hbase.test;
 
+import com.google.common.collect.Lists;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.*;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
+import java.util.List;
 
 /**
  * @author lff
@@ -17,7 +19,7 @@ public class TestApi {
 
     private static Admin admin = null;
 
-    private static final String TABLE_NAME = "testns:stu1";
+    private static final String TABLE_NAME = "test:stu";
 
 
     static {
@@ -39,34 +41,77 @@ public class TestApi {
     }
 
 
+    // public static void main(String[] args) throws IOException {
+    //     System.out.println(isTableExists("stu"));
+    //
+    //     // 1.创建表空间
+    //     createNameSpace("test");
+    //
+    //     // 2.创建表
+    //     createTable(TABLE_NAME, "info", "info1");
+    //     // tus
+    //
+    //     // 3.创建表是否存在
+    //     System.out.println(isTableExists(TABLE_NAME));
+    //
+    //     // 4.写入数据
+    //     putData(TABLE_NAME, "1001", "info", "name", "张三");
+    //
+    //     // 5.查询数据
+    //     get(TABLE_NAME, "1001", "info", "name");
+    //
+    //     // 6.扫描数据
+    //     scanTable(TABLE_NAME);
+    //
+    //     // 7.删除数据
+    //     deleteData(TABLE_NAME, "1001", "info", "sex");
+    //
+    //     // 8.删除表
+    //     dropTable(TABLE_NAME);
+    //
+    //     close();
+    // }
+
     public static void main(String[] args) throws IOException {
-        System.out.println(isTableExists("stu"));
+        // createNameSpace("test");
+        // createTable("stu", "info", "info1");
+        // get("stu", "1001", "info", "name");
 
-        // 1.创建表空间
-        createNameSpace("testns");
+        Table table = connection.getTable(TableName.valueOf("stu"));
 
-        // 2.创建表
-        createTable(TABLE_NAME, "info1", "info2");
+        // putData("stu","123","info","col1","value1");
+        // putData("stu","456","info","col1","value2");
 
-        // 3.创建表是否存在
-        System.out.println(isTableExists(TABLE_NAME));
 
-        // 4.写入数据
-        putData(TABLE_NAME, "1001", "info", "name", "张三");
+        List<String> rowKeyList = Lists.newArrayList("123","456","abc");
+        List<String> strings = get(table, rowKeyList, "info", "col1");
 
-        // 5.查询数据
-        get(TABLE_NAME, "1001", "info", "name");
+        System.out.println(strings.toString());
 
-        // 6.扫描数据
-        scanTable(TABLE_NAME);
+    }
 
-        // 7.删除数据
-        deleteData(TABLE_NAME, "1001", "info", "sex");
+    public static List<String> get(Table table, List<String> rowKeyList, String cf, String cn) throws IOException {
+        List<String> resList = Lists.newArrayList();
 
-        // 8.删除表
-        dropTable(TABLE_NAME);
+        List<Get> getList = Lists.newArrayList();
+        for (String rowKey : rowKeyList) {
+            Get get = new Get(Bytes.toBytes(rowKey));
+            get.addColumn(Bytes.toBytes(cf), Bytes.toBytes(cn));
+            getList.add(get);
+        }
 
-        close();
+        Result[] results = table.get(getList);
+
+        for (Result result : results) {
+            // 解析result并打印
+            for (Cell cell : result.rawCells()) {
+                System.out.println(Bytes.toString(CellUtil.copyRow(cell)));
+                resList.add(Bytes.toString(CellUtil.cloneValue(cell)));
+            }
+        }
+
+
+        return resList;
     }
 
 

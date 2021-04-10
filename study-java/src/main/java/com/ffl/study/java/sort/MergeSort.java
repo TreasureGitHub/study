@@ -13,19 +13,31 @@ public class MergeSort {
         sort(arr);
 
         System.out.println(Arrays.toString(arr));
-
     }
 
+    /**
+     * 归并排序
+     *
+     * @param arr
+     */
     public static void sort(int[] arr) {
         int[] temp = new int[arr.length];
-        sortMerge(arr, 0, arr.length - 1, temp);
+        splitAndMerge(arr, 0, arr.length - 1, temp);
     }
 
-    public static void sortMerge(int[] arr, int left, int right, int[] temp) {
+    /**
+     * 拆开阶段
+     *
+     * @param arr
+     * @param left
+     * @param right
+     * @param temp
+     */
+    public static void splitAndMerge(int[] arr, int left, int right, int[] temp) {
         if (left < right) {
             int mid = (left + right) / 2;
-            sortMerge(arr, left, mid, temp);
-            sortMerge(arr, mid + 1, right, temp);
+            splitAndMerge(arr, left, mid, temp);
+            splitAndMerge(arr, mid + 1, right, temp);
             merge(arr,left,mid,right,temp);
         }
     }
@@ -73,6 +85,7 @@ public class MergeSort {
         }
 
         // 将 临时数组拷贝至arr
+        // 注意，并不是每次都拷贝所有
         t = 0;
         int tempLeft = left;
         while (tempLeft <= right) {

@@ -79,7 +79,7 @@ public class DoubleLinkedList<T> implements Iterable<T> {
 
     /**
      * 反转节点
-     * 类似 SingleLinkedList
+     * 类似 SingleLinkedList1
      */
     public void reverse() {
 

@@ -27,7 +27,7 @@ object Example {
         val dataTable: Table = tableEnv.fromDataStream(dataStream)
 
 
-        // 调用table api进行转换
+        // 调用table api进行转换result
         val result: Table = dataTable
           .select("id,temperature")
           .filter("id == 'sensor_1'")

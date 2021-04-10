@@ -17,6 +17,12 @@
             <groupId>com.ffl</groupId>
             <artifactId>study-common</artifactId>
         </dependency>
+
+        <!--akka-->
+        <dependency>
+            <groupId>com.typesafe.akka</groupId>
+            <artifactId>akka-actor_2.11</artifactId>
+        </dependency>
     </dependencies>
 
 

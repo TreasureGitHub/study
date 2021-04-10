@@ -80,35 +80,6 @@ public class SingleLinkedList<T> {
         size++;
     }
 
-    /**
-     * 删除指定位置的数据
-     *
-     * @param index
-     * @return
-     */
-    public T remove(int index) {
-        checkIndex(index);
-
-        if (isEmpty()) {
-            return null;
-        }
-
-        Node toRemove;
-
-        if (index == 0) {
-            toRemove = head;
-            head = head.next; // hed后移
-        } else {
-            Node pre = getNode(index - 1);
-            toRemove = pre.next;
-            pre.next = toRemove.next;
-            toRemove.next = null; // 释放
-        }
-
-        size--;
-
-        return toRemove == null ? null : toRemove.data;
-    }
 
     /**
      * 1.反转  ， 常规手段
@@ -217,6 +188,36 @@ public class SingleLinkedList<T> {
                 break;
             }
         }
+    }
+
+    /**
+     * 删除指定位置的数据
+     *
+     * @param index
+     * @return
+     */
+    public T remove(int index) {
+        checkIndex(index);
+
+        if (isEmpty()) {
+            return null;
+        }
+
+        Node toRemove;
+
+        if (index == 0) {
+            toRemove = head;
+            head = head.next; // hed后移
+        } else {
+            Node pre = getNode(index - 1);
+            toRemove = pre.next;
+            pre.next = toRemove.next;
+            toRemove.next = null; // 释放
+        }
+
+        size--;
+
+        return toRemove == null ? null : toRemove.data;
     }
 
 

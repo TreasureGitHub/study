@@ -1,10 +1,10 @@
-package com.ffl.study.java.oldtree.threadbinarytree;
+package com.ffl.study.java.tree.threadbinarytree;
 
 import lombok.Data;
 
 /**
  * @author lff
- * @datetime 2020/06/30 22:08
+ * @datetime 2020/12/25 23:35
  */
 @Data
 public class ThreadTreeNode<T extends Comparable<T>> {
@@ -20,28 +20,27 @@ public class ThreadTreeNode<T extends Comparable<T>> {
     private ThreadTreeNode<T> left;
 
     /**
+     * 左节点类型
+     */
+    private NodeTypeEnum leftType;
+
+    /**
      * 右节点
      */
     private ThreadTreeNode<T> right;
 
     /**
-     * 0表示指向左子树 1 表示指向前驱节点
+     * 右节点类型
      */
-    private int leftType;
-
-    /**
-     * 0表示指向左子树 1 表示指向后继节点
-     */
-    private int rightType;
+    private NodeTypeEnum rightType;
 
     public ThreadTreeNode(T data) {
         this.data = data;
     }
 
-
     @Override
     public String toString() {
-        return "ThreadTreeNode{" +
+        return "TreeNode{" +
                 "data=" + data +
                 '}';
     }

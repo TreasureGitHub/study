@@ -30,6 +30,11 @@
             <artifactId>hbase-server</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
         <!--<dependency>-->
             <!--<groupId>org.apache.hbase</groupId>-->
             <!--<artifactId>hbase-common</artifactId>-->
@@ -46,7 +51,7 @@
         <!--</dependency>-->
 
 
-        <!-- hadoop 相关 -->
+        <!--&lt;!&ndash; hadoop 相关 &ndash;&gt;-->
         <!--<dependency>-->
             <!--<groupId>org.apache.hadoop</groupId>-->
             <!--<artifactId>hadoop-common</artifactId>-->
