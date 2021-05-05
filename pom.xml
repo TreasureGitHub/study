@@ -15,6 +15,7 @@
         <spark.version>2.2.0</spark.version>
         <hadoop.version>2.6.5</hadoop.version>
         <flink.version>1.10.0</flink.version>
+        <flink.lib.version>2.11</flink.lib.version>
         <hbase.version>2.3.0</hbase.version>
         <study.version>1.0-SNAPSHOT</study.version>
         <encoding>UTF-8</encoding>
@@ -33,6 +34,7 @@
         <module>study-flume</module>
         <module>study-redis</module>
         <module>study-hbase</module>
+        <module>study-flink12</module>
     </modules>
 
     <dependencyManagement>
@@ -117,90 +119,6 @@
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-yarn_2.11</artifactId>
                 <version>${spark.version}</version>
-            </dependency>
-
-            <!--flink-->
-            <!--java-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-java</artifactId>
-                <version>${flink.version}</version>
-                <!--<scope>provided</scope>-->
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-streaming-java_2.11</artifactId>
-                <version>${flink.version}</version>
-                <!--<scope>provided</scope>-->
-            </dependency>
-            <!--flink kafka connect-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-connector-kafka_2.11</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <!-- flink redis connect-->
-            <dependency>
-                <groupId>org.apache.bahir</groupId>
-                <artifactId>flink-connector-redis_2.11</artifactId>
-                <version>1.0</version>
-            </dependency>
-            <!--table api-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-table-planner_2.11</artifactId>
-                <version>${flink.version}</version>
-                <!--<scope>provided</scope>-->
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-table-api-scala-bridge_2.11</artifactId>
-                <version>${flink.version}</version>
-                <!--<scope>provided</scope>-->
-            </dependency>
-
-            <!--connect-->
-            <!--csv-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-csv</artifactId>
-                <version>${flink.version}</version>
-                <!--<scope>provided</scope>-->
-            </dependency>
-
-            <!--jdbc-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-jdbc_2.12</artifactId>
-                <version>${flink.version}</version>
-                <!--<scope>provided</scope>-->
-            </dependency>
-
-            <!--cep-->
-            <!--scala-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-cep_2.11</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <!--scala-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-cep-scala_2.11</artifactId>
-                <version>${flink.version}</version>
-            </dependency>
-            <!--scala-->
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-scala_2.11</artifactId>
-                <version>${flink.version}</version>
-                <!--<scope>provided</scope>-->
-            </dependency>
-            <dependency>
-                <groupId>org.apache.flink</groupId>
-                <artifactId>flink-streaming-scala_2.11</artifactId>
-                <version>${flink.version}</version>
-                <!--<scope>provided</scope>-->
             </dependency>
 
             <!--单元测试-->

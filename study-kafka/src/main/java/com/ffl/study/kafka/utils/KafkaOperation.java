@@ -38,10 +38,11 @@ public class KafkaOperation {
         // 5.创建topic
         // createTopic(HOST, "test", 10, 1);
 
-
         // 6.得到分区的最初offset
-        getTopicEndOffset(HOST, TOPIC);
+        // System.out.println(getTopicStartOffset(HOST, TOPIC));
 
+        // 7.得到分区的当前offset
+        System.out.println(getTopicEndOffset(HOST,TOPIC));
 
         // System.out.println(getTopicPartition(HOST,TOPIC));
 

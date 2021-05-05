@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>study</artifactId>
+        <groupId>com.ffl</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>study-flink12</artifactId>
+
+    <properties>
+        <flink.version>1.13.0</flink.version>
+        <scala.binary.version>2.12</scala.binary.version>
+        <scope>compile</scope>
+    </properties>
+
+
+    <dependencies>
+
+        <!-- Table ecosystem -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-planner_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
+            <scope>${scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-table-planner-blink_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
+            <scope>${scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-clients_${scala.binary.version}</artifactId>
+            <version>${flink.version}</version>
+            <scope>${scope}</scope>
+        </dependency>
+
+    </dependencies>
+
+    <!--<build>-->
+    <!--<plugins>-->
+    <!--<plugin>-->
+    <!--<groupId>net.alchim31.maven</groupId>-->
+    <!--<artifactId>scala-maven-plugin</artifactId>-->
+    <!--&lt;!&ndash;<executions>&ndash;&gt;-->
+    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;<id>scala-compile-first</id>&ndash;&gt;-->
+    <!--&lt;!&ndash;<phase>process-resources</phase>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goal>add-source</goal>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goal>compile</goal>&ndash;&gt;-->
+    <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;<id>scala-test-compile</id>&ndash;&gt;-->
+    <!--&lt;!&ndash;<phase>process-test-resources</phase>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;<goal>testCompile</goal>&ndash;&gt;-->
+    <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+    <!--&lt;!&ndash;</execution>&ndash;&gt;-->
+    <!--&lt;!&ndash;</executions>&ndash;&gt;-->
+    <!--</plugin>-->
+    <!--</plugins>-->
+    <!--</build>-->
+
+
+</project>

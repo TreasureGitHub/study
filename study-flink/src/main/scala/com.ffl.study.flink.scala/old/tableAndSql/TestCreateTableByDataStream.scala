@@ -5,6 +5,8 @@ import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
 import org.apache.flink.table.api.scala.StreamTableEnvironment
 import org.apache.flink.table.api.{EnvironmentSettings, Table}
 import org.apache.flink.types.Row
+import org.apache.flink.streaming.api.scala._
+import org.apache.flink.table.api.scala._
 
 /**
   * @author liufeifei  2020/05/06 11:35
@@ -17,8 +19,7 @@ object TestCreateTableByDataStream {
         val settings: EnvironmentSettings = EnvironmentSettings.newInstance().useOldPlanner().inStreamingMode().build()
         val tableEnv: StreamTableEnvironment = StreamTableEnvironment.create(streamEnv, settings)
 
-        import org.apache.flink.streaming.api.scala._
-        import org.apache.flink.table.api.scala._
+
 
         val stream: DataStream[StationLog] = streamEnv.socketTextStream("localhost", 8888)
           .map(line => {
