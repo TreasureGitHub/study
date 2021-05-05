@@ -7,7 +7,7 @@ import java.util.Date
 
 import org.apache.commons.lang3.StringUtils
 import org.apache.flink.api.common.eventtime.{SerializableTimestampAssigner, WatermarkStrategy}
-import org.apache.flink.api.common.state.{MapState, MapStateDescriptor}
+import org.apache.flink.api.common.state.{MapState, MapStateDescriptor, StateTtlConfig}
 import org.apache.flink.configuration.Configuration
 import org.apache.flink.streaming.api.functions.KeyedProcessFunction
 import org.apache.flink.streaming.api.scala._
@@ -17,6 +17,11 @@ import org.apache.flink.util.Collector
 /**
   * @author lff
   * @datetime 2021/05/05 10:29
+  *
+  *           region,aaa,2,1619837624000			2021-05-01 10:53:44
+  *           region,aaa,3,1619841224000			2021-05-01 11:53:44
+  *           region,aaa,2,1619841324000			2021-05-01 11:55:24
+  *           region,aaa,3,1619855624000			2021-05-01 15:53:44
   */
 object TestProcessFunction {
 
@@ -55,7 +60,14 @@ object TestProcessFunction {
         private val sdf: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH")
 
         override def open(parameters: Configuration): Unit = {
-            mapState = getRuntimeContext.getMapState(new MapStateDescriptor[String, String]("mapState", classOf[String], classOf[String]))
+            val ttlConfig = StateTtlConfig
+              .newBuilder(org.apache.flink.api.common.time.Time.days(1))
+              .setUpdateType(StateTtlConfig.UpdateType.OnCreateAndWrite)
+              .setStateVisibility(StateTtlConfig.StateVisibility.NeverReturnExpired)
+              .build
+            val mapStateDesc = new MapStateDescriptor[String, String]("mapState", classOf[String], classOf[String])
+            mapStateDesc.enableTimeToLive(ttlConfig)
+            mapState = getRuntimeContext.getMapState(mapStateDesc)
         }
 
         override def processElement(value: (String, String, Int, Long), ctx: KeyedProcessFunction[String, (String, String, Int, Long), (String, String, Long, Long)]#Context, out: Collector[(String, String, Long, Long)]): Unit = {
