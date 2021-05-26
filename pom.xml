@@ -12,7 +12,7 @@
     <properties>
         <java.version>1.8</java.version>
         <scala.version>2.11.8</scala.version>
-        <spark.version>2.2.0</spark.version>
+        <spark.version>2.4.7</spark.version>
         <hadoop.version>2.6.5</hadoop.version>
         <flink.version>1.10.0</flink.version>
         <flink.lib.version>2.11</flink.lib.version>
