@@ -1,0 +1,646 @@
+INFO main org.apache.flink.api.java.typeutils.TypeExtractor - class org.apache.flink.types.Row is missing a default constructor so it cannot be used as a POJO type and must be processed as GenericType. Please read the Flink documentation on "Data Types & Serialization" for details of the effect on performance.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.cpu.cores required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.task.heap.size required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.task.off-heap.size required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.network.min required for local execution is not set, setting it to its default value 64 mb.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.network.max required for local execution is not set, setting it to its default value 64 mb.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.managed.size required for local execution is not set, setting it to its default value 128 mb.
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting Flink Mini Cluster
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting Metrics Registry
+INFO main org.apache.flink.runtime.metrics.MetricRegistryImpl - No metrics reporter configured, no metrics will be exposed/reported.
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting RPC Service(s)
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Trying to start local actor system
+INFO flink-akka.actor.default-dispatcher-3 akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Actor system started at akka://flink
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Trying to start local actor system
+INFO flink-metrics-2 akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Actor system started at akka://flink-metrics
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.metrics.dump.MetricQueryService at akka://flink-metrics/user/rpc/MetricQueryService .
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting high-availability services
+INFO main org.apache.flink.runtime.blob.BlobServer - Created BLOB server storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-227ca975-8b34-46ee-915c-31edf4c6df2d
+INFO main org.apache.flink.runtime.blob.BlobServer - Started BLOB server at 0.0.0.0:53971 - max concurrent requests: 50 - max backlog: 1000
+INFO main org.apache.flink.runtime.blob.PermanentBlobCache - Created BLOB cache storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-c0ba9428-e1be-44c4-94cf-3a96ec9988fa
+INFO main org.apache.flink.runtime.blob.TransientBlobCache - Created BLOB cache storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-d3fbedfa-7254-41b7-a72b-e4cfa47d52a6
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting 1 TaskManger(s)
+INFO main org.apache.flink.runtime.taskexecutor.TaskManagerRunner - Starting TaskManager with ResourceID: 6d13f195-a833-4b5c-b7ed-2cc61e0aaf06
+INFO main org.apache.flink.runtime.taskexecutor.TaskManagerServices - Temporary file directory '/var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T': total 233 GB, usable 15 GB (6.44% usable)
+INFO main org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-io-0ae40cb3-8a25-4460-8642-71d6fe584f34 for spill files.
+INFO main org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-netty-shuffle-ceeaacf2-dc58-4a0b-a7a7-13c1c85ec669 for spill files.
+INFO main org.apache.flink.runtime.io.network.buffer.NetworkBufferPool - Allocated 64 MB for network buffer pool (number of memory segments: 2048, bytes per segment: 32768).
+INFO main org.apache.flink.runtime.io.network.NettyShuffleEnvironment - Starting the network environment and its components.
+INFO main org.apache.flink.runtime.taskexecutor.KvStateService - Starting the kvState service and its components.
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.taskexecutor.TaskExecutor at akka://flink/user/rpc/taskmanager_0 .
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Start job leader service.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.filecache.FileCache - User file cache uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-dist-cache-ef87bd0b-7884-4dae-8502-bd2fda3b1446
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Starting rest endpoint.
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Failed to load web based job submission extension. Probable reason: flink-runtime-web is not in the classpath.
+WARN main org.apache.flink.runtime.webmonitor.WebMonitorUtils - Log file environment variable 'log.file' is not set.
+WARN main org.apache.flink.runtime.webmonitor.WebMonitorUtils - JobManager log files are unavailable in the web dashboard. Log file location not found in environment variable 'log.file' or configuration key 'web.log.path'.
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Rest endpoint listening at localhost:53972
+INFO main org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender http://localhost:53972
+INFO mini-cluster-io-thread-1 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - http://localhost:53972 was granted leadership with leaderSessionID=84f7999d-24f0-4c31-987f-5aca6ea644d7
+INFO mini-cluster-io-thread-1 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader http://localhost:53972 , session=84f7999d-24f0-4c31-987f-5aca6ea644d7
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.resourcemanager.StandaloneResourceManager at akka://flink/user/rpc/resourcemanager_1 .
+INFO main org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender LeaderContender: DefaultDispatcherRunner
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender LeaderContender: StandaloneResourceManager
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - ResourceManager akka://flink/user/rpc/resourcemanager_1 was granted leadership with fencing token 8f4e2d61f89e1e6bf6f471f51d094209
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.slotmanager.SlotManagerImpl - Starting the SlotManager.
+INFO mini-cluster-io-thread-2 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Start SessionDispatcherLeaderProcess.
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Flink Mini Cluster started successfully
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Recover all persisted job graphs.
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Successfully recovered 0 persisted job graphs.
+INFO mini-cluster-io-thread-6 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader akka://flink/user/rpc/resourcemanager_1 , session=f6f471f5-1d09-4209-8f4e-2d61f89e1e6b
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.taskexecutor.TaskExecutor - Connecting to ResourceManager akka://flink/user/rpc/resourcemanager_1(8f4e2d61f89e1e6bf6f471f51d094209).
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.dispatcher.StandaloneDispatcher at akka://flink/user/rpc/dispatcher_2 .
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader akka://flink/user/rpc/dispatcher_2 , session=bde68fc1-66b0-4b63-a76a-7be6588b6d04
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.TaskExecutor - Resolved ResourceManager address, beginning registration
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registering TaskManager with ResourceID 6d13f195-a833-4b5c-b7ed-2cc61e0aaf06 (akka://flink/user/rpc/taskmanager_0) at ResourceManager
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.taskexecutor.TaskExecutor - Successful registration at resource manager akka://flink/user/rpc/resourcemanager_1 under registration id d17e128a3d12bb1c69e273a424ef64be.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Received JobGraph submission 33da42ce58b7519aa387a39a07876b69 (Flink Streaming Job).
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Submitting job 33da42ce58b7519aa387a39a07876b69 (Flink Streaming Job).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.jobmaster.JobMaster at akka://flink/user/rpc/jobmanager_3 .
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Initializing job Flink Streaming Job (33da42ce58b7519aa387a39a07876b69).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Using restart back off time strategy NoRestartBackoffTimeStrategy for Flink Streaming Job (33da42ce58b7519aa387a39a07876b69).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Running initialization on master for job Flink Streaming Job (33da42ce58b7519aa387a39a07876b69).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Successfully ran initialization on master in 0 ms.
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.scheduler.adapter.DefaultExecutionTopology - Built 1 pipelined regions in 1 ms
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.checkpoint.CheckpointCoordinator - No checkpoint found during restore.
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Using failover strategy org.apache.flink.runtime.executiongraph.failover.flip1.RestartPipelinedRegionFailoverStrategy@713e4dd3 for Flink Streaming Job (33da42ce58b7519aa387a39a07876b69).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender akka://flink/user/rpc/jobmanager_3
+INFO mini-cluster-io-thread-14 org.apache.flink.runtime.jobmaster.JobManagerRunnerImpl - JobManager runner for job Flink Streaming Job (33da42ce58b7519aa387a39a07876b69) was granted leadership with session id 39a7a1cd-fd6f-4906-aa58-ff658ff6a8bb at akka://flink/user/rpc/jobmanager_3.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.jobmaster.JobMaster - Starting execution of job Flink Streaming Job (33da42ce58b7519aa387a39a07876b69) under job master id aa58ff658ff6a8bb39a7a1cdfd6f4906.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.jobmaster.JobMaster - Starting scheduling with scheduling strategy [org.apache.flink.runtime.scheduler.strategy.PipelinedRegionSchedulingStrategy]
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.executiongraph.ExecutionGraph - Job Flink Streaming Job (33da42ce58b7519aa387a39a07876b69) switched from state CREATED to RUNNING.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1) (6b737695cd95a12d7ecb692ada7162ea) switched from CREATED to SCHEDULED.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.executiongraph.ExecutionGraph - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1) (986fb42e8089f2b99c6c5fe9d06efe51) switched from CREATED to SCHEDULED.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.executiongraph.ExecutionGraph - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1) (f5c8175cf71ba8f3dadeef41c4952347) switched from CREATED to SCHEDULED.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.executiongraph.ExecutionGraph - Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1) (5be0206136b1a2b7e982b81cff096511) switched from CREATED to SCHEDULED.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl - Cannot serve slot request, no ResourceManager connected. Adding as pending request [SlotRequestId{b9438061cf816e6f5b7468591e0ab2be}]
+INFO jobmanager-future-thread-1 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader akka://flink/user/rpc/jobmanager_3 , session=39a7a1cd-fd6f-4906-aa58-ff658ff6a8bb
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.jobmaster.JobMaster - Connecting to ResourceManager akka://flink/user/rpc/resourcemanager_1(8f4e2d61f89e1e6bf6f471f51d094209)
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.jobmaster.JobMaster - Resolved ResourceManager address, beginning registration
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registering job manager aa58ff658ff6a8bb39a7a1cdfd6f4906@akka://flink/user/rpc/jobmanager_3 for job 33da42ce58b7519aa387a39a07876b69.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registered job manager aa58ff658ff6a8bb39a7a1cdfd6f4906@akka://flink/user/rpc/jobmanager_3 for job 33da42ce58b7519aa387a39a07876b69.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.jobmaster.JobMaster - JobManager successfully registered at ResourceManager, leader id: 8f4e2d61f89e1e6bf6f471f51d094209.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl - Requesting new slot [SlotRequestId{b9438061cf816e6f5b7468591e0ab2be}] and profile ResourceProfile{UNKNOWN} with allocation id cde05f380694022d4931304574f23a2e from resource manager.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Request slot with profile ResourceProfile{UNKNOWN} for job 33da42ce58b7519aa387a39a07876b69 with allocation id cde05f380694022d4931304574f23a2e.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.taskexecutor.TaskExecutor - Receive slot request cde05f380694022d4931304574f23a2e for job 33da42ce58b7519aa387a39a07876b69 from resource manager with leader id 8f4e2d61f89e1e6bf6f471f51d094209.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.taskexecutor.TaskExecutor - Allocated slot for cde05f380694022d4931304574f23a2e.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Add job 33da42ce58b7519aa387a39a07876b69 for job leader monitoring.
+INFO mini-cluster-io-thread-18 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Try to register at job manager akka://flink/user/rpc/jobmanager_3 with leader id 39a7a1cd-fd6f-4906-aa58-ff658ff6a8bb.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Resolved JobManager address, beginning registration
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Successful registration at job manager akka://flink/user/rpc/jobmanager_3 for job 33da42ce58b7519aa387a39a07876b69.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.TaskExecutor - Establish JobManager connection for job 33da42ce58b7519aa387a39a07876b69.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.TaskExecutor - Offer reserved slots to the leader of job 33da42ce58b7519aa387a39a07876b69.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1) (6b737695cd95a12d7ecb692ada7162ea) switched from SCHEDULED to DEPLOYING.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1) (attempt #0) with attempt id 6b737695cd95a12d7ecb692ada7162ea to 6d13f195-a833-4b5c-b7ed-2cc61e0aaf06 @ localhost (dataPort=-1) with allocation id cde05f380694022d4931304574f23a2e
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1) (986fb42e8089f2b99c6c5fe9d06efe51) switched from SCHEDULED to DEPLOYING.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1) (attempt #0) with attempt id 986fb42e8089f2b99c6c5fe9d06efe51 to 6d13f195-a833-4b5c-b7ed-2cc61e0aaf06 @ localhost (dataPort=-1) with allocation id cde05f380694022d4931304574f23a2e
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot cde05f380694022d4931304574f23a2e.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1) (f5c8175cf71ba8f3dadeef41c4952347) switched from SCHEDULED to DEPLOYING.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1) (attempt #0) with attempt id f5c8175cf71ba8f3dadeef41c4952347 to 6d13f195-a833-4b5c-b7ed-2cc61e0aaf06 @ localhost (dataPort=-1) with allocation id cde05f380694022d4931304574f23a2e
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1) (5be0206136b1a2b7e982b81cff096511) switched from SCHEDULED to DEPLOYING.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1) (attempt #0) with attempt id 5be0206136b1a2b7e982b81cff096511 to 6d13f195-a833-4b5c-b7ed-2cc61e0aaf06 @ localhost (dataPort=-1) with allocation id cde05f380694022d4931304574f23a2e
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 (6b737695cd95a12d7ecb692ada7162ea), deploy into slot with allocation id cde05f380694022d4931304574f23a2e.
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 (6b737695cd95a12d7ecb692ada7162ea) switched from CREATED to DEPLOYING.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot cde05f380694022d4931304574f23a2e.
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 (6b737695cd95a12d7ecb692ada7162ea) [DEPLOYING].
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Registering task at network: Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 (6b737695cd95a12d7ecb692ada7162ea) [DEPLOYING].
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 (986fb42e8089f2b99c6c5fe9d06efe51), deploy into slot with allocation id cde05f380694022d4931304574f23a2e.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 (986fb42e8089f2b99c6c5fe9d06efe51) switched from CREATED to DEPLOYING.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot cde05f380694022d4931304574f23a2e.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 (986fb42e8089f2b99c6c5fe9d06efe51) [DEPLOYING].
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Registering task at network: Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 (986fb42e8089f2b99c6c5fe9d06efe51) [DEPLOYING].
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 (f5c8175cf71ba8f3dadeef41c4952347), deploy into slot with allocation id cde05f380694022d4931304574f23a2e.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 (f5c8175cf71ba8f3dadeef41c4952347) switched from CREATED to DEPLOYING.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 (f5c8175cf71ba8f3dadeef41c4952347) [DEPLOYING].
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot cde05f380694022d4931304574f23a2e.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot cde05f380694022d4931304574f23a2e.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Registering task at network: Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 (f5c8175cf71ba8f3dadeef41c4952347) [DEPLOYING].
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 (5be0206136b1a2b7e982b81cff096511), deploy into slot with allocation id cde05f380694022d4931304574f23a2e.
+INFO Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 (5be0206136b1a2b7e982b81cff096511) switched from CREATED to DEPLOYING.
+INFO Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 (5be0206136b1a2b7e982b81cff096511) [DEPLOYING].
+INFO Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Registering task at network: Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 (5be0206136b1a2b7e982b81cff096511) [DEPLOYING].
+INFO Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 org.apache.flink.streaming.runtime.tasks.StreamTask - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 org.apache.flink.streaming.runtime.tasks.StreamTask - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 org.apache.flink.streaming.runtime.tasks.StreamTask - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 (f5c8175cf71ba8f3dadeef41c4952347) switched from DEPLOYING to RUNNING.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 (986fb42e8089f2b99c6c5fe9d06efe51) switched from DEPLOYING to RUNNING.
+INFO Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 (5be0206136b1a2b7e982b81cff096511) switched from DEPLOYING to RUNNING.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.executiongraph.ExecutionGraph - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1) (986fb42e8089f2b99c6c5fe9d06efe51) switched from DEPLOYING to RUNNING.
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.streaming.runtime.tasks.StreamTask - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 (6b737695cd95a12d7ecb692ada7162ea) switched from DEPLOYING to RUNNING.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.executiongraph.ExecutionGraph - Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1) (f5c8175cf71ba8f3dadeef41c4952347) switched from DEPLOYING to RUNNING.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.executiongraph.ExecutionGraph - Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1) (5be0206136b1a2b7e982b81cff096511) switched from DEPLOYING to RUNNING.
+INFO flink-akka.actor.default-dispatcher-5 org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1) (6b737695cd95a12d7ecb692ada7162ea) switched from DEPLOYING to RUNNING.
+WARN Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 org.apache.flink.metrics.MetricGroup - The operator name Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) exceeded the 80 characters length limit and was truncated.
+WARN Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 org.apache.flink.metrics.MetricGroup - The operator name Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) exceeded the 80 characters length limit and was truncated.
+WARN Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.metrics.MetricGroup - The operator name Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) exceeded the 80 characters length limit and was truncated.
+WARN Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 org.apache.flink.metrics.MetricGroup - The operator name Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) exceeded the 80 characters length limit and was truncated.
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase - Consumer subtask 0 has no restore state.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+INFO Join(joinType=[LeftOuterJoin], where=[(name = name0)], select=[name, sex, age, name0, age0], leftInputSpec=[JoinKeyContainsUniqueKey], rightInputSpec=[JoinKeyContainsUniqueKey]) -> Calc(select=[name, sex, age, age0 AS age1]) -> SinkConversionToTuple2 -> Filter -> Sink: Print to Std. Out (1/1)#0 org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 org.apache.flink.runtime.state.heap.HeapKeyedStateBackend - Initializing heap keyed state backend with stream factory.
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, age]) (1/1)#0 org.apache.flink.table.runtime.operators.rank.AppendOnlyTopNFunction - Top1 operator is using LRU caches key-size: 10000
+INFO Rank(strategy=[AppendFastStrategy], rankType=[ROW_NUMBER], rankRange=[rankStart=1, rankEnd=1], partitionBy=[name], orderBy=[age DESC], select=[name, sex, age]) (1/1)#0 org.apache.flink.table.runtime.operators.rank.AppendOnlyTopNFunction - Top1 operator is using LRU caches key-size: 10000
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.consumer.ConsumerConfig - ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = testGroup
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+WARN Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.consumer.ConsumerConfig - The configuration 'flink.partition-discovery.interval-millis' was supplied but isn't a known config.
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.common.utils.AppInfoParser - Kafka version : 2.1.0
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.common.utils.AppInfoParser - Kafka commitId : eec43959745f444f
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.Metadata - Cluster ID: uo2LxHyHQzS11lLBcoyC9Q
+INFO Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase - Consumer subtask 0 will start reading the following 2 partitions from the earliest offsets: [KafkaTopicPartition{topic='mytest', partition=1}, KafkaTopicPartition{topic='mytest', partition=0}]
+INFO Legacy Source Thread - Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumerBase - Consumer subtask 0 creating fetcher with offsets {KafkaTopicPartition{topic='mytest', partition=1}=-915623761775, KafkaTopicPartition{topic='mytest', partition=0}=-915623761775}.
+INFO Kafka Fetcher for Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.consumer.ConsumerConfig - ConsumerConfig values: 
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = default
+	client.id = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = true
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = testGroup
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.mechanism = GSSAPI
+	security.protocol = PLAINTEXT
+	send.buffer.bytes = 131072
+	session.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.1, TLSv1]
+	ssl.endpoint.identification.algorithm = https
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLS
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+WARN Kafka Fetcher for Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.consumer.ConsumerConfig - The configuration 'flink.partition-discovery.interval-millis' was supplied but isn't a known config.
+INFO Kafka Fetcher for Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.common.utils.AppInfoParser - Kafka version : 2.1.0
+INFO Kafka Fetcher for Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.common.utils.AppInfoParser - Kafka commitId : eec43959745f444f
+INFO Kafka Fetcher for Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.Metadata - Cluster ID: uo2LxHyHQzS11lLBcoyC9Q
+INFO Kafka Fetcher for Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.consumer.internals.AbstractCoordinator - [Consumer clientId=consumer-2, groupId=testGroup] Discovered group coordinator 192.168.1.22:9092 (id: 2147483647 rack: null)
+INFO Kafka Fetcher for Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.consumer.internals.Fetcher - [Consumer clientId=consumer-2, groupId=testGroup] Resetting offset for partition mytest-1 to offset 6.
+INFO Kafka Fetcher for Source: TableSourceScan(table=[[default_catalog, db, mytest]], fields=[name, sex, age]) -> Calc(select=[name, age]) (1/1)#0 org.apache.kafka.clients.consumer.internals.Fetcher - [Consumer clientId=consumer-2, groupId=testGroup] Resetting offset for partition mytest-0 to offset 6.
+INFO TaskExecutorLocalStateStoresManager shutdown hook org.apache.flink.runtime.state.TaskExecutorLocalStateStoresManager - Shutting down TaskExecutorLocalStateStoresManager.
+INFO TransientBlobCache shutdown hook org.apache.flink.runtime.blob.TransientBlobCache - Shutting down BLOB cache
+INFO PermanentBlobCache shutdown hook org.apache.flink.runtime.blob.PermanentBlobCache - Shutting down BLOB cache
+INFO FileChannelManagerImpl-io shutdown hook org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager removed spill file directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-io-0ae40cb3-8a25-4460-8642-71d6fe584f34
+INFO FileCache shutdown hook org.apache.flink.runtime.filecache.FileCache - removed file cache directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-dist-cache-ef87bd0b-7884-4dae-8502-bd2fda3b1446
+INFO FileChannelManagerImpl-netty-shuffle shutdown hook org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager removed spill file directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-netty-shuffle-ceeaacf2-dc58-4a0b-a7a7-13c1c85ec669
+INFO BlobServer shutdown hook org.apache.flink.runtime.blob.BlobServer - Stopped BLOB server at 0.0.0.0:53971
+WARN main org.apache.flink.connector.hbase.util.HBaseConfigurationUtil - HBASE_CONF_DIR env variable not found, cannot load HBase configuration.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.cpu.cores required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.task.heap.size required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.task.off-heap.size required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.network.min required for local execution is not set, setting it to its default value 64 mb.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.network.max required for local execution is not set, setting it to its default value 64 mb.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.managed.size required for local execution is not set, setting it to its default value 128 mb.
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting Flink Mini Cluster
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting Metrics Registry
+INFO main org.apache.flink.runtime.metrics.MetricRegistryImpl - No metrics reporter configured, no metrics will be exposed/reported.
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting RPC Service(s)
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Trying to start local actor system
+INFO flink-akka.actor.default-dispatcher-2 akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Actor system started at akka://flink
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Trying to start local actor system
+INFO flink-metrics-2 akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Actor system started at akka://flink-metrics
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.metrics.dump.MetricQueryService at akka://flink-metrics/user/rpc/MetricQueryService .
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting high-availability services
+INFO main org.apache.flink.runtime.blob.BlobServer - Created BLOB server storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-6b5d9737-a01b-49bf-bdec-ade4c934987e
+INFO main org.apache.flink.runtime.blob.BlobServer - Started BLOB server at 0.0.0.0:54046 - max concurrent requests: 50 - max backlog: 1000
+INFO main org.apache.flink.runtime.blob.PermanentBlobCache - Created BLOB cache storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-3665605a-93eb-477c-867a-8439f3c33896
+INFO main org.apache.flink.runtime.blob.TransientBlobCache - Created BLOB cache storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-0221a8ca-550f-4205-b76d-7e1093fb0962
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting 1 TaskManger(s)
+INFO main org.apache.flink.runtime.taskexecutor.TaskManagerRunner - Starting TaskManager with ResourceID: 5ae74a4e-fe71-4f97-a9d8-0690a903a44b
+INFO main org.apache.flink.runtime.taskexecutor.TaskManagerServices - Temporary file directory '/var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T': total 233 GB, usable 15 GB (6.44% usable)
+INFO main org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-io-01fde9c2-d895-42ab-8f45-f96a6b741d4d for spill files.
+INFO main org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-netty-shuffle-0218dbda-3a21-4cf4-b50b-04d743b428b8 for spill files.
+INFO main org.apache.flink.runtime.io.network.buffer.NetworkBufferPool - Allocated 64 MB for network buffer pool (number of memory segments: 2048, bytes per segment: 32768).
+INFO main org.apache.flink.runtime.io.network.NettyShuffleEnvironment - Starting the network environment and its components.
+INFO main org.apache.flink.runtime.taskexecutor.KvStateService - Starting the kvState service and its components.
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.taskexecutor.TaskExecutor at akka://flink/user/rpc/taskmanager_0 .
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Start job leader service.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.filecache.FileCache - User file cache uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-dist-cache-106172bb-60da-4951-a0bf-8e06bf80ec17
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Starting rest endpoint.
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Failed to load web based job submission extension. Probable reason: flink-runtime-web is not in the classpath.
+WARN main org.apache.flink.runtime.webmonitor.WebMonitorUtils - Log file environment variable 'log.file' is not set.
+WARN main org.apache.flink.runtime.webmonitor.WebMonitorUtils - JobManager log files are unavailable in the web dashboard. Log file location not found in environment variable 'log.file' or configuration key 'web.log.path'.
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Rest endpoint listening at localhost:54051
+INFO main org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender http://localhost:54051
+INFO mini-cluster-io-thread-1 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - http://localhost:54051 was granted leadership with leaderSessionID=06e81b1a-14e6-4cb2-86dc-da7db2203d78
+INFO mini-cluster-io-thread-1 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader http://localhost:54051 , session=06e81b1a-14e6-4cb2-86dc-da7db2203d78
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.resourcemanager.StandaloneResourceManager at akka://flink/user/rpc/resourcemanager_1 .
+INFO main org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender LeaderContender: DefaultDispatcherRunner
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender LeaderContender: StandaloneResourceManager
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - ResourceManager akka://flink/user/rpc/resourcemanager_1 was granted leadership with fencing token 9d588ccea1d593aea77d9de22a804467
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Flink Mini Cluster started successfully
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.resourcemanager.slotmanager.SlotManagerImpl - Starting the SlotManager.
+INFO mini-cluster-io-thread-2 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Start SessionDispatcherLeaderProcess.
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Recover all persisted job graphs.
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Successfully recovered 0 persisted job graphs.
+INFO mini-cluster-io-thread-6 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader akka://flink/user/rpc/resourcemanager_1 , session=a77d9de2-2a80-4467-9d58-8ccea1d593ae
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.TaskExecutor - Connecting to ResourceManager akka://flink/user/rpc/resourcemanager_1(9d588ccea1d593aea77d9de22a804467).
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.dispatcher.StandaloneDispatcher at akka://flink/user/rpc/dispatcher_2 .
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader akka://flink/user/rpc/dispatcher_2 , session=2230ec7e-afb6-40d2-95ea-384ddccf7c81
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.TaskExecutor - Resolved ResourceManager address, beginning registration
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registering TaskManager with ResourceID 5ae74a4e-fe71-4f97-a9d8-0690a903a44b (akka://flink/user/rpc/taskmanager_0) at ResourceManager
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.taskexecutor.TaskExecutor - Successful registration at resource manager akka://flink/user/rpc/resourcemanager_1 under registration id a7c9c5591e2ba5fd5e3c4468a1c4150b.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Received JobGraph submission 0c68c5a6e94ca693a07890e677ee2a81 (insert-into_default_catalog.default_database.test).
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Submitting job 0c68c5a6e94ca693a07890e677ee2a81 (insert-into_default_catalog.default_database.test).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.jobmaster.JobMaster at akka://flink/user/rpc/jobmanager_3 .
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Initializing job insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Using restart back off time strategy NoRestartBackoffTimeStrategy for insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Running initialization on master for job insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Successfully ran initialization on master in 0 ms.
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.scheduler.adapter.DefaultExecutionTopology - Built 1 pipelined regions in 0 ms
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.checkpoint.CheckpointCoordinator - No checkpoint found during restore.
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.jobmaster.JobMaster - Using failover strategy org.apache.flink.runtime.executiongraph.failover.flip1.RestartPipelinedRegionFailoverStrategy@5e6afefd for insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81).
+INFO mini-cluster-io-thread-12 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender akka://flink/user/rpc/jobmanager_3
+INFO mini-cluster-io-thread-14 org.apache.flink.runtime.jobmaster.JobManagerRunnerImpl - JobManager runner for job insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81) was granted leadership with session id f2f97369-635d-4e0b-acd0-877dd6d5ce03 at akka://flink/user/rpc/jobmanager_3.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.JobMaster - Starting execution of job insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81) under job master id acd0877dd6d5ce03f2f97369635d4e0b.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.JobMaster - Starting scheduling with scheduling strategy [org.apache.flink.runtime.scheduler.strategy.PipelinedRegionSchedulingStrategy]
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Job insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81) switched from state CREATED to RUNNING.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1) (a84654c17140d43d9c0ca6841fc5a189) switched from CREATED to SCHEDULED.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl - Cannot serve slot request, no ResourceManager connected. Adding as pending request [SlotRequestId{f024c8a9f76c14328fd095fdcbbdf9f3}]
+INFO jobmanager-future-thread-1 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader akka://flink/user/rpc/jobmanager_3 , session=f2f97369-635d-4e0b-acd0-877dd6d5ce03
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.JobMaster - Connecting to ResourceManager akka://flink/user/rpc/resourcemanager_1(9d588ccea1d593aea77d9de22a804467)
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.jobmaster.JobMaster - Resolved ResourceManager address, beginning registration
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registering job manager acd0877dd6d5ce03f2f97369635d4e0b@akka://flink/user/rpc/jobmanager_3 for job 0c68c5a6e94ca693a07890e677ee2a81.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registered job manager acd0877dd6d5ce03f2f97369635d4e0b@akka://flink/user/rpc/jobmanager_3 for job 0c68c5a6e94ca693a07890e677ee2a81.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.JobMaster - JobManager successfully registered at ResourceManager, leader id: 9d588ccea1d593aea77d9de22a804467.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl - Requesting new slot [SlotRequestId{f024c8a9f76c14328fd095fdcbbdf9f3}] and profile ResourceProfile{UNKNOWN} with allocation id 857565511ba27506f636aede3c5a9f7b from resource manager.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Request slot with profile ResourceProfile{UNKNOWN} for job 0c68c5a6e94ca693a07890e677ee2a81 with allocation id 857565511ba27506f636aede3c5a9f7b.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.TaskExecutor - Receive slot request 857565511ba27506f636aede3c5a9f7b for job 0c68c5a6e94ca693a07890e677ee2a81 from resource manager with leader id 9d588ccea1d593aea77d9de22a804467.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.TaskExecutor - Allocated slot for 857565511ba27506f636aede3c5a9f7b.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Add job 0c68c5a6e94ca693a07890e677ee2a81 for job leader monitoring.
+INFO mini-cluster-io-thread-18 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Try to register at job manager akka://flink/user/rpc/jobmanager_3 with leader id f2f97369-635d-4e0b-acd0-877dd6d5ce03.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Resolved JobManager address, beginning registration
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Successful registration at job manager akka://flink/user/rpc/jobmanager_3 for job 0c68c5a6e94ca693a07890e677ee2a81.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.TaskExecutor - Establish JobManager connection for job 0c68c5a6e94ca693a07890e677ee2a81.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.TaskExecutor - Offer reserved slots to the leader of job 0c68c5a6e94ca693a07890e677ee2a81.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1) (a84654c17140d43d9c0ca6841fc5a189) switched from SCHEDULED to DEPLOYING.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.executiongraph.ExecutionGraph - Deploying Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1) (attempt #0) with attempt id a84654c17140d43d9c0ca6841fc5a189 to 5ae74a4e-fe71-4f97-a9d8-0690a903a44b @ localhost (dataPort=-1) with allocation id 857565511ba27506f636aede3c5a9f7b
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot 857565511ba27506f636aede3c5a9f7b.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.TaskExecutor - Received task Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 (a84654c17140d43d9c0ca6841fc5a189), deploy into slot with allocation id 857565511ba27506f636aede3c5a9f7b.
+INFO Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 (a84654c17140d43d9c0ca6841fc5a189) switched from CREATED to DEPLOYING.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Activate slot 857565511ba27506f636aede3c5a9f7b.
+INFO Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Loading JAR files for task Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 (a84654c17140d43d9c0ca6841fc5a189) [DEPLOYING].
+INFO Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Registering task at network: Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 (a84654c17140d43d9c0ca6841fc5a189) [DEPLOYING].
+INFO Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.streaming.runtime.tasks.StreamTask - No state backend has been configured, using default (Memory / JobManager) MemoryStateBackend (data in heap memory / checkpoints to JobManager) (checkpoints: 'null', savepoints: 'null', asynchronous: TRUE, maxStateSize: 5242880)
+INFO Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 (a84654c17140d43d9c0ca6841fc5a189) switched from DEPLOYING to RUNNING.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1) (a84654c17140d43d9c0ca6841fc5a189) switched from DEPLOYING to RUNNING.
+WARN Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.metrics.MetricGroup - The operator name Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) exceeded the 80 characters length limit and was truncated.
+INFO Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.connector.hbase.sink.HBaseSinkFunction - start open ...
+WARN Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.connector.hbase.util.HBaseConfigurationUtil - Could not find HBase configuration via any of the supported methods (Flink configuration, environment variables).
+WARN Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 (a84654c17140d43d9c0ca6841fc5a189) switched from RUNNING to FAILED.
+java.lang.NoSuchMethodError: org.apache.hadoop.hbase.AuthUtil.loginClient(Lorg/apache/hadoop/conf/Configuration;)Lorg/apache/hadoop/hbase/security/User;
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:128)
+	at org.apache.flink.connector.hbase.sink.HBaseSinkFunction.open(HBaseSinkFunction.java:116)
+	at org.apache.flink.api.common.functions.util.FunctionUtils.openFunction(FunctionUtils.java:36)
+	at org.apache.flink.streaming.api.operators.AbstractUdfStreamOperator.open(AbstractUdfStreamOperator.java:102)
+	at org.apache.flink.table.runtime.operators.sink.SinkOperator.open(SinkOperator.java:63)
+	at org.apache.flink.streaming.runtime.tasks.OperatorChain.initializeStateAndOpenOperators(OperatorChain.java:401)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.lambda$beforeInvoke$2(StreamTask.java:507)
+	at org.apache.flink.streaming.runtime.tasks.StreamTaskActionExecutor$SynchronizedStreamTaskActionExecutor.runThrowing(StreamTaskActionExecutor.java:92)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.beforeInvoke(StreamTask.java:501)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.invoke(StreamTask.java:531)
+	at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:722)
+	at org.apache.flink.runtime.taskmanager.Task.run(Task.java:547)
+	at java.lang.Thread.run(Thread.java:748)
+INFO Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 org.apache.flink.runtime.taskmanager.Task - Freeing task resources for Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 (a84654c17140d43d9c0ca6841fc5a189).
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.taskexecutor.TaskExecutor - Un-registering task and sending final execution state FAILED to JobManager for task Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1)#0 a84654c17140d43d9c0ca6841fc5a189.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Source: Socket Stream -> SourceConversion(table=[default_catalog.default_database.data], fields=[col]) -> Calc(select=[col AS rowkey, ROW(col) AS EXPR$1]) -> Sink: Sink(table=[default_catalog.default_database.test], fields=[rowkey, EXPR$1]) (1/1) (a84654c17140d43d9c0ca6841fc5a189) switched from RUNNING to FAILED on 5ae74a4e-fe71-4f97-a9d8-0690a903a44b @ localhost (dataPort=-1).
+java.lang.NoSuchMethodError: org.apache.hadoop.hbase.AuthUtil.loginClient(Lorg/apache/hadoop/conf/Configuration;)Lorg/apache/hadoop/hbase/security/User;
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:128)
+	at org.apache.flink.connector.hbase.sink.HBaseSinkFunction.open(HBaseSinkFunction.java:116)
+	at org.apache.flink.api.common.functions.util.FunctionUtils.openFunction(FunctionUtils.java:36)
+	at org.apache.flink.streaming.api.operators.AbstractUdfStreamOperator.open(AbstractUdfStreamOperator.java:102)
+	at org.apache.flink.table.runtime.operators.sink.SinkOperator.open(SinkOperator.java:63)
+	at org.apache.flink.streaming.runtime.tasks.OperatorChain.initializeStateAndOpenOperators(OperatorChain.java:401)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.lambda$beforeInvoke$2(StreamTask.java:507)
+	at org.apache.flink.streaming.runtime.tasks.StreamTaskActionExecutor$SynchronizedStreamTaskActionExecutor.runThrowing(StreamTaskActionExecutor.java:92)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.beforeInvoke(StreamTask.java:501)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.invoke(StreamTask.java:531)
+	at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:722)
+	at org.apache.flink.runtime.taskmanager.Task.run(Task.java:547)
+	at java.lang.Thread.run(Thread.java:748)
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.failover.flip1.RestartPipelinedRegionFailoverStrategy - Calculating tasks to restart to recover the failed task cbc357ccb763df2852fee8c4fc7d55f2_0.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.failover.flip1.RestartPipelinedRegionFailoverStrategy - 1 tasks should be restarted to recover the failed task cbc357ccb763df2852fee8c4fc7d55f2_0. 
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Job insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81) switched from state RUNNING to FAILING.
+org.apache.flink.runtime.JobException: Recovery is suppressed by NoRestartBackoffTimeStrategy
+	at org.apache.flink.runtime.executiongraph.failover.flip1.ExecutionFailureHandler.handleFailure(ExecutionFailureHandler.java:116)
+	at org.apache.flink.runtime.executiongraph.failover.flip1.ExecutionFailureHandler.getFailureHandlingResult(ExecutionFailureHandler.java:78)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.handleTaskFailure(DefaultScheduler.java:224)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.maybeHandleTaskFailure(DefaultScheduler.java:217)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.updateTaskExecutionStateInternal(DefaultScheduler.java:208)
+	at org.apache.flink.runtime.scheduler.SchedulerBase.updateTaskExecutionState(SchedulerBase.java:610)
+	at org.apache.flink.runtime.scheduler.SchedulerNG.updateTaskExecutionState(SchedulerNG.java:89)
+	at org.apache.flink.runtime.jobmaster.JobMaster.updateTaskExecutionState(JobMaster.java:419)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleRpcInvocation(AkkaRpcActor.java:286)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleRpcMessage(AkkaRpcActor.java:201)
+	at org.apache.flink.runtime.rpc.akka.FencedAkkaRpcActor.handleRpcMessage(FencedAkkaRpcActor.java:74)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleMessage(AkkaRpcActor.java:154)
+	at akka.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:26)
+	at akka.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:21)
+	at scala.PartialFunction.applyOrElse(PartialFunction.scala:123)
+	at scala.PartialFunction.applyOrElse$(PartialFunction.scala:122)
+	at akka.japi.pf.UnitCaseStatement.applyOrElse(CaseStatements.scala:21)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:171)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:172)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:172)
+	at akka.actor.Actor.aroundReceive(Actor.scala:517)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
+	at akka.actor.AbstractActor.aroundReceive(AbstractActor.scala:225)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:592)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:561)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:258)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:225)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:235)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.NoSuchMethodError: org.apache.hadoop.hbase.AuthUtil.loginClient(Lorg/apache/hadoop/conf/Configuration;)Lorg/apache/hadoop/hbase/security/User;
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:128)
+	at org.apache.flink.connector.hbase.sink.HBaseSinkFunction.open(HBaseSinkFunction.java:116)
+	at org.apache.flink.api.common.functions.util.FunctionUtils.openFunction(FunctionUtils.java:36)
+	at org.apache.flink.streaming.api.operators.AbstractUdfStreamOperator.open(AbstractUdfStreamOperator.java:102)
+	at org.apache.flink.table.runtime.operators.sink.SinkOperator.open(SinkOperator.java:63)
+	at org.apache.flink.streaming.runtime.tasks.OperatorChain.initializeStateAndOpenOperators(OperatorChain.java:401)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.lambda$beforeInvoke$2(StreamTask.java:507)
+	at org.apache.flink.streaming.runtime.tasks.StreamTaskActionExecutor$SynchronizedStreamTaskActionExecutor.runThrowing(StreamTaskActionExecutor.java:92)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.beforeInvoke(StreamTask.java:501)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.invoke(StreamTask.java:531)
+	at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:722)
+	at org.apache.flink.runtime.taskmanager.Task.run(Task.java:547)
+	at java.lang.Thread.run(Thread.java:748)
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.executiongraph.ExecutionGraph - Job insert-into_default_catalog.default_database.test (0c68c5a6e94ca693a07890e677ee2a81) switched from state FAILING to FAILED.
+org.apache.flink.runtime.JobException: Recovery is suppressed by NoRestartBackoffTimeStrategy
+	at org.apache.flink.runtime.executiongraph.failover.flip1.ExecutionFailureHandler.handleFailure(ExecutionFailureHandler.java:116)
+	at org.apache.flink.runtime.executiongraph.failover.flip1.ExecutionFailureHandler.getFailureHandlingResult(ExecutionFailureHandler.java:78)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.handleTaskFailure(DefaultScheduler.java:224)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.maybeHandleTaskFailure(DefaultScheduler.java:217)
+	at org.apache.flink.runtime.scheduler.DefaultScheduler.updateTaskExecutionStateInternal(DefaultScheduler.java:208)
+	at org.apache.flink.runtime.scheduler.SchedulerBase.updateTaskExecutionState(SchedulerBase.java:610)
+	at org.apache.flink.runtime.scheduler.SchedulerNG.updateTaskExecutionState(SchedulerNG.java:89)
+	at org.apache.flink.runtime.jobmaster.JobMaster.updateTaskExecutionState(JobMaster.java:419)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleRpcInvocation(AkkaRpcActor.java:286)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleRpcMessage(AkkaRpcActor.java:201)
+	at org.apache.flink.runtime.rpc.akka.FencedAkkaRpcActor.handleRpcMessage(FencedAkkaRpcActor.java:74)
+	at org.apache.flink.runtime.rpc.akka.AkkaRpcActor.handleMessage(AkkaRpcActor.java:154)
+	at akka.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:26)
+	at akka.japi.pf.UnitCaseStatement.apply(CaseStatements.scala:21)
+	at scala.PartialFunction.applyOrElse(PartialFunction.scala:123)
+	at scala.PartialFunction.applyOrElse$(PartialFunction.scala:122)
+	at akka.japi.pf.UnitCaseStatement.applyOrElse(CaseStatements.scala:21)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:171)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:172)
+	at scala.PartialFunction$OrElse.applyOrElse(PartialFunction.scala:172)
+	at akka.actor.Actor.aroundReceive(Actor.scala:517)
+	at akka.actor.Actor.aroundReceive$(Actor.scala:515)
+	at akka.actor.AbstractActor.aroundReceive(AbstractActor.scala:225)
+	at akka.actor.ActorCell.receiveMessage(ActorCell.scala:592)
+	at akka.actor.ActorCell.invoke(ActorCell.scala:561)
+	at akka.dispatch.Mailbox.processMailbox(Mailbox.scala:258)
+	at akka.dispatch.Mailbox.run(Mailbox.scala:225)
+	at akka.dispatch.Mailbox.exec(Mailbox.scala:235)
+	at akka.dispatch.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+	at akka.dispatch.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+	at akka.dispatch.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+	at akka.dispatch.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.NoSuchMethodError: org.apache.hadoop.hbase.AuthUtil.loginClient(Lorg/apache/hadoop/conf/Configuration;)Lorg/apache/hadoop/hbase/security/User;
+	at org.apache.hadoop.hbase.client.ConnectionFactory.createConnection(ConnectionFactory.java:128)
+	at org.apache.flink.connector.hbase.sink.HBaseSinkFunction.open(HBaseSinkFunction.java:116)
+	at org.apache.flink.api.common.functions.util.FunctionUtils.openFunction(FunctionUtils.java:36)
+	at org.apache.flink.streaming.api.operators.AbstractUdfStreamOperator.open(AbstractUdfStreamOperator.java:102)
+	at org.apache.flink.table.runtime.operators.sink.SinkOperator.open(SinkOperator.java:63)
+	at org.apache.flink.streaming.runtime.tasks.OperatorChain.initializeStateAndOpenOperators(OperatorChain.java:401)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.lambda$beforeInvoke$2(StreamTask.java:507)
+	at org.apache.flink.streaming.runtime.tasks.StreamTaskActionExecutor$SynchronizedStreamTaskActionExecutor.runThrowing(StreamTaskActionExecutor.java:92)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.beforeInvoke(StreamTask.java:501)
+	at org.apache.flink.streaming.runtime.tasks.StreamTask.invoke(StreamTask.java:531)
+	at org.apache.flink.runtime.taskmanager.Task.doRun(Task.java:722)
+	at org.apache.flink.runtime.taskmanager.Task.run(Task.java:547)
+	at java.lang.Thread.run(Thread.java:748)
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.checkpoint.CheckpointCoordinator - Stopping checkpoint coordinator for job 0c68c5a6e94ca693a07890e677ee2a81.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.checkpoint.StandaloneCompletedCheckpointStore - Shutting down
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.minicluster.MiniCluster - Shutting down Flink Mini Cluster
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Job 0c68c5a6e94ca693a07890e677ee2a81 reached globally terminal state FAILED.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Shutting down rest endpoint.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.TaskExecutor - Stopping TaskExecutor akka://flink/user/rpc/taskmanager_0.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.TaskExecutor - Close ResourceManager connection 26d3553d74fc8544edf8042b30ddefef.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.JobMaster - Stopping the JobMaster for job insert-into_default_catalog.default_database.test(0c68c5a6e94ca693a07890e677ee2a81).
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.TaskExecutor - Close JobManager connection for job 0c68c5a6e94ca693a07890e677ee2a81.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Closing TaskExecutor connection 5ae74a4e-fe71-4f97-a9d8-0690a903a44b because: The TaskExecutor is shutting down.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl - Suspending SlotPool.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.JobMaster - Close ResourceManager connection 26d3553d74fc8544edf8042b30ddefef: Stopping JobMaster for job insert-into_default_catalog.default_database.test(0c68c5a6e94ca693a07890e677ee2a81)..
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.jobmaster.slotpool.SlotPoolImpl - Stopping SlotPool.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.slot.TaskSlotTableImpl - Free slot TaskSlot(index:0, state:ALLOCATED, resource profile: ResourceProfile{managedMemory=128.000mb (134217728 bytes), networkMemory=64.000mb (67108864 bytes)}, allocationId: 857565511ba27506f636aede3c5a9f7b, jobId: 0c68c5a6e94ca693a07890e677ee2a81).
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Disconnect job manager acd0877dd6d5ce03f2f97369635d4e0b@akka://flink/user/rpc/jobmanager_3 for job 0c68c5a6e94ca693a07890e677ee2a81 from the resource manager.
+INFO mini-cluster-io-thread-20 org.apache.flink.runtime.taskexecutor.TaskExecutor - JobManager for job 0c68c5a6e94ca693a07890e677ee2a81 with leader id acd0877dd6d5ce03f2f97369635d4e0b lost leadership.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Stop job leader service.
+INFO ForkJoinPool.commonPool-worker-6 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Removing cache directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-web-ui
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.state.TaskExecutorLocalStateStoresManager - Shutting down TaskExecutorLocalStateStoresManager.
+INFO ForkJoinPool.commonPool-worker-6 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Shut down complete.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Shut down cluster because application is in CANCELED, diagnostics DispatcherResourceManagerComponent has been closed..
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager removed spill file directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-io-01fde9c2-d895-42ab-8f45-f96a6b741d4d
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.io.network.NettyShuffleEnvironment - Shutting down the network environment and its components.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.entrypoint.component.DispatcherResourceManagerComponent - Closing components.
+INFO flink-akka.actor.default-dispatcher-2 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Stopping SessionDispatcherLeaderProcess.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Stopping dispatcher akka://flink/user/rpc/dispatcher_2.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Stopping all currently running jobs of dispatcher akka://flink/user/rpc/dispatcher_2.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.slotmanager.SlotManagerImpl - Closing the SlotManager.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.slotmanager.SlotManagerImpl - Suspending the SlotManager.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.rest.handler.legacy.backpressure.BackPressureRequestCoordinator - Shutting down back pressure request coordinator.
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.dispatcher.StandaloneDispatcher - Stopped dispatcher akka://flink/user/rpc/dispatcher_2.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager removed spill file directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-netty-shuffle-0218dbda-3a21-4cf4-b50b-04d743b428b8
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.KvStateService - Shutting down the kvState service and its components.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Stop job leader service.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.filecache.FileCache - removed file cache directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-dist-cache-106172bb-60da-4951-a0bf-8e06bf80ec17
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.taskexecutor.TaskExecutor - Stopped TaskExecutor akka://flink/user/rpc/taskmanager_0.
+INFO AkkaRpcService-Supervisor-Termination-Future-Executor-thread-1 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Stopping Akka RPC service.
+INFO flink-metrics-2 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Stopping Akka RPC service.
+INFO flink-metrics-2 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Stopped Akka RPC service.
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.blob.PermanentBlobCache - Shutting down BLOB cache
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.blob.TransientBlobCache - Shutting down BLOB cache
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.blob.BlobServer - Stopped BLOB server at 0.0.0.0:54046
+INFO flink-akka.actor.default-dispatcher-4 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Stopped Akka RPC service.
+WARN main org.apache.flink.connector.hbase.util.HBaseConfigurationUtil - HBASE_CONF_DIR env variable not found, cannot load HBase configuration.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.cpu.cores required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.task.heap.size required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.task.off-heap.size required for local execution is not set, setting it to the maximal possible value.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.network.min required for local execution is not set, setting it to its default value 64 mb.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.network.max required for local execution is not set, setting it to its default value 64 mb.
+INFO main org.apache.flink.runtime.taskexecutor.TaskExecutorResourceUtils - The configuration option taskmanager.memory.managed.size required for local execution is not set, setting it to its default value 128 mb.
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting Flink Mini Cluster
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting Metrics Registry
+INFO main org.apache.flink.runtime.metrics.MetricRegistryImpl - No metrics reporter configured, no metrics will be exposed/reported.
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting RPC Service(s)
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Trying to start local actor system
+INFO flink-akka.actor.default-dispatcher-3 akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Actor system started at akka://flink
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Trying to start local actor system
+INFO flink-metrics-2 akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcServiceUtils - Actor system started at akka://flink-metrics
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.metrics.dump.MetricQueryService at akka://flink-metrics/user/rpc/MetricQueryService .
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting high-availability services
+INFO main org.apache.flink.runtime.blob.BlobServer - Created BLOB server storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-91bc1e08-cc75-46f1-a644-571219da7ef0
+INFO main org.apache.flink.runtime.blob.BlobServer - Started BLOB server at 0.0.0.0:54191 - max concurrent requests: 50 - max backlog: 1000
+INFO main org.apache.flink.runtime.blob.PermanentBlobCache - Created BLOB cache storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-1829bd2c-34e9-49c1-82b3-da74357774de
+INFO main org.apache.flink.runtime.blob.TransientBlobCache - Created BLOB cache storage directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/blobStore-a90d926d-ea63-48b9-bc3e-c571db787d11
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Starting 1 TaskManger(s)
+INFO main org.apache.flink.runtime.taskexecutor.TaskManagerRunner - Starting TaskManager with ResourceID: ab293079-68b0-45e9-aec2-b23f2221ea0e
+INFO main org.apache.flink.runtime.taskexecutor.TaskManagerServices - Temporary file directory '/var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T': total 233 GB, usable 15 GB (6.44% usable)
+INFO main org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-io-84e81986-5063-490d-ac10-fa58ea869aa6 for spill files.
+INFO main org.apache.flink.runtime.io.disk.FileChannelManagerImpl - FileChannelManager uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-netty-shuffle-65a5f10b-5523-470e-b699-6e01628d871a for spill files.
+INFO main org.apache.flink.runtime.io.network.buffer.NetworkBufferPool - Allocated 64 MB for network buffer pool (number of memory segments: 2048, bytes per segment: 32768).
+INFO main org.apache.flink.runtime.io.network.NettyShuffleEnvironment - Starting the network environment and its components.
+INFO main org.apache.flink.runtime.taskexecutor.KvStateService - Starting the kvState service and its components.
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.taskexecutor.TaskExecutor at akka://flink/user/rpc/taskmanager_0 .
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.taskexecutor.DefaultJobLeaderService - Start job leader service.
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.filecache.FileCache - User file cache uses directory /var/folders/qm/58v3l04x4vz3176zr779gxf00000gp/T/flink-dist-cache-3aecb8d9-8e5c-41e0-8bf7-2e54962462ec
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Starting rest endpoint.
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Failed to load web based job submission extension. Probable reason: flink-runtime-web is not in the classpath.
+WARN main org.apache.flink.runtime.webmonitor.WebMonitorUtils - Log file environment variable 'log.file' is not set.
+WARN main org.apache.flink.runtime.webmonitor.WebMonitorUtils - JobManager log files are unavailable in the web dashboard. Log file location not found in environment variable 'log.file' or configuration key 'web.log.path'.
+INFO main org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - Rest endpoint listening at localhost:54192
+INFO main org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender http://localhost:54192
+INFO mini-cluster-io-thread-1 org.apache.flink.runtime.dispatcher.DispatcherRestEndpoint - http://localhost:54192 was granted leadership with leaderSessionID=ca2065ad-f9f7-4408-b4ab-9e0ba6b46735
+INFO mini-cluster-io-thread-1 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader http://localhost:54192 , session=ca2065ad-f9f7-4408-b4ab-9e0ba6b46735
+INFO main org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.resourcemanager.StandaloneResourceManager at akka://flink/user/rpc/resourcemanager_1 .
+INFO main org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender LeaderContender: DefaultDispatcherRunner
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Proposing leadership to contender LeaderContender: StandaloneResourceManager
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - ResourceManager akka://flink/user/rpc/resourcemanager_1 was granted leadership with fencing token acb2581904fff60c4a01365db06f4d58
+INFO main org.apache.flink.runtime.minicluster.MiniCluster - Flink Mini Cluster started successfully
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.resourcemanager.slotmanager.SlotManagerImpl - Starting the SlotManager.
+INFO mini-cluster-io-thread-2 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Start SessionDispatcherLeaderProcess.
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Recover all persisted job graphs.
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.dispatcher.runner.SessionDispatcherLeaderProcess - Successfully recovered 0 persisted job graphs.
+INFO mini-cluster-io-thread-6 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader akka://flink/user/rpc/resourcemanager_1 , session=4a01365d-b06f-4d58-acb2-581904fff60c
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.taskexecutor.TaskExecutor - Connecting to ResourceManager akka://flink/user/rpc/resourcemanager_1(acb2581904fff60c4a01365db06f4d58).
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.rpc.akka.AkkaRpcService - Starting RPC endpoint for org.apache.flink.runtime.dispatcher.StandaloneDispatcher at akka://flink/user/rpc/dispatcher_2 .
+INFO mini-cluster-io-thread-5 org.apache.flink.runtime.highavailability.nonha.embedded.EmbeddedLeaderService - Received confirmation of leadership for leader akka://flink/user/rpc/dispatcher_2 , session=b5f0bb58-dc78-4213-81fd-91e6faba5de0
+INFO flink-akka.actor.default-dispatcher-3 org.apache.flink.runtime.taskexecutor.TaskExecutor - Resolved ResourceManager address, beginning registration
+INFO flink-akka.actor.default-dispatcher-6 org.apache.flink.runtime.resourcemanager.StandaloneResourceManager - Registering TaskManager with ResourceID ab293079-68b0-45e9-aec2-b23f2221ea0e (akka://flink/user/rpc/taskmanager_0) at ResourceManager

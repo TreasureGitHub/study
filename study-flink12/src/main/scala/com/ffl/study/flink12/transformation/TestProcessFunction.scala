@@ -101,14 +101,14 @@ object TestProcessFunction {
             if (hasUpdate) {
                 var cnt2: Long = 0
                 var cnt3: Long = 0
-                mapState.values().forEach(item => {
-                    val arr: Array[String] = item.split(",")
-                    if (2 == arr(0).toInt) {
-                        cnt2 += 1
-                    } else if (3 == arr(0).toInt) {
-                        cnt3 += 1
-                    }
-                })
+                //mapState.values().forEach(item => {
+                //    val arr: Array[String] = item.split(",")
+                //    if (2 == arr(0).toInt) {
+                //        cnt2 += 1
+                //    } else if (3 == arr(0).toInt) {
+                //        cnt3 += 1
+                //    }
+                //})
 
                 val date: String = sdf.format(new Date(ctx.timestamp()))
                 out.collect(date, value._1, cnt2, cnt3)
@@ -125,14 +125,14 @@ object TestProcessFunction {
 
             var cnt2: Long = 0
             var cnt3: Long = 0
-            mapState.values().forEach(item => {
-                val arr: Array[String] = item.split(",")
-                if (2 == arr(0).toInt) {
-                    cnt2 += 1
-                } else if (3 == arr(0).toInt) {
-                    cnt3 += 1
-                }
-            })
+            //mapState.values().forEach(item => {
+                //val arr: Array[String] = item.split(",")
+                //if (2 == arr(0).toInt) {
+                //    cnt2 += 1
+                //} else if (3 == arr(0).toInt) {
+                //    cnt3 += 1
+                //}
+            //})
 
             out.collect(date, ctx.getCurrentKey, cnt2, cnt3)
             ctx.timerService().registerEventTimeTimer(timestamp + size)

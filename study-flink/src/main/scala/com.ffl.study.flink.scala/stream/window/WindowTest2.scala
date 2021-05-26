@@ -5,7 +5,10 @@ import com.ffl.study.flink.scala.stream.streamapi.source.SensorReading
 import org.apache.flink.streaming.api.TimeCharacteristic
 import org.apache.flink.streaming.api.functions.timestamps.BoundedOutOfOrdernessTimestampExtractor
 import org.apache.flink.streaming.api.scala._
+import org.apache.flink.streaming.api.scala.function.ProcessWindowFunction
 import org.apache.flink.streaming.api.windowing.time.Time
+import org.apache.flink.streaming.api.windowing.windows.GlobalWindow
+import org.apache.flink.util.Collector
 
 /**
   * @author lff
@@ -28,7 +31,7 @@ object WindowTest2 {
         env.setParallelism(1)
 
 
-        val stream: DataStream[String] = env.socketTextStream("localhost",7777)
+        val stream: DataStream[String] = env.socketTextStream("localhost", 7777)
         env.setStreamTimeCharacteristic(TimeCharacteristic.EventTime)
         env.getConfig.setAutoWatermarkInterval(50);   // 如果是处理时间的话默认是0，如果是事件事件的话默认为200ms
 
@@ -39,22 +42,30 @@ object WindowTest2 {
             SensorReading(arr(0), arr(1).toLong, arr(2).toDouble)
         })
           //.assignAscendingTimestamps(_.timestamp * 1000L) // 升序时间定义时间戳
-            .assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor[SensorReading](Time.seconds(3)) {
+          .assignTimestampsAndWatermarks(new BoundedOutOfOrdernessTimestampExtractor[SensorReading](Time.seconds(3)) {
 
             override def extractTimestamp(element: SensorReading): Long = element.timestamp * 1000
 
         })
 
-        val result: DataStream[(String, Double, Long)] = stream1
+        stream1
           .map(data => (data.id, data.temperature, data.timestamp))
           .keyBy(_._1) // 按照第一个元素分组
-          .timeWindow(Time.seconds(15))
-          .allowedLateness(Time.minutes(1))
-          .sideOutputLateData(lateTag)
-          //.window(TumblingEventTimeWindows.of(Time.seconds(5)))
-          //.window(SlidingProcessingTimeWindows.of(Time.seconds(15), Time.seconds(5)))
-          //  .timeWindow(Time.seconds(15))
-          .reduce((currData, newData) => (currData._1, currData._2.min(newData._2), newData._3))
+          //.timeWindow(Time.seconds(15))
+          .countWindow(1)
+          //.allowedLateness(Time.minutes(1))
+          //.sideOutputLateData(lateTag)
+          .process(new ProcessWindowFunction[(String, Double, Long), (String, Double, Long), String, GlobalWindow] {
+
+              override def process(key: String, context: Context, elements: Iterable[(String, Double, Long)], out: Collector[(String, Double, Long)]): Unit = {
+                  elements.foreach(item => out.collect(item))
+              }
+          })
+          .print()
+        //.window(TumblingEventTimeWindows.of(Time.seconds(5)))
+        //.window(SlidingProcessingTimeWindows.of(Time.seconds(15), Time.seconds(5)))
+        //  .timeWindow(Time.seconds(15))
+        //.reduce((currData, newData) => (currData._1, currData._2.min(newData._2), newData._3))
 
         //val stream1: WindowedStream[(String, Int), String, TimeWindow] = stream.map((_, 1))
         //  .keyBy(_._1)
@@ -62,8 +73,8 @@ object WindowTest2 {
         //
         //val result: DataStream[(String, Int)] = stream1.reduce((currData,newData) => (currData._1,currData._2 + 1))
 
-        result.print()
-        result.getSideOutput(lateTag).print("late")
+        //result.print()
+        //result.getSideOutput(lateTag).print("late")
 
         env.execute("WindowTest")
     }
